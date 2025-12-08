@@ -1,8 +1,7 @@
 using UnityEngine;
 
-public class NewMonoBehaviourScript : MonoBehaviour
+public class ErrorTest2 : MonoBehaviour
 {
-    //아아아아ㅏ
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
