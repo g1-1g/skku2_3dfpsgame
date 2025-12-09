@@ -241,8 +241,9 @@ GameObject:
   - component: {fileID: 295443093}
   - component: {fileID: 295443092}
   - component: {fileID: 295443091}
+  - component: {fileID: 295443097}
   m_Layer: 0
-  m_Name: Sphere
+  m_Name: Bomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -287,6 +288,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2cb0b3215292a24795c829c5e224986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _explosionEffectPrefab: {fileID: 1007127540951276732, guid: 3ace37360f306cb4aac03640550fa9ef, type: 3}
 --- !u!135 &295443093
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -376,6 +378,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &295443097
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295443090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2cb0b3215292a24795c829c5e224986, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _explosionEffectPrefab: {fileID: 1007127540951276732, guid: 3ace37360f306cb4aac03640550fa9ef, type: 3}
 --- !u!1 &330585543
 GameObject:
   m_ObjectHideFlags: 0
@@ -1530,7 +1545,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240db7fdc3232d54599edb715ca920c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stats: {fileID: 1423029338}
+  _moveConfig:
+    Gravity: -19.62
+    _doubleJumpStaminaCost: 20
+    _staminaDecreaseRate: 0.05
+    _staminaIncreaseRate: 0.1
 --- !u!143 &1423029337
 CharacterController:
   m_ObjectHideFlags: 0
