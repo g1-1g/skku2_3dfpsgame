@@ -14,7 +14,7 @@ public class PlayerMove : MonoBehaviour
     private float _gravity = -9.81f * 2f;
 
     public float JumpPower = 10f;
-    private float _doubleJumpStaminaCost = 10f;
+    private float _doubleJumpStaminaCost = 20f;
     private bool _canDoubleJump = true;
 
 
@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     
 
     private float _staminaDecreaseRate = 0.05f;
+    private float _staminaIncreaseRate = 0.1f;
     private bool _isDashing = false;
     private bool _isIncreasingStamina = false;
 
@@ -72,7 +73,7 @@ public class PlayerMove : MonoBehaviour
             else if (_canDoubleJump && _stamina >= _doubleJumpStaminaCost)
             {
                 _canDoubleJump = false;
-                StartCoroutine(DoubleJumpStaminaDecrease(_doubleJumpStaminaCost));
+                _stamina -= _doubleJumpStaminaCost;
                 _yVelocity = JumpPower;
             }
         }
@@ -122,10 +123,10 @@ public class PlayerMove : MonoBehaviour
     IEnumerator StaminaIncrease()
     {
         _isIncreasingStamina = true;
-        while ((_characterController.isGrounded || _canDoubleJump) && !_isDashing && _stamina < 100)
+        while (!_isDashing && _stamina < 100)
         {
             _stamina = MathF.Min(_stamina + 1, 100);
-            yield return new WaitForSeconds(_staminaDecreaseRate);
+            yield return new WaitForSeconds(_staminaIncreaseRate);
         }
         _isIncreasingStamina = false;
     }
