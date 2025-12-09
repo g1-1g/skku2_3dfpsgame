@@ -11,7 +11,8 @@ public class PlayerFire : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Bomb bomb  = Instantiate (_bombPrefab, _FireTransform.position, Quaternion.identity);
+            GameObject bomb = BombFactory.Instance.CreateBomb(_FireTransform.position);
+            if (bomb == null) return;
             bomb.GetComponent<Rigidbody>().AddForce(Camera.main.transform.forward * ThrowPower, ForceMode.Impulse);
         }
     }
