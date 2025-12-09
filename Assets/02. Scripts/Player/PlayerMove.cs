@@ -6,17 +6,26 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float _moveSpeed = 5f;
+    [SerializeField] private float _hp = 100f;
+    [SerializeField] private float _stamina = 100f;
+    public float Stamina => _stamina;
 
-    public float Gravity = -9.81f;
-    public float JumpPower = 5f;
+    float _moveSpeed = 5f;
+    private float _gravity = -9.81f * 2f;
+
+    public float JumpPower = 10f;
+    private float _doubleJumpStaminaCost = 10f;
+    private bool _canDoubleJump = true;
+
 
     private CharacterController _characterController;
     private float _yVelocity = 0f;
-    [SerializeField] private float _hp = 100f;
-    [SerializeField] private float _stamina = 100f;
 
-    private bool isDashing = false;
+    
+
+    private float _staminaDecreaseRate = 0.05f;
+    private bool _isDashing = false;
+    private bool _isIncreasingStamina = false;
 
     void Start()
     {
@@ -27,32 +36,69 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         
-        _yVelocity += Gravity * Time.deltaTime;
+        _yVelocity += _gravity * Time.deltaTime;
 
-        if (Input.GetButtonDown("Jump") && _characterController.isGrounded)
-        {
-            _yVelocity = JumpPower;
-        }
+        Jump();
 
         float x = Input.GetAxis("Horizontal");
         float z = Input.GetAxis("Vertical");
 
         Vector3 direction = new Vector3(x, 0, z).normalized;
       
-        direction = Camera.main.transform.TransformDirection(direction);
+        direction = Camera.main.transform.TransformDirection(direction) * _moveSpeed;
         direction.y = _yVelocity;
 
-        _characterController.Move(direction * _moveSpeed * Time.deltaTime);
+        _characterController.Move(direction * Time.deltaTime);
 
-        StaminaChange();
+        Dash();
+        if (!_isIncreasingStamina) 
+        {
+            StartCoroutine(StaminaIncrease());
+        }
     }
 
-    void StaminaChange()
+
+
+    //점프
+    void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
+        {
+            if (_characterController.isGrounded)
+            {
+                _canDoubleJump = true;
+                _yVelocity = JumpPower;
+            }  
+            else if (_canDoubleJump && _stamina >= _doubleJumpStaminaCost)
+            {
+                _canDoubleJump = false;
+                StartCoroutine(DoubleJumpStaminaDecrease(_doubleJumpStaminaCost));
+                _yVelocity = JumpPower;
+            }
+        }
+
+    }
+
+    IEnumerator DoubleJumpStaminaDecrease(float cost)
+    {
+        float applyCost = 0;
+        Debug.Log(_stamina);
+        while (applyCost < cost && _stamina > 0)
+        {
+            applyCost++;
+           
+            _stamina = MathF.Max(_stamina - 1, 0);
+            yield return new WaitForSeconds(0.01f);
+        }
+    }
+
+    //데쉬
+    void Dash()
     {
         if (Input.GetKeyDown(KeyCode.LeftShift) && _stamina >= 0)
         {
             _moveSpeed = 10f;
-            isDashing = true;
+            _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
             return;
@@ -60,27 +106,27 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _moveSpeed = 5f;
-            isDashing = false;
+            _isDashing = false;
         }
-        StartCoroutine(StaminaIncrease());
     }
 
     IEnumerator StaminaDecrease()
     {
-        while (isDashing && _stamina > 0)
+        while (_isDashing && _stamina > 0)
         {
-            _stamina--;
-            Debug.Log(_stamina);
-            yield return new WaitForSeconds(0.1f);
+            _stamina = Mathf.Max(_stamina - 1, 0);
+            yield return new WaitForSeconds(_staminaDecreaseRate);
         }
     }
 
     IEnumerator StaminaIncrease()
     {
-        while (!isDashing && _stamina < 100)
+        _isIncreasingStamina = true;
+        while ((_characterController.isGrounded || _canDoubleJump) && !_isDashing && _stamina < 100)
         {
-            _stamina = MathF.Max(_stamina + 1, 100);
-            yield return new WaitForSeconds(0.1f);
+            _stamina = MathF.Min(_stamina + 1, 100);
+            yield return new WaitForSeconds(_staminaDecreaseRate);
         }
+        _isIncreasingStamina = false;
     }
 }
