@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class HPAndDashUpdate : MonoBehaviour
 {
-    [SerializeField] private PlayerMove _player;
+    [SerializeField] private PlayerStats _player;
 
     [SerializeField] private Slider _hpSlider;
     [SerializeField] private Slider _staminaSlider;
@@ -14,6 +14,6 @@ public class HPAndDashUpdate : MonoBehaviour
     }
     void StaminaUpdate()
     {
-        _staminaSlider.value = Mathf.Clamp(_player.Stamina, 0f, 100f);
+        _staminaSlider.value = Mathf.Clamp(_player.Stamina.Value, 0f, 100f);
     }
 }

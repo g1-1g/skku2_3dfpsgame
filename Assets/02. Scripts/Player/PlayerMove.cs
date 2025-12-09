@@ -6,30 +6,34 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    [SerializeField] private float _hp = 100f;
-    [SerializeField] private float _stamina = 100f;
-    public float Stamina => _stamina;
 
-    float _moveSpeed = 5f;
-    private float _gravity = -9.81f * 2f;
+    [Serializable]
+    public class MoveConfig
+    {
+        public float Gravity = -9.81f*2;
+        public float _doubleJumpStaminaCost = 20f;
+        public float _staminaDecreaseRate = 0.05f;
+        public float _staminaIncreaseRate = 0.1f;
+    }
 
-    public float JumpPower = 10f;
-    private float _doubleJumpStaminaCost = 20f;
+    private MoveConfig _moveConfig;
+
+    [SerializeField] private PlayerStats _stats;
+   
     private bool _canDoubleJump = true;
-
 
     private CharacterController _characterController;
     private float _yVelocity = 0f;
 
-    
-
-    private float _staminaDecreaseRate = 0.05f;
-    private float _staminaIncreaseRate = 0.1f;
     private bool _isDashing = false;
     private bool _isIncreasingStamina = false;
 
+    private float _speed;
+
     void Start()
     {
+        _moveConfig = new MoveConfig();
+        _speed = _stats.MoveSpeed.Value;
         _characterController = GetComponent<CharacterController>();
     }
 
@@ -37,7 +41,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         
-        _yVelocity += _gravity * Time.deltaTime;
+        _yVelocity += _moveConfig.Gravity * Time.deltaTime;
 
         Jump();
 
@@ -46,7 +50,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 direction = new Vector3(x, 0, z).normalized;
       
-        direction = Camera.main.transform.TransformDirection(direction) * _moveSpeed;
+        direction = Camera.main.transform.TransformDirection(direction) * _stats.MoveSpeed.Value;
         direction.y = _yVelocity;
 
         _characterController.Move(direction * Time.deltaTime);
@@ -58,8 +62,6 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-
-
     //점프
     void Jump()
     {
@@ -68,37 +70,24 @@ public class PlayerMove : MonoBehaviour
             if (_characterController.isGrounded)
             {
                 _canDoubleJump = true;
-                _yVelocity = JumpPower;
+                _yVelocity = _stats.JumpPower.Value;
             }  
-            else if (_canDoubleJump && _stamina >= _doubleJumpStaminaCost)
+            else if (_canDoubleJump && _stats.Stamina.Value >= _moveConfig._doubleJumpStaminaCost)
             {
                 _canDoubleJump = false;
-                _stamina -= _doubleJumpStaminaCost;
-                _yVelocity = JumpPower;
+                _stats.Stamina.Decrease(_moveConfig._doubleJumpStaminaCost);
+                _yVelocity = _stats.JumpPower.Value;
             }
         }
 
     }
 
-    IEnumerator DoubleJumpStaminaDecrease(float cost)
-    {
-        float applyCost = 0;
-        Debug.Log(_stamina);
-        while (applyCost < cost && _stamina > 0)
-        {
-            applyCost++;
-           
-            _stamina = MathF.Max(_stamina - 1, 0);
-            yield return new WaitForSeconds(0.01f);
-        }
-    }
-
     //데쉬
     void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _stamina >= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value >= 0)
         {
-            _moveSpeed = 10f;
+            _speed = _stats.RunSpeed.Value;
             _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
@@ -106,27 +95,27 @@ public class PlayerMove : MonoBehaviour
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
-            _moveSpeed = 5f;
+            _speed = _stats.MoveSpeed.Value;
             _isDashing = false;
         }
     }
 
     IEnumerator StaminaDecrease()
     {
-        while (_isDashing && _stamina > 0)
+        while (_isDashing && _stats.Stamina.Value > 0)
         {
-            _stamina = Mathf.Max(_stamina - 1, 0);
-            yield return new WaitForSeconds(_staminaDecreaseRate);
+            _stats.Stamina.Decrease(1);
+            yield return new WaitForSeconds(_moveConfig._staminaDecreaseRate);
         }
     }
 
     IEnumerator StaminaIncrease()
     {
         _isIncreasingStamina = true;
-        while (!_isDashing && _stamina < 100)
+        while (!_isDashing && _stats.Stamina.Value < 100)
         {
-            _stamina = MathF.Min(_stamina + 1, 100);
-            yield return new WaitForSeconds(_staminaIncreaseRate);
+            _stats.Stamina.Increase(1);
+            yield return new WaitForSeconds(_moveConfig._staminaIncreaseRate);
         }
         _isIncreasingStamina = false;
     }

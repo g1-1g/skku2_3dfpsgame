@@ -8,6 +8,9 @@ public class ConsumableStat
     [SerializeField] private float _value;
     [SerializeField] private float _regenValue;
 
+    public float Value => _value;
+
+
 
     public void Initialize()
     {

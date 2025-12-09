@@ -1018,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f491b7770c78ec641a0fe87e3c00de34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 1423029336}
+  _player: {fileID: 1423029338}
   _hpSlider: {fileID: 511702617}
   _staminaSlider: {fileID: 542247712}
 --- !u!114 &1038730989
@@ -1381,9 +1381,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 240db7fdc3232d54599edb715ca920c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _hp: 100
-  _stamina: 100
-  JumpPower: 10
+  _stats: {fileID: 1423029338}
 --- !u!143 &1423029337
 CharacterController:
   m_ObjectHideFlags: 0
@@ -1422,23 +1420,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health:
-    _maxValue: 0
-    _value: 0
-    _regenValue: 0
+    _maxValue: 100
+    _value: 100
+    _regenValue: 1
   Stamina:
-    _maxValue: 0
-    _value: 0
-    _regenValue: 0
+    _maxValue: 100
+    _value: 100
+    _regenValue: 1
   Damage:
     _value: 0
   MoveSpeed:
-    _value: 0
-  RanSpeed:
-    _value: 0
+    _value: 5
+  RunSpeed:
+    _value: 10
   JumpPower:
-    _value: 0
+    _value: 5
   Gravity:
-    _value: 0
+    _value: -18
 --- !u!1 &1563374640
 GameObject:
   m_ObjectHideFlags: 0
@@ -1752,10 +1750,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3

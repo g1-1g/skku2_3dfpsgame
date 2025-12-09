@@ -8,7 +8,7 @@ public class PlayerStats : MonoBehaviour
     
     public ValueStat Damage;
     public ValueStat MoveSpeed;
-    public ValueStat RanSpeed;
+    public ValueStat RunSpeed;
     public ValueStat JumpPower;
     public ValueStat Gravity;
 
