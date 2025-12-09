@@ -35,11 +35,13 @@ public class CameraFollow : MonoBehaviour
         {
             if (cameraMode == ECameraMode.FirstPerson)
             {
+                DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
                     ThirdPersonOffset, 1f);
             }
             else
             {
+                DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
                     FirstPersonOffset, 1f);
             }
@@ -55,6 +57,12 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 rotatedOffset = Target.rotation * currentOffset;
             transform.position = Target.position + rotatedOffset;
+
+            if (cameraMode == ECameraMode.ThirdPerson)
+            {
+                transform.LookAt(Target);
+            }
+            
         }
     }
 }
