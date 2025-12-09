@@ -12,7 +12,10 @@ public class CameraRotate : MonoBehaviour
     private void Update()
     {
        
-
+        if (!Input.GetMouseButton(1))
+        {
+            return;
+        }
         //1. 마우스 입력 받기
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
