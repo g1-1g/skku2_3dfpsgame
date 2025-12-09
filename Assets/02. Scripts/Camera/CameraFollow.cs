@@ -18,13 +18,6 @@ public class CameraFollow : MonoBehaviour
 
     private Vector3 currentOffset;
 
-    public Transform ThirdPersonPosition;
-
-    public Vector3 firstPersonOffset;
-    public Vector3 thirdPersonOffset;
-
-    private Vector3 currentOffset;
-
     public bool _isChanging = false;
 
     [SerializeField] ECameraMode cameraMode = ECameraMode.FirstPerson;
