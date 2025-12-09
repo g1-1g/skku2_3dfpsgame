@@ -1,25 +1,31 @@
+using DG.Tweening;
 using UnityEngine;
-<<<<<<< Updated upstream
-=======
 
 enum ECameraMode
 {
     FirstPerson,
     ThirdPerson
 }
->>>>>>> Stashed changes
 
 public class CameraFollow : MonoBehaviour
 {
     public Transform Target;
-<<<<<<< Updated upstream
-=======
+
     public Transform ThirdPersonPosition;
 
     public Vector3 FirstPersonOffset;
     public Vector3 ThirdPersonOffset;
 
     private Vector3 currentOffset;
+
+    public Transform ThirdPersonPosition;
+
+    public Vector3 firstPersonOffset;
+    public Vector3 thirdPersonOffset;
+
+    private Vector3 currentOffset;
+
+    public bool _isChanging = false;
 
     [SerializeField] ECameraMode cameraMode = ECameraMode.FirstPerson;
 
@@ -50,14 +56,12 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
->>>>>>> Stashed changes
-
     private void LateUpdate()
     {
         if (Target != null)
         {
-            Vector3 newPosition = Target.position;
-            transform.position = newPosition;
+            Vector3 rotatedOffset = Target.rotation * currentOffset;
+            transform.position = Target.position + rotatedOffset;
         }
     }
 }
