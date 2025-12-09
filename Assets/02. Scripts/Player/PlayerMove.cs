@@ -16,9 +16,9 @@ public class PlayerMove : MonoBehaviour
         public float _staminaIncreaseRate = 0.1f;
     }
 
-    private MoveConfig _moveConfig;
+    [SerializeField] private MoveConfig _moveConfig;
 
-    [SerializeField] private PlayerStats _stats;
+    private PlayerStats _stats;
    
     private bool _canDoubleJump = true;
 
@@ -32,9 +32,10 @@ public class PlayerMove : MonoBehaviour
 
     void Start()
     {
-        _moveConfig = new MoveConfig();
-        _speed = _stats.MoveSpeed.Value;
+        
         _characterController = GetComponent<CharacterController>();
+        _stats = GetComponent<PlayerStats>();
+        _speed = _stats.MoveSpeed.Value;
     }
 
     // Update is called once per frame
@@ -50,7 +51,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 direction = new Vector3(x, 0, z).normalized;
       
-        direction = Camera.main.transform.TransformDirection(direction) * _stats.MoveSpeed.Value;
+        direction = Camera.main.transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
         _characterController.Move(direction * Time.deltaTime);

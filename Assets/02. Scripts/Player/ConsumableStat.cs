@@ -10,8 +10,6 @@ public class ConsumableStat
 
     public float Value => _value;
 
-
-
     public void Initialize()
     {
         SetValue(_maxValue);
