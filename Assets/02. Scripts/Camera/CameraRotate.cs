@@ -1,4 +1,3 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
@@ -11,8 +10,6 @@ public class CameraRotate : MonoBehaviour
     // 반동 전용 값 (pitch/yaw와 분리)
     private float recoilYaw = 0f;
     private float recoilPitch = 0f;
-
-    public Vector3 BaseRotation { get; private set; }
     void Start() 
     { 
         Vector3 e = transform.localEulerAngles; 
@@ -35,11 +32,11 @@ public class CameraRotate : MonoBehaviour
         pitch -= mouseY * RotationSpeed * Time.deltaTime;;
 
 
-        pitch = Mathf.Clamp(pitch, -90f, 90f);
+        Debug.Log(pitch);
 
-        // 최종 회전 = 마우스 회전 + 반동 (반동은 클램프 적용 X)
+        // 최종 회전 = 마우스 회전 + 반동
         transform.localRotation = Quaternion.Euler(
-            pitch + recoilPitch,
+            Mathf.Clamp(pitch + recoilPitch, -90f, 90),
             yaw + recoilYaw,
             0f
         );
