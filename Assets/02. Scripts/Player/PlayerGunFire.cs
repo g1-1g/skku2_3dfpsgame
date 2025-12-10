@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Runtime.CompilerServices;
 using UnityEngine;
+using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
 
 public class PlayerGunFire : MonoBehaviour
@@ -11,32 +13,40 @@ public class PlayerGunFire : MonoBehaviour
     //총알 연사 
     private float _lastShootTime = 0;
 
+    //장전
+    private bool _isReloading = false;
+
     [Serializable]
     public class Gun
     {
-        public int _maxBullet = 30;
+        public int _magazineSize = 30;
         public int _currentBullet = 30;
+        public int _reserveBullet = 90;
         public float _fireInterval = 1.0f;
+        public float _reloadInterval = 1.5f;
     }
 
     public Gun _basicGun;
 
+    public event Action<Gun> GunUpdate;
+
     private void Start()
     {
-
+        GunUpdate?.Invoke(_basicGun);
     }
-
 
     private void Update()
     {
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
+            if (_isReloading) return;
             GunShooting(_basicGun, _hitEffectVFX);
         }
 
         if (Input.GetKeyDown(KeyCode.R))
         {
+            if (_isReloading) return;
             Reload(_basicGun);
         }
 
@@ -51,7 +61,7 @@ public class PlayerGunFire : MonoBehaviour
                 Debug.Log("총알을 재장전 하세요");
                 return;
             }
-            
+
             // 2. Ray를 생성하고 발사할 위치, 방향, 거리를 설정한다.
             Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
             Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 100f, Color.red, 2f);
@@ -71,6 +81,7 @@ public class PlayerGunFire : MonoBehaviour
                 vfx.Emit(1);
             }
             gun._currentBullet--;
+            GunUpdate?.Invoke(gun);
             _lastShootTime = Time.time;
             
         }
@@ -78,7 +89,29 @@ public class PlayerGunFire : MonoBehaviour
 
     private void Reload(Gun gun)
     {
-        gun._currentBullet = gun._maxBullet;
+        if (gun._currentBullet == gun._magazineSize) return;
+        if (gun._reserveBullet <= 0)
+        {
+            Debug.Log("남은 총알이 없습니다.");
+            return;
+        }
+        
+        StartCoroutine(Reloading(gun)); 
     }
 
+    IEnumerator Reloading(Gun gun)
+    {
+        GunUpdate?.Invoke(gun);
+        Debug.Log("총알 장전중");
+        _isReloading = true;
+        yield return new WaitForSeconds(gun._reloadInterval);
+        int need = gun._magazineSize - gun._currentBullet;
+        int load = Mathf.Min(need, gun._reserveBullet);
+
+        gun._currentBullet += load;
+        gun._reserveBullet -= load;
+        Debug.Log("총알 장전완료");
+        _isReloading = false;
+        GunUpdate?.Invoke(gun);
+    }
 }
