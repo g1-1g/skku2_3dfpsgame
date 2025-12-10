@@ -16,7 +16,7 @@ public class CameraShake : MonoBehaviour
     {
         _gunFire.Shoot += Shake;
     }
-    public void Shake()
+    public void Shake(PlayerGunFire.Gun Gun)
     {
         DOTween.Kill("CameraShake");
         ShakeOffset = Vector3.zero;
@@ -32,8 +32,8 @@ public class CameraShake : MonoBehaviour
 
         // 회전 반동 (위로 튐 + 미세 좌우)
         Vector3 recoilRot = new Vector3(
-            Random.Range(_rotationPower * 0.8f, _rotationPower * 1.2f), // pitch ↑
-            Random.Range(-_rotationPower * 0.2f, _rotationPower * 0.2f), // yaw 살짝 흔들기
+            Random.Range(Gun.Recoil * 0.8f, Gun.Recoil * 1.2f), // pitch ↑
+            Random.Range(-Gun.Recoil * 0.2f, Gun.Recoil * 0.2f), // yaw 살짝 흔들기
             0
         );
 

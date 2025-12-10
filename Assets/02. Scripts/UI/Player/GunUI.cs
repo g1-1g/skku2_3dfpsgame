@@ -17,7 +17,7 @@ public class GunUI : MonoBehaviour
 
     private void GunReloading(PlayerGunFire.Gun gun)
     {
-        _slider.DOValue(Mathf.Clamp(gun._reloadInterval, 0, 1f), gun._reloadInterval).OnComplete(() =>
+        _slider.DOValue(Mathf.Clamp(gun.ReloadInterval, 0, 1f), gun.ReloadInterval).OnComplete(() =>
         {
             _slider.value = 0;
         });
@@ -25,7 +25,7 @@ public class GunUI : MonoBehaviour
 
     private void GunUIUpdate(PlayerGunFire.Gun gun)
     {
-        _textMeshProUGUI.text = $"{gun._currentBullet} / {gun._reserveBullet}";
+        _textMeshProUGUI.text = $"{gun.CurrentBullet} / {gun.ReserveBullet}";
     }
 
     private void OnDestroy()

@@ -20,18 +20,19 @@ public class PlayerGunFire : MonoBehaviour
     [Serializable]
     public class Gun
     {
-        public int _magazineSize = 30;
-        public int _currentBullet = 30;
-        public int _reserveBullet = 90;
-        public float _fireInterval = 1.0f;
-        public float _reloadInterval = 1.5f;
+        public int MagazineSize = 30;
+        public int CurrentBullet = 30;
+        public int ReserveBullet = 90;
+        public float FireInterval = 0.1f;
+        public float ReloadInterval = 1.5f;
+        public float Recoil = 2f;
     }
 
     public Gun _basicGun;
 
     public event Action<Gun> GunUpdate;
     public event Action<Gun> GunReload;
-    public event Action Shoot;
+    public event Action<Gun> Shoot;
 
     private void Start()
     {
@@ -57,9 +58,9 @@ public class PlayerGunFire : MonoBehaviour
 
     private void GunShooting(Gun gun, ParticleSystem vfx)
     {
-        if (Time.time > _lastShootTime + gun._fireInterval)
+        if (Time.time > _lastShootTime + gun.FireInterval)
         {
-            if (gun._currentBullet <= 0)
+            if (gun.CurrentBullet <= 0)
             {
                 Debug.Log("총알을 재장전 하세요");
                 return;
@@ -73,7 +74,7 @@ public class PlayerGunFire : MonoBehaviour
 
             // 4. 발사하고
             bool isHit = Physics.Raycast(ray, out hitInfo);
-            Shoot?.Invoke();
+            Shoot?.Invoke(gun);
             if (isHit)
             {
                 //5. 충돌했다면... 피격 이펙트 표시
@@ -85,7 +86,7 @@ public class PlayerGunFire : MonoBehaviour
                 vfx.Emit(1);
             }
 
-            gun._currentBullet--;
+            gun.CurrentBullet--;
             GunUpdate?.Invoke(gun);
             _lastShootTime = Time.time;
             
@@ -94,8 +95,8 @@ public class PlayerGunFire : MonoBehaviour
 
     private void Reload(Gun gun)
     {
-        if (gun._currentBullet == gun._magazineSize) return;
-        if (gun._reserveBullet <= 0)
+        if (gun.CurrentBullet == gun.MagazineSize) return;
+        if (gun.ReserveBullet <= 0)
         {
             Debug.Log("남은 총알이 없습니다.");
             return;
@@ -109,12 +110,12 @@ public class PlayerGunFire : MonoBehaviour
         GunReload?.Invoke(gun);
         Debug.Log("총알 장전중");
         _isReloading = true;
-        yield return new WaitForSeconds(gun._reloadInterval);
-        int need = gun._magazineSize - gun._currentBullet;
-        int load = Mathf.Min(need, gun._reserveBullet);
+        yield return new WaitForSeconds(gun.ReloadInterval);
+        int need = gun.MagazineSize - gun.CurrentBullet;
+        int load = Mathf.Min(need, gun.ReserveBullet);
 
-        gun._currentBullet += load;
-        gun._reserveBullet -= load;
+        gun.CurrentBullet += load;
+        gun.ReserveBullet -= load;
         Debug.Log("총알 장전완료");
         _isReloading = false;
         GunUpdate?.Invoke(gun);

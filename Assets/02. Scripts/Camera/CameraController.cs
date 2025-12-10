@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class CameraController : MonoBehaviour
 {
@@ -17,13 +18,10 @@ public class CameraController : MonoBehaviour
     {
         Vector3 basePosition = _follow.BasePosition;
         Vector3 shakePosition = _shake.ShakeOffset;
+        Vector3 shakeRotation = _shake.ShakeRotation;
 
         transform.position = basePosition + shakePosition;
-
-        Quaternion baseRot = Quaternion.Euler(_rotate.BaseRotation);
-        Quaternion shakeRot = Quaternion.Euler(_shake.ShakeRotation);
-
-        transform.localRotation = baseRot * shakeRot;
+        _rotate.SetRecoil(shakeRotation.x, shakeRotation.y);
     }
 
 }

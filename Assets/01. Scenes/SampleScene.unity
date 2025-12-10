@@ -2125,6 +2125,7 @@ GameObject:
   - component: {fileID: 1423029338}
   - component: {fileID: 1423029339}
   - component: {fileID: 1423029340}
+  - component: {fileID: 1423029341}
   m_Layer: 3
   m_Name: Player
   m_TagString: Untagged
@@ -2319,11 +2320,24 @@ MonoBehaviour:
   _fireTransform: {fileID: 1875939710}
   _hitEffectVFX: {fileID: 412321402}
   _basicGun:
-    _magazineSize: 30
-    _currentBullet: 30
-    _reserveBullet: 90
-    _fireInterval: 0.1
-    _reloadInterval: 1
+    MagazineSize: 30
+    CurrentBullet: 30
+    ReserveBullet: 90
+    FireInterval: 0.1
+    ReloadInterval: 1.5
+    Recoil: 5
+--- !u!114 &1423029341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1423029328}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a22006f1d57d30b47b79c49b4a88e9de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1429551911
 GameObject:
   m_ObjectHideFlags: 0
