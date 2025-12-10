@@ -391,6 +391,8 @@ GameObject:
   - component: {fileID: 330585547}
   - component: {fileID: 330585548}
   - component: {fileID: 330585549}
+  - component: {fileID: 330585551}
+  - component: {fileID: 330585550}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -547,6 +549,34 @@ MonoBehaviour:
   ThirdPersonOffset: {x: 0, y: 0, z: 0}
   _isChanging: 0
   cameraMode: 0
+--- !u!114 &330585550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 416d12db75d66fd4789eb70bdfcba7d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _gunFire: {fileID: 1423029340}
+  _power: 0.3
+  _rotationPower: 2
+  _duration: 0.2
+--- !u!114 &330585551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 330585543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 075b97e03fa4b0943a9ea5d74e3cc81e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &355507488
 GameObject:
   m_ObjectHideFlags: 0

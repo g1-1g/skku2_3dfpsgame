@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
+using DG.Tweening;
 using UnityEngine;
 using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
@@ -30,6 +31,7 @@ public class PlayerGunFire : MonoBehaviour
 
     public event Action<Gun> GunUpdate;
     public event Action<Gun> GunReload;
+    public event Action Shoot;
 
     private void Start()
     {
@@ -71,6 +73,7 @@ public class PlayerGunFire : MonoBehaviour
 
             // 4. 발사하고
             bool isHit = Physics.Raycast(ray, out hitInfo);
+            Shoot?.Invoke();
             if (isHit)
             {
                 //5. 충돌했다면... 피격 이펙트 표시
@@ -81,6 +84,7 @@ public class PlayerGunFire : MonoBehaviour
 
                 vfx.Emit(1);
             }
+
             gun._currentBullet--;
             GunUpdate?.Invoke(gun);
             _lastShootTime = Time.time;

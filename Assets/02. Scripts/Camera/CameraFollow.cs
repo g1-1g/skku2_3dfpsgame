@@ -22,6 +22,8 @@ public class CameraFollow : MonoBehaviour
 
     [SerializeField] ECameraMode cameraMode = ECameraMode.FirstPerson;
 
+    public Vector3 BasePosition { get; private set; }
+
     private void Start()
     {
         FirstPersonOffset = Vector3.zero;
@@ -56,7 +58,7 @@ public class CameraFollow : MonoBehaviour
         if (Target != null)
         {
             Vector3 rotatedOffset = Target.rotation * currentOffset;
-            transform.position = Target.position + rotatedOffset;
+            BasePosition = Target.position + rotatedOffset;
 
             if (cameraMode == ECameraMode.ThirdPerson)
             {
@@ -65,4 +67,6 @@ public class CameraFollow : MonoBehaviour
             
         }
     }
+
+    
 }
