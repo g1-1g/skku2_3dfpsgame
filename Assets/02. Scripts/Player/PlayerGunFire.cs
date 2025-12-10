@@ -29,6 +29,7 @@ public class PlayerGunFire : MonoBehaviour
     public Gun _basicGun;
 
     public event Action<Gun> GunUpdate;
+    public event Action<Gun> GunReload;
 
     private void Start()
     {
@@ -101,7 +102,7 @@ public class PlayerGunFire : MonoBehaviour
 
     IEnumerator Reloading(Gun gun)
     {
-        GunUpdate?.Invoke(gun);
+        GunReload?.Invoke(gun);
         Debug.Log("총알 장전중");
         _isReloading = true;
         yield return new WaitForSeconds(gun._reloadInterval);
