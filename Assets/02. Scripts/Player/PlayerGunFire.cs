@@ -11,8 +11,8 @@ public class PlayerGunFire : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             // 2. Ray를 생성하고 발사할 위치, 방향, 거리를 설정한다.
-            Ray ray = new Ray(_fireTransform.position, Camera.main.transform.forward);
-            Debug.DrawRay(_fireTransform.position, Camera.main.transform.forward * 100f, Color.red, 2f);
+            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 100f, Color.red, 2f);
             // 3. RayCasetHit(충돌한 대상의 정보)를 저장할 변수를 생성한다.
             RaycastHit hitInfo = new RaycastHit();
 
