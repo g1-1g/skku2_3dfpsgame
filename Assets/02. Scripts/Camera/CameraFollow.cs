@@ -60,7 +60,7 @@ public class CameraFollow : MonoBehaviour
 
             if (cameraMode == ECameraMode.ThirdPerson)
             {
-                transform.LookAt(Target);
+                //transform.LookAt(Target);
             }
             
         }
