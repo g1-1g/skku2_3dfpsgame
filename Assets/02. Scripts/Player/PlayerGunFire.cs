@@ -73,7 +73,8 @@ public class PlayerGunFire : MonoBehaviour
             RaycastHit hitInfo = new RaycastHit();
 
             // 4. 발사하고
-            bool isHit = Physics.Raycast(ray, out hitInfo);
+            int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
+            bool isHit = Physics.Raycast(ray, out hitInfo,100f, layerMask);
             Shoot?.Invoke(gun);
             if (isHit)
             {
