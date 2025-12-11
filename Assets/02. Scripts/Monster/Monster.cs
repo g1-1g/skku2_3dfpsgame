@@ -19,13 +19,12 @@ public class Monster : MonoBehaviour
     private float _yVelocity; // 중력 y 방향 속도
 
     [Serializable]
-    public class MoveConfig
+    public struct MoveConfig
     {
-        public float TraceDistance = 3;
-        public float ComebackDistance = 5;
-        public float AttackedDistance = 1.5f;
-        public float PatrolDistance = 10f;
-        public float Gravity = -20f;
+        public float TraceDistance;
+        public float ComebackDistance;
+        public float AttackedDistance;
+        public float PatrolDistance;
     }
 
     [SerializeField] private MoveConfig _config;
