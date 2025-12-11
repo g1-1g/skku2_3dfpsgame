@@ -1,41 +1,36 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
-public class MonsterMove : MonoBehaviour
+[RequireComponent(typeof(MonsterStats))]
+[RequireComponent(typeof(CharacterController))]
+public class Monster : MonoBehaviour
 {
-    //몬스터 AI
-    // 규칙 기반 인공지능 : 정해진 규칙에 따라 조건문/반복문 등을 이용해서 코딩하는 것
-    //                      -> ex) FMS(유한 상태머신), BT(행동 트리)
-    // 학습 기반 인공지능 : 머신러닝(딥러닝, 강화학습 ...)
-    //플레이어가 일정 거리내로 돌아오면 trace
-    //일정 거리로 멀어지면 return start pos
     [SerializeField] private GameObject _player;
+    private MonsterStats _stats;
     private CharacterController _characterController;
 
-    public EMonsterState state = EMonsterState.Idle;
-    [SerializeField] private float _health = 100;
-    private float _moveSpeed = 3;
-    private float _attackSpeed = 3;
-    private float _attackDamage = 10;
-    
+    private bool _isPatrolling = false; //순찰 이동중 여부
+    private Vector3 _PatrolPoint; //순찰 포인트
+    private float _lastAttackTime = 0; //마지막 공격타임
+    private Vector3 _startPosition; //시작 위치
+    private float _distanceFromPlayer; //플레이와 몬스터 거리
 
-    [SerializeField] private float _traceDistance = 3;
-    [SerializeField] private float _comebackDistance = 5;
-    [SerializeField] private float _attackedDistance = 1.5f;
-    [SerializeField] private float _patrolDistance = 10f;
+    [Serializable]
+    public class MoveConfig
+    {
+        public float TraceDistance = 3;
+        public float ComebackDistance = 5;
+        public float AttackedDistance = 1.5f;
+        public float PatrolDistance = 10f;
+    }
 
-    private bool _isPatrolling = false;
-    private Vector3 _PatrolPoint;
-    private float _lastAttackTime = 0;
-    private Vector3 _startPosition;
-    private float _distanceFromPlayer;
-
-
-
+    [SerializeField] private MoveConfig _config;
 
     private void Start()
     {
         _characterController = GetComponent<CharacterController>();
+        _stats = GetComponent<MonsterStats>();
         _startPosition = transform.position;
     }
 
@@ -45,7 +40,7 @@ public class MonsterMove : MonoBehaviour
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
 
-        switch (state)
+        switch (_stats.State)
         {
             case EMonsterState.Idle:
                 Idle();
@@ -71,20 +66,20 @@ public class MonsterMove : MonoBehaviour
 
     public bool TryTakeDamage(float damage, Vector3 knockBack)
     {
-        if (state == EMonsterState.Death)
+        if (_stats.State == EMonsterState.Death)
         {
             return false;
         }
-        _health -= damage;
+        _stats.Health.Decrease(damage);
 
-        if (_health > 0)
+        if (_stats.Health.Value > 0)
         {
-            state = EMonsterState.Hit;
+            _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
         }
         else
         {
-            state = EMonsterState.Death;
+            _stats.State = EMonsterState.Death;
             StartCoroutine(Death());
         }
         _characterController.Move(knockBack);
@@ -93,30 +88,32 @@ public class MonsterMove : MonoBehaviour
 
     private void Idle()
     {
-        if (_distanceFromPlayer <= _traceDistance)
+        if (_distanceFromPlayer <= _config.TraceDistance)
         {
-            state = EMonsterState.Trace;
+            _stats.State = EMonsterState.Trace;
+            return;
         }
-        state = EMonsterState.Patrol;
+        _stats.State = EMonsterState.Patrol;
     }
     
     private void Patrol()
     {
-        if (_distanceFromPlayer <= _traceDistance)
+        if (_distanceFromPlayer <= _config.TraceDistance)
         {
-            state = EMonsterState.Trace;
+            _stats.State = EMonsterState.Trace;
             return;
         }
         if (_isPatrolling)
         {
             Vector3 direction = (_PatrolPoint - transform.position).normalized;
-            _characterController.Move(direction * _moveSpeed * Time.deltaTime);
+            _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
+            transform.LookAt(_PatrolPoint);
 
             float distance = Vector3.Distance(transform.position, _PatrolPoint);
             if (distance < 0.1f) _isPatrolling = false;
             return;
         }
-        Vector2 circle = Random.insideUnitCircle * _patrolDistance;
+        Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
         _PatrolPoint = _startPosition + new Vector3( circle.x, 0, + circle.y);
 
         Debug.Log($"Stat Patrolling to {_PatrolPoint}");
@@ -125,48 +122,51 @@ public class MonsterMove : MonoBehaviour
 
     private void Trace()
     {
-        if (_distanceFromPlayer > _comebackDistance)
+        if (_distanceFromPlayer > _config.ComebackDistance)
         {
-            state = EMonsterState.Comeback;
+            _stats.State = EMonsterState.Comeback;
             return;
-        }else if(_distanceFromPlayer < _attackedDistance)
+        }else if(_distanceFromPlayer < _config.AttackedDistance)
         {
-            state = EMonsterState.Attack;
+            _stats.State = EMonsterState.Attack;
             return;
         }
 
         Vector3 direction = (_player.transform.position - transform.position).normalized;
-        _characterController.Move(direction * Time.deltaTime * _moveSpeed);
+        _characterController.Move(direction * Time.deltaTime * _stats.Speed.Value);
+        transform.LookAt(_player.transform.position);
     }
 
     private void ComeBack()
     {
-        if (_distanceFromPlayer < _traceDistance)
+        if (_distanceFromPlayer < _config.TraceDistance)
         {
-            state = EMonsterState.Trace; 
+            _stats.State = EMonsterState.Trace; 
             return;
         }
         if (Vector3.Distance(_startPosition, transform.position) < 0.5f)
         {
-            state = EMonsterState.Idle;
+            _stats.State = EMonsterState.Idle;
             return;
         }
         Vector3 direction = (_startPosition - transform.position).normalized;
-        _characterController.Move(direction * _moveSpeed * Time.deltaTime);
+        _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
+        transform.LookAt(_startPosition);
     }
 
     private void Attack()
     {
-        if (_distanceFromPlayer > _attackedDistance)
+        if (_distanceFromPlayer > _config.AttackedDistance)
         {
-            state = EMonsterState.Trace;
+            _stats.State = EMonsterState.Trace;
             return;
         }
 
-        if (Time.time > _lastAttackTime + _attackSpeed)
+        if (Time.time > _lastAttackTime + _stats.AttackSpeed.Value)
         {
             Debug.Log("attack");
-            _player.GetComponent<Player>().GetDamage(_attackDamage);
+            if(_player == null) return;
+            _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
             _lastAttackTime = Time.time;
         }
     }
@@ -174,7 +174,8 @@ public class MonsterMove : MonoBehaviour
     private IEnumerator Hit()
     {
         yield return new WaitForSeconds(2);
-        state = EMonsterState.Idle;
+        if (_stats.State == EMonsterState.Hit)
+            _stats.State = EMonsterState.Idle;
     }
     private IEnumerator Death()
     {

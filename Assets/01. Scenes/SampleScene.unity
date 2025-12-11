@@ -1508,6 +1508,7 @@ GameObject:
   - component: {fileID: 788453846}
   - component: {fileID: 788453845}
   - component: {fileID: 788453849}
+  - component: {fileID: 788453850}
   m_Layer: 0
   m_Name: Monster
   m_TagString: Untagged
@@ -1621,12 +1622,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 1423029328}
-  state: 0
-  _health: 100
-  _traceDistance: 3
-  _comebackDistance: 5
-  _attackedDistance: 1.5
-  _patrolDistance: 10
+  _config:
+    TraceDistance: 3
+    ComebackDistance: 5
+    AttackedDistance: 1.5
+    PatrolDistance: 10
+--- !u!114 &788453850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788453844}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 688eb69e94ab3d74e864a0a192a754f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health:
+    _maxValue: 100
+    _value: 100
+    _regenValue: 0
+  Damage:
+    _value: 20
+  Speed:
+    _value: 3
+  AttackSpeed:
+    _value: 2
+  State: 0
 --- !u!1 &816104149
 GameObject:
   m_ObjectHideFlags: 0
@@ -2006,7 +2029,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1218279164
 BoxCollider:
   m_ObjectHideFlags: 0
