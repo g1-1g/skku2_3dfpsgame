@@ -1535,7 +1535,7 @@ CharacterController:
   serializedVersion: 3
   m_Height: 2
   m_Radius: 0.5
-  m_SlopeLimit: 45
+  m_SlopeLimit: 0
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
@@ -1626,6 +1626,7 @@ MonoBehaviour:
   _traceDistance: 3
   _comebackDistance: 5
   _attackedDistance: 1.5
+  _patrolDistance: 10
 --- !u!1 &816104149
 GameObject:
   m_ObjectHideFlags: 0
