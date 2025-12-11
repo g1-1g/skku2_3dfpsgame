@@ -85,7 +85,7 @@ public class PlayerGunFire : MonoBehaviour
                 Debug.Log($"Hit : {hitInfo.transform.name} ");
 
                 MonsterMove monster = hitInfo.transform.GetComponent<MonsterMove>();
-                if (monster != null) monster.TryTakeDamage(gun.Damage);
+                if (monster != null) monster.TryTakeDamage(gun.Damage, -hitInfo.normal);
                 vfx.transform.position = hitInfo.point;
                 vfx.transform.forward = hitInfo.normal;
 

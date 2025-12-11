@@ -1,6 +1,5 @@
 using System.Collections;
 using UnityEngine;
-using UnityEngine.InputSystem.Switch;
 
 public class MonsterMove : MonoBehaviour
 {
@@ -17,13 +16,14 @@ public class MonsterMove : MonoBehaviour
     [SerializeField] private float _health = 100;
     private float _moveSpeed = 3;
     private float _attackSpeed = 3;
+    private float _attackDamage = 10;
     
 
     [SerializeField] private float _traceDistance = 3;
     [SerializeField] private float _comebackDistance = 5;
-    [SerializeField] private float _attackedDistance = 1;
+    [SerializeField] private float _attackedDistance = 1.5f;
 
-    private float _attackTimer = 0;
+    private float _lastAttackTime = 0;
     private Vector3 _startPosition;
     private float distance;
 
@@ -62,7 +62,7 @@ public class MonsterMove : MonoBehaviour
         }
     }
 
-    public bool TryTakeDamage(float damage)
+    public bool TryTakeDamage(float damage, Vector3 knockBack)
     {
         if (state == EMonsterState.Death)
         {
@@ -80,6 +80,7 @@ public class MonsterMove : MonoBehaviour
             state = EMonsterState.Death;
             StartCoroutine(Death());
         }
+        _characterController.Move(knockBack);
         return true;
     }
 
@@ -100,10 +101,11 @@ public class MonsterMove : MonoBehaviour
         }else if(distance < _attackedDistance)
         {
             state = EMonsterState.Attack;
+            return;
         }
 
         Vector3 direction = (_player.transform.position - transform.position).normalized;
-        transform.Translate(direction * Time.deltaTime * _moveSpeed);
+        _characterController.Move(direction * Time.deltaTime * _moveSpeed);
     }
 
     private void ComeBack()
@@ -130,11 +132,11 @@ public class MonsterMove : MonoBehaviour
             return;
         }
 
-        _attackTimer += Time.deltaTime;
-        if (_attackTimer > _attackSpeed)
+        if (Time.time > _lastAttackTime + _attackSpeed)
         {
             Debug.Log("attack");
-            _attackTimer = 0;
+            _player.GetComponent<Player>().GetDamage(_attackDamage);
+            _lastAttackTime = Time.time;
         }
     }
 
