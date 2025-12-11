@@ -11,7 +11,11 @@ public class CameraRotate : MonoBehaviour
     private float recoilYaw = 0f;
     private float recoilPitch = 0f;
     void Start() 
-    { 
+    {
+        //커서 lock
+        Cursor.lockState = CursorLockMode.Locked;   // 커서를 화면 중앙에 고정
+        Cursor.visible = false;
+
         Vector3 e = transform.localEulerAngles; 
         yaw = e.y; 
         pitch = e.x > 180 ? e.x - 360 : e.x; 
@@ -20,10 +24,6 @@ public class CameraRotate : MonoBehaviour
     private void Update()
     {
        
-        if (!Input.GetMouseButton(1))
-        {
-            return;
-        }
         //1. 마우스 입력 받기
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
