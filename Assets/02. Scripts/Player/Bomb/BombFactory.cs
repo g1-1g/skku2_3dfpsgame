@@ -35,7 +35,7 @@ public class BombFactory : MonoBehaviour
         _bombObjectPool = new GameObject[_poolSize];
         for ( int i = 0; i < _poolSize; i++ )
         {
-            GameObject bomb = Instantiate(BombPrefab);
+            GameObject bomb = Instantiate(BombPrefab, transform);
             _bombObjectPool[i] = bomb;
             bomb.SetActive(false);
         }

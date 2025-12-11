@@ -27,6 +27,7 @@ public class PlayerGunFire : MonoBehaviour
         public float FireInterval = 0.1f;
         public float ReloadInterval = 1.5f;
         public float Recoil = 2f;
+        public int Damage = 20;
     }
 
     public Gun _basicGun;
@@ -83,6 +84,8 @@ public class PlayerGunFire : MonoBehaviour
                 //5. 충돌했다면... 피격 이펙트 표시
                 Debug.Log($"Hit : {hitInfo.transform.name} ");
 
+                Monster monster = hitInfo.transform.GetComponent<Monster>();
+                if (monster != null) monster.TryTakeDamage(gun.Damage, -hitInfo.normal);
                 vfx.transform.position = hitInfo.point;
                 vfx.transform.forward = hitInfo.normal;
 
@@ -95,6 +98,7 @@ public class PlayerGunFire : MonoBehaviour
             
         }
     }
+
 
     private void Reload(Gun gun)
     {

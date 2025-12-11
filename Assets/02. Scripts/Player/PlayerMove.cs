@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Runtime.CompilerServices;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
@@ -29,6 +30,8 @@ public class PlayerMove : MonoBehaviour
     private bool _isIncreasingStamina = false;
 
     private float _speed;
+
+    public event Action<float> StaminaUpdate;
 
     void Start()
     {
@@ -77,6 +80,7 @@ public class PlayerMove : MonoBehaviour
             {
                 _canDoubleJump = false;
                 _stats.Stamina.Decrease(_moveConfig._doubleJumpStaminaCost);
+                StaminaUpdate?.Invoke(_stats.Stamina.Value);
                 _yVelocity = _stats.JumpPower.Value;
             }
         }
@@ -106,6 +110,7 @@ public class PlayerMove : MonoBehaviour
         while (_isDashing && _stats.Stamina.Value > 0)
         {
             _stats.Stamina.Decrease(1);
+            StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaDecreaseRate);
         }
     }
@@ -116,6 +121,7 @@ public class PlayerMove : MonoBehaviour
         while (!_isDashing && _stats.Stamina.Value < 100)
         {
             _stats.Stamina.Increase(1);
+            StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaIncreaseRate);
         }
         _isIncreasingStamina = false;
