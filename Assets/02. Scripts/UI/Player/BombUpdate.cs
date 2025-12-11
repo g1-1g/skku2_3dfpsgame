@@ -19,7 +19,7 @@ public class BombUpdate : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (BombFactory.Instance != null)
+        if (_playerBombFire != null)
         {
             _playerBombFire.OnBombCreated -= remainBombUpdate;
         }

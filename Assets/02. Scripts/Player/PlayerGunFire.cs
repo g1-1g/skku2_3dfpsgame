@@ -10,6 +10,7 @@ public class PlayerGunFire : MonoBehaviour
 {
     [SerializeField] private Transform _fireTransform;
     [SerializeField] private ParticleSystem _hitEffectVFX;
+    private Camera _camera;
 
     //총알 연사 
     private float _lastShootTime = 0;
@@ -38,6 +39,7 @@ public class PlayerGunFire : MonoBehaviour
     private void Start()
     {
         GunUpdate?.Invoke(_basicGun);
+        _camera = Camera.main;
     }
 
     private void Update()
@@ -68,8 +70,8 @@ public class PlayerGunFire : MonoBehaviour
             }
 
             // 2. Ray를 생성하고 발사할 위치, 방향, 거리를 설정한다.
-            Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-            Debug.DrawRay(Camera.main.transform.position, Camera.main.transform.forward * 100f, Color.red, 2f);
+            Ray ray = new Ray(_camera.transform.position, _camera.transform.forward);
+            Debug.DrawRay(_camera.transform.position, _camera.transform.forward * 100f, Color.red, 2f);
             // 3. RayCasetHit(충돌한 대상의 정보)를 저장할 변수를 생성한다.
             RaycastHit hitInfo = new RaycastHit();
 
