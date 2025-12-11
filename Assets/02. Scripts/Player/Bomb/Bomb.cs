@@ -3,7 +3,7 @@ using UnityEngine;
 public class Bomb : MonoBehaviour
 {
     public GameObject _explosionEffectPrefab;
-    [SerializeField] private float _damage = 40;
+    [SerializeField] private float _damage = 100;
     private void OnCollisionEnter(Collision collision)
     {
         Instantiate(_explosionEffectPrefab,transform.position, Quaternion.identity);

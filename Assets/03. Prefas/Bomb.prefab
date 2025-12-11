@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _explosionEffectPrefab: {fileID: 1620140131458704099, guid: 57e5b83dfee152a47aedf7d83c83e9f5, type: 3}
+  _damage: 100
 --- !u!54 &4579794605409796599
 Rigidbody:
   m_ObjectHideFlags: 0

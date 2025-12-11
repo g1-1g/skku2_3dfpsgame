@@ -1627,6 +1627,7 @@ MonoBehaviour:
     ComebackDistance: 5
     AttackedDistance: 1.5
     PatrolDistance: 10
+    Gravity: 20
 --- !u!114 &788453850
 MonoBehaviour:
   m_ObjectHideFlags: 0
