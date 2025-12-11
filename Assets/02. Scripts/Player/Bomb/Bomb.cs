@@ -7,6 +7,6 @@ public class Bomb : MonoBehaviour
     {
         Instantiate(_explosionEffectPrefab,transform.position, Quaternion.identity);
 
-        Destroy(gameObject);
+        gameObject.SetActive(false);
     }
 }

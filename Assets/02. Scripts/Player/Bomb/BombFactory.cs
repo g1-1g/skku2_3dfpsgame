@@ -1,17 +1,17 @@
 using System;
 using UnityEngine;
+using UnityEngine.Pool;
 
 public class BombFactory : MonoBehaviour
 {
     static BombFactory _instance;
     static public BombFactory Instance => _instance;
 
-    public event Action<int> OnBombCreated;
-
-    private int _remainBombCount = 5;
-    private int _maxBombs = 5;
-
     public GameObject BombPrefab;
+    private GameObject[] _bombObjectPool;
+    private int _poolSize = 5;
+
+
     public void Awake()
     {
         if (_instance == null)
@@ -22,25 +22,40 @@ public class BombFactory : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        PoolInit();
     }
 
     public void Start()
     {
-        _remainBombCount = _maxBombs;
+
     }
 
-    public GameObject CreateBomb(Vector3 position)
+    public void PoolInit()
     {
-        if (_remainBombCount > 0)
+        _bombObjectPool = new GameObject[_poolSize];
+        for ( int i = 0; i < _poolSize; i++ )
         {
-            _remainBombCount--;
-            OnBombCreated?.Invoke(_remainBombCount);
-            return Instantiate(BombPrefab, position, Quaternion.identity);
+            GameObject bomb = Instantiate(BombPrefab);
+            _bombObjectPool[i] = bomb;
+            bomb.SetActive(false);
         }
-        else
+    }
+
+    public GameObject MakeBomb(Vector3 position)
+    {
+        for (int i = 0; i < _poolSize; ++i)
         {
-            Debug.Log("폭탄을 모두 사용하였습니다.");
-            return null;
+            GameObject bomb = _bombObjectPool[i];
+            if (bomb == null) return null;
+            if( _bombObjectPool[i].activeInHierarchy == false)
+            {
+                bomb.transform.position = position;
+                bomb.SetActive(true);
+
+                return bomb;
+            } 
         }
+        Debug.Log("사용 가능한 폭탄이 없습니다.");
+        return null;
     }
 }

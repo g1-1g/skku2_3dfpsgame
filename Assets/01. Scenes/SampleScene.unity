@@ -663,6 +663,7 @@ MonoBehaviour:
   - {fileID: 515207320}
   - {fileID: 2052305526}
   - {fileID: 428550602}
+  _playerBombFire: {fileID: 1423029339}
 --- !u!1 &410087039
 GameObject:
   m_ObjectHideFlags: 0
@@ -2305,6 +2306,7 @@ MonoBehaviour:
   _FireTransform: {fileID: 1875939710}
   _bombPrefab: {fileID: 3658983313753860120, guid: 1ab43df57c1cfb2419b561ae747d4561, type: 3}
   ThrowPower: 15
+  _chance: 5
 --- !u!114 &1423029340
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3081,7 +3083,7 @@ Transform:
   m_GameObject: {fileID: 1875939709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.65}
+  m_LocalPosition: {x: 0, y: 0, z: 0.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

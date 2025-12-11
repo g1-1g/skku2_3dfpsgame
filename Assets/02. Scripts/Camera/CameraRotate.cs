@@ -32,8 +32,6 @@ public class CameraRotate : MonoBehaviour
         pitch -= mouseY * RotationSpeed * Time.deltaTime;;
 
 
-        Debug.Log(pitch);
-
         // 최종 회전 = 마우스 회전 + 반동
         transform.localRotation = Quaternion.Euler(
             Mathf.Clamp(pitch + recoilPitch, -90f, 90),

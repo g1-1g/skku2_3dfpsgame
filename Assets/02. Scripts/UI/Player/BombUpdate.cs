@@ -5,9 +5,10 @@ using UnityEngine.UI;
 public class BombUpdate : MonoBehaviour
 {
     [SerializeField] private Animator[] _images;
+    [SerializeField] private PlayerBombFire _playerBombFire;
     void Start()
     {
-        BombFactory.Instance.OnBombCreated += remainBombUpdate;
+        _playerBombFire.OnBombCreated += remainBombUpdate;
     
     }
 
@@ -20,7 +21,7 @@ public class BombUpdate : MonoBehaviour
     {
         if (BombFactory.Instance != null)
         {
-            BombFactory.Instance.OnBombCreated -= remainBombUpdate;
+            _playerBombFire.OnBombCreated -= remainBombUpdate;
         }
     }
 }
