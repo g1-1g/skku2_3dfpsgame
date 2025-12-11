@@ -1,13 +1,21 @@
-using JetBrains.Annotations;
 using UnityEngine;
 
 public class CameraRotate : MonoBehaviour
 {
-
     public float RotationSpeed = 5f;
 
-    private float _accumulationX = 0f;
-    private float _accumulationY = 0f;
+    private float yaw = 0f;
+    private float pitch = 0f;
+
+    // 반동 전용 값 (pitch/yaw와 분리)
+    private float recoilYaw = 0f;
+    private float recoilPitch = 0f;
+    void Start() 
+    { 
+        Vector3 e = transform.localEulerAngles; 
+        yaw = e.y; 
+        pitch = e.x > 180 ? e.x - 360 : e.x; 
+    }
 
     private void Update()
     {
@@ -20,16 +28,23 @@ public class CameraRotate : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         //2. 마우스 입력을 누적한다.
-        _accumulationX += mouseX * RotationSpeed * Time.deltaTime;
-        _accumulationY += mouseY * RotationSpeed * Time.deltaTime;
+        yaw += mouseX * RotationSpeed * Time.deltaTime; 
+        pitch -= mouseY * RotationSpeed * Time.deltaTime;;
 
-        //3. ~90도 90도 이상 회전하지 않도록 제한
-        _accumulationY = Mathf.Clamp(_accumulationY, -90f, 90f);
 
-        Vector3 rotationDirection = new Vector3(-_accumulationY, _accumulationX, 0f);
+        // 최종 회전 = 마우스 회전 + 반동
+        transform.localRotation = Quaternion.Euler(
+            Mathf.Clamp(pitch + recoilPitch, -90f, 90),
+            yaw + recoilYaw,
+            0f
+        );
 
-        //3. 회전 방향으로 카메라 회전하기
-        transform.eulerAngles = rotationDirection;
+    }
+    // DOTween이 이 값을 Punch로 흔들어 준다
+    public void SetRecoil(float rp, float ry)
+    {
+        recoilPitch = rp;
+        recoilYaw = ry;
     }
 }
 
