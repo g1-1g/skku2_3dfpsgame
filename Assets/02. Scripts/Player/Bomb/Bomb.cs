@@ -28,7 +28,7 @@ public class Bomb : MonoBehaviour
         {
             if (_colliders[i].TryGetComponent<Monster>(out Monster monster))
             {
-                float distance = Mathf.Min(1f, Vector3.Distance(transform.position, monster.transform.position));
+                float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
                 float finalDamage = _damage / distance;
 
@@ -36,7 +36,7 @@ public class Bomb : MonoBehaviour
             }
             if (_colliders[i].TryGetComponent<Drum>(out Drum drum))
             {
-                float distance = Mathf.Min(1f, Vector3.Distance(transform.position, drum.transform.position));
+                float distance = Mathf.Max(1f, Vector3.Distance(transform.position, drum.transform.position));
 
                 float finalDamage = _damage / distance;
 

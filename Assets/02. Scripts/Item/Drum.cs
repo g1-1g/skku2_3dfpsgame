@@ -8,7 +8,7 @@ public class Drum : MonoBehaviour
 
     private DrumStats _drumStats;
     private Rigidbody _rigidbody;
-    private float _radius = 10;
+    private float _radius = 5;
     [SerializeField] private LayerMask _layerMask;
     private Collider[] _colliders = new Collider[10];
 
@@ -51,7 +51,7 @@ public class Drum : MonoBehaviour
         {
             if (_colliders[i].TryGetComponent<Monster>(out Monster monster))
             {
-                float distance = Mathf.Min(1f, Vector3.Distance(transform.position, monster.transform.position));
+                float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
                 float finalDamage = _drumStats.Damage.Value / distance;
 
@@ -59,7 +59,7 @@ public class Drum : MonoBehaviour
             }
             if (_colliders[i].TryGetComponent<Drum>(out Drum drum))
             {
-                float distance = Mathf.Min(1f, Vector3.Distance(transform.position, drum.transform.position));
+                float distance = Mathf.Max(1f, Vector3.Distance(transform.position, drum.transform.position));
 
                 float finalDamage = _drumStats.Damage.Value / distance;
 

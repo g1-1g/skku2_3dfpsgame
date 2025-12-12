@@ -107,7 +107,7 @@ MonoBehaviour:
     _value: 100
     _regenValue: 0
   Damage:
-    _value: 1000
+    _value: 100
   Power:
     _value: 500
   IsExploded: 0
@@ -150,6 +150,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6295b8f2cf4dfa24da03fae98d4577d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 0
   _knockBackPower: 100
   _ExplosionPrefabs: {fileID: 3654741155788002110, guid: ac8053bb68b7997419467a34b74fb975, type: 3}
 --- !u!64 &4999259440321700032
