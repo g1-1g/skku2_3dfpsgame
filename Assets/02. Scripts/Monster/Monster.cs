@@ -25,6 +25,7 @@ public class Monster : MonoBehaviour
         public float ComebackDistance;
         public float AttackedDistance;
         public float PatrolDistance;
+        public float Gravity;
     }
 
     [SerializeField] private MoveConfig _config;
@@ -38,6 +39,7 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
+        ApplyGravity();
 
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
@@ -64,6 +66,23 @@ public class Monster : MonoBehaviour
             case EMonsterState.Death: 
                 break;
         }
+    }
+
+    private void ApplyGravity()
+    {
+        if (_characterController.isGrounded)
+        {
+            // 땅에 닿아있으면 y 속도를 작은 음수값으로 유지 (지면에 붙어있도록)
+            _yVelocity = -2f;
+        }
+        else
+        {
+            // 공중에 있으면 중력 가속
+            _yVelocity += _config.Gravity * Time.deltaTime;
+        }
+
+        // 중력 적용
+        _characterController.Move(new Vector3(0, _yVelocity, 0) * Time.deltaTime);
     }
 
     public bool TryTakeDamage(float damage, Vector3 knockBack)
@@ -109,7 +128,7 @@ public class Monster : MonoBehaviour
         {
             Vector3 direction = (_PatrolPoint - transform.position).normalized;
             _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-            transform.LookAt(_PatrolPoint);
+            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));
 
             float distance = Vector3.Distance(transform.position, _PatrolPoint);
             if (distance < 0.1f) _isPatrolling = false;
@@ -136,7 +155,7 @@ public class Monster : MonoBehaviour
 
         Vector3 direction = (_player.transform.position - transform.position).normalized;
         _characterController.Move(direction * Time.deltaTime * _stats.Speed.Value);
-        transform.LookAt(_player.transform.position);
+        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
     }
 
     private void ComeBack()
@@ -153,7 +172,7 @@ public class Monster : MonoBehaviour
         }
         Vector3 direction = (_startPosition - transform.position).normalized;
         _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-        transform.LookAt(_startPosition);
+        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));
     }
 
     private void Attack()
@@ -171,6 +190,8 @@ public class Monster : MonoBehaviour
             _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
             _lastAttackTime = Time.time;
         }
+
+        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
     }
 
     private IEnumerator Hit()
