@@ -152,7 +152,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _layerMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 384
   _knockBackPower: 100
   _ExplosionPrefabs: {fileID: 3654741155788002110, guid: ac8053bb68b7997419467a34b74fb975, type: 3}
 --- !u!64 &4999259440321700032

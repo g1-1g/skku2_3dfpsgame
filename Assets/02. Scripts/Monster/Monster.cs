@@ -33,6 +33,7 @@ public class Monster : MonoBehaviour
 
     private void Start()
     {
+        _player = FindFirstObjectByType<Player>().gameObject;
         _characterController = GetComponent<CharacterController>();
         _animator = GetComponent<Animator>();
         _stats = GetComponent<MonsterStats>();
