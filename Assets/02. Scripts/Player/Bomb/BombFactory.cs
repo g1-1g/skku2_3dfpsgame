@@ -46,7 +46,8 @@ public class BombFactory : MonoBehaviour
         for (int i = 0; i < _poolSize; ++i)
         {
             GameObject bomb = _bombObjectPool[i];
-            if( _bombObjectPool[i].activeInHierarchy == false)
+            if (bomb == null) continue;
+            if ( _bombObjectPool[i].activeInHierarchy == false)
             {
                 bomb.transform.position = position;
                 bomb.SetActive(true);
