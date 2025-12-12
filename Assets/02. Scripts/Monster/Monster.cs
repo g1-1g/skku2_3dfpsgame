@@ -106,7 +106,7 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Death;
             StartCoroutine(Death());
         }
-        _characterController.Move(knockBack);
+        _characterController.Move(knockBack*0.5f);
         return true;
     }
 
