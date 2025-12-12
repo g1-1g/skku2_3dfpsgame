@@ -84,8 +84,16 @@ public class PlayerGunFire : MonoBehaviour
                 //5. 충돌했다면... 피격 이펙트 표시
                 Debug.Log($"Hit : {hitInfo.transform.name} ");
 
-                Monster monster = hitInfo.transform.GetComponent<Monster>();
-                if (monster != null) monster.TryTakeDamage(gun.Damage, -hitInfo.normal);
+                if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Monster"))
+                {
+                    Monster monster = hitInfo.transform.GetComponent<Monster>();
+                    if (monster != null) monster.TryTakeDamage(gun.Damage, -hitInfo.normal);
+                }if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Drum"))
+                {
+                    Drum drum = hitInfo.transform.GetComponent<Drum>();
+                    if (drum != null) drum.TryTakeDamage(gun.Damage, -hitInfo.normal);
+                }
+                
                 vfx.transform.position = hitInfo.point;
                 vfx.transform.forward = hitInfo.normal;
 
