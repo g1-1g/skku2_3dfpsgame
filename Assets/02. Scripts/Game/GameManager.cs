@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,10 +12,10 @@ public class GameManager : MonoBehaviour
     private EGameState _state = EGameState.Ready;
     public EGameState State => _state;
     private Player _player;
-    [SerializeField] private TextMeshProUGUI _stateText;
-
+    
     [SerializeField] private float _readyTime = 2f;
-    [SerializeField] private float _startRoadingTime = 0.2f;
+
+    public event Action<EGameState> OnGameStateChanged;
 
     private void Awake()
     {
@@ -36,13 +37,7 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(_readyTime);
 
-        _stateText.text = "시작!";
-
-        yield return new WaitForSecondsRealtime(_startRoadingTime);
-
         SetState(EGameState.Playing);
-
-        _stateText.gameObject.SetActive(false);
     }
 
     private void SetState(EGameState newState)
@@ -52,14 +47,16 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case EGameState.Playing:
+                OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 1f;
                 break;
             case EGameState.Ready:
+                OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
-                _stateText.text = "준비중...";
                 StartCoroutine(StartToPlay_Coroutine());
                 break;
             case EGameState.GameOver:
+                OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
                 break;
         }
@@ -67,8 +64,6 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        _stateText.gameObject.SetActive(true);
-        _stateText.text = "게임 오버";
         SetState(EGameState.GameOver);
     }
 

@@ -524,7 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f5e8787b54258143a62039f1ad24dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _stateText: {fileID: 1563129405}
+  _readyTime: 2
 --- !u!4 &287748089
 Transform:
   m_ObjectHideFlags: 0
@@ -3058,6 +3058,7 @@ GameObject:
   - component: {fileID: 1563129404}
   - component: {fileID: 1563129406}
   - component: {fileID: 1563129405}
+  - component: {fileID: 1563129407}
   m_Layer: 5
   m_Name: GameStateText
   m_TagString: Untagged
@@ -3183,6 +3184,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1563129403}
   m_CullTransparentMesh: 1
+--- !u!114 &1563129407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1563129403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ddb81c7f7db46dc488743f555786cc48, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1563374640
 GameObject:
   m_ObjectHideFlags: 0
