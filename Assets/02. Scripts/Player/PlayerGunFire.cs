@@ -3,6 +3,7 @@ using System.Collections;
 using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
 
@@ -44,9 +45,11 @@ public class PlayerGunFire : MonoBehaviour
 
     private void Update()
     {
+        
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject()) return;
             if (_isReloading) return;
             GunShooting(_basicGun, _hitEffectVFX);
         }

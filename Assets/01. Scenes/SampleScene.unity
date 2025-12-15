@@ -634,6 +634,7 @@ MonoBehaviour:
   _plusButton: {fileID: 21966356}
   _minusButton: {fileID: 755912385}
   _camera: {fileID: 1068922818}
+  _gunFire: {fileID: 1423029340}
 --- !u!1 &266064886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3634,6 +3635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fireTransform: {fileID: 1875939710}
   _hitEffectVFX: {fileID: 412321402}
+  CanShoot: 1
   _basicGun:
     MagazineSize: 30
     CurrentBullet: 30
@@ -4079,7 +4081,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Ready...
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 09edeb4bd9a064a418a6fe6828dd55c2, type: 2}
   m_sharedMaterial: {fileID: -2359729101084958459, guid: 09edeb4bd9a064a418a6fe6828dd55c2, type: 2}

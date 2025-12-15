@@ -8,12 +8,14 @@ public class MiniMap : MonoBehaviour
     [SerializeField] Button _minusButton;
 
     [SerializeField] MiniMapCamera _camera;
+    [SerializeField] PlayerGunFire _gunFire;
 
     void Start()
     {
         _plusButton.onClick.AddListener(PlusButtonClicked);
         _minusButton.onClick.AddListener(MinusButtonClicked);
     }
+
 
     private void MinusButtonClicked()
     {
