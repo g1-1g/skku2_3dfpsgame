@@ -815,6 +815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _readyTime: 2
+  _overTime: 2
 --- !u!4 &287748089
 Transform:
   m_ObjectHideFlags: 0
@@ -1787,7 +1788,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 816104150}
   m_HandleRect: {fileID: 0}
@@ -1903,6 +1904,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 479ee814c84b52943ae71be95c482b00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _isLock: 0
 --- !u!4 &562195866
 Transform:
   m_ObjectHideFlags: 0
@@ -2052,7 +2054,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 0}
   m_FillRect: {fileID: 266064887}
   m_HandleRect: {fileID: 0}

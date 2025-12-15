@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     private Player _player;
     
     [SerializeField] private float _readyTime = 2f;
+    [SerializeField] private float _overTime = 1f;
 
     public event Action<EGameState> OnGameStateChanged;
 
@@ -31,7 +32,6 @@ public class GameManager : MonoBehaviour
         _player.OnDied += GameOver;
 
         SetState(EGameState.Ready);
-        StartCoroutine(StartToPlay_Coroutine());
     }
 
     private IEnumerator StartToPlay_Coroutine()
@@ -39,6 +39,11 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(_readyTime);
 
         SetState(EGameState.Playing);
+    }
+    private IEnumerator GameOverDelay_Coroutine()
+    {
+        yield return new WaitForSeconds(_overTime);
+        SetState(EGameState.GameOver);
     }
 
     private void SetState(EGameState newState)
@@ -54,6 +59,7 @@ public class GameManager : MonoBehaviour
             case EGameState.Ready:
                 OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
+                StartCoroutine(StartToPlay_Coroutine());
                 break;
             case EGameState.GameOver:
                 OnGameStateChanged?.Invoke(_state);
@@ -64,7 +70,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        SetState(EGameState.GameOver);
+        StartCoroutine(GameOverDelay_Coroutine());
     }
 
     private void OnDestroy()
