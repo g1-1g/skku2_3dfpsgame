@@ -9,6 +9,7 @@ public class ConsumableStat
     [SerializeField] private float _regenValue;
 
     public float Value => _value;
+    public float MaxValue => _maxValue; 
 
     public void Initialize()
     {
