@@ -27,10 +27,6 @@ public class GameManager : MonoBehaviour
         _stateText.text = "준비중...";
         StartCoroutine(StartToPlay_Coroutine());
     }
-    private void Update()
-    {
-        
-    }
 
     private IEnumerator StartToPlay_Coroutine()
     {
@@ -45,5 +41,11 @@ public class GameManager : MonoBehaviour
         _stateText.gameObject.SetActive(false);
     }
 
+    public void GameOver()
+    {
+        _stateText.gameObject.SetActive(true);
+        _stateText.text = "게임 오버";
+        _state = EGameState.GameOver;
+    }
 
 }

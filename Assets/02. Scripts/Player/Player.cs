@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     {
         _stats.Health.Decrease(damage);
         HealthChanged?.Invoke(_stats.Health.Value);
-
+        if (_stats.Health.Value <= 0)
+        {
+            GameManager.Instance.GameOver();
+        }
     }
 }
