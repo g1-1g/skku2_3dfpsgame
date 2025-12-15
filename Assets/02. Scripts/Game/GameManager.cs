@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public GameManager Instance {  get; private set; }
+    public static GameManager Instance {  get; private set; }
 
     private EGameState _state = EGameState.Ready;
     public EGameState State => _state;

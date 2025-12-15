@@ -44,6 +44,8 @@ public class Monster : MonoBehaviour
 
     private void Update()
     {
+        if(GameManager.Instance.State != EGameState.Playing) return;
+
         ApplyGravity();
 
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
