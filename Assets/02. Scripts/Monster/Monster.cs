@@ -19,6 +19,8 @@ public class Monster : MonoBehaviour
     private float _distanceFromPlayer; //플레이와 몬스터 거리
     private float _yVelocity; // 중력 y 방향 속도
 
+    public event Action<MonsterStats> StatsChanged;
+
     [Serializable]
     public struct MoveConfig
     {
@@ -95,6 +97,7 @@ public class Monster : MonoBehaviour
             return false;
         }
         _stats.Health.Decrease(damage);
+        StatsChanged?.Invoke(_stats);
 
         if (_stats.Health.Value > 0)
         {
