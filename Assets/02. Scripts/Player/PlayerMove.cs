@@ -44,9 +44,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        if (GameManager.Instance.State != EGameState.Playing) return;
-
         _yVelocity += _moveConfig.Gravity * Time.deltaTime;
 
         Jump();

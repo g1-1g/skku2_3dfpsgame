@@ -10,10 +10,13 @@ public class MonsterHealthBar : MonoBehaviour
 
     private float _lastHealth = 0;
 
+    private Camera _mainCamera;
+
     private void Awake()
     {
         _monster = GetComponent<Monster>();
         _monster.StatsChanged += UIUpdate;
+        _mainCamera = Camera.main;
     }
 
     private void UIUpdate(MonsterStats stats)
@@ -21,7 +24,7 @@ public class MonsterHealthBar : MonoBehaviour
         if (_lastHealth != stats.Health.Value)
         {
             _lastHealth = stats.Health.Value;
-            _gaugeImage.fillAmount = stats.Health.Value / stats.Health.MaxValue;
+            _gaugeImage.fillAmount = stats.Health.Ratio;
         }
     }
 
@@ -30,6 +33,6 @@ public class MonsterHealthBar : MonoBehaviour
     {
 
         //빌보드 기법
-        _canvas.transform.forward = Camera.main.transform.forward;
+        _canvas.transform.forward = _mainCamera.transform.forward;
     }
 }

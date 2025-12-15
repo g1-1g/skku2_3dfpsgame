@@ -44,7 +44,6 @@ public class PlayerGunFire : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.State != EGameState.Playing) return;
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
