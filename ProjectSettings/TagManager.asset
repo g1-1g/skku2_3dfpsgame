@@ -14,8 +14,8 @@ TagManager:
   - Bomb
   - Monster
   - Drum
-  - 
-  - 
+  - MiniMap
+  - MonsterVisual
   - 
   - 
   - 
@@ -40,6 +40,9 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1721941727
     locked: 0
   m_RenderingLayers:
   - Default
