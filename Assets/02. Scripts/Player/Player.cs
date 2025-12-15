@@ -5,7 +5,7 @@ public class Player : MonoBehaviour
 {
     private PlayerStats _stats;
     public event Action<float> HealthChanged;
-
+    public event Action OnDied;
     private void Start()
     {
         _stats = GetComponent<PlayerStats>();
@@ -16,7 +16,7 @@ public class Player : MonoBehaviour
         HealthChanged?.Invoke(_stats.Health.Value);
         if (_stats.Health.Value <= 0)
         {
-            GameManager.Instance.GameOver();
+            OnDied?.Invoke();
         }
     }
 }

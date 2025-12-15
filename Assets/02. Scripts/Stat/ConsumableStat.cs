@@ -9,7 +9,7 @@ public class ConsumableStat
     [SerializeField] private float _regenValue;
 
     public float Value => _value;
-    public float MaxValue => _maxValue; 
+    public float Ratio => _maxValue > 0 ? _value / _maxValue : 0f;
 
     public void Initialize()
     {

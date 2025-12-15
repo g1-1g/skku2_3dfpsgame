@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,42 +11,65 @@ public class GameManager : MonoBehaviour
 
     private EGameState _state = EGameState.Ready;
     public EGameState State => _state;
+    private Player _player;
+    
+    [SerializeField] private float _readyTime = 2f;
 
-    [SerializeField] private TextMeshProUGUI _stateText;
+    public event Action<EGameState> OnGameStateChanged;
 
     private void Awake()
     {
         if (Instance != null)
         {
-            Destroy(Instance);
+            Destroy(gameObject);
         }
         Instance = this;
     }
     private void Start()
     {
-        _state = EGameState.Ready;
-        _stateText.text = "준비중...";
-        StartCoroutine(StartToPlay_Coroutine());
+        _player = FindFirstObjectByType<Player>();
+        _player.OnDied += GameOver;
+
+        SetState(EGameState.Ready);
     }
 
     private IEnumerator StartToPlay_Coroutine()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSecondsRealtime(_readyTime);
 
-        _stateText.text = "시작!";
+        SetState(EGameState.Playing);
+    }
 
-        yield return new WaitForSeconds(0.2f);
+    private void SetState(EGameState newState)
+    {
+        _state = newState;
 
-        _state = EGameState.Playing;
-
-        _stateText.gameObject.SetActive(false);
+        switch (newState)
+        {
+            case EGameState.Playing:
+                OnGameStateChanged?.Invoke(_state);
+                Time.timeScale = 1f;
+                break;
+            case EGameState.Ready:
+                OnGameStateChanged?.Invoke(_state);
+                Time.timeScale = 0f;
+                StartCoroutine(StartToPlay_Coroutine());
+                break;
+            case EGameState.GameOver:
+                OnGameStateChanged?.Invoke(_state);
+                Time.timeScale = 0f;
+                break;
+        }
     }
 
     public void GameOver()
     {
-        _stateText.gameObject.SetActive(true);
-        _stateText.text = "게임 오버";
-        _state = EGameState.GameOver;
+        SetState(EGameState.GameOver);
+    }
+
+    private void OnDestroy()
+    {
+        if (_player != null) _player.OnDied -= GameOver;
     }
 
 }
