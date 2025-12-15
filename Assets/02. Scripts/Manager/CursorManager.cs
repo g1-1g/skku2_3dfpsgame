@@ -2,9 +2,22 @@ using UnityEngine;
 
 public class CursorManager : MonoBehaviour
 {
+    public bool _isLock;
     void Awake()
     {
-        LockCursor();
+        
+    }
+
+    private void Update()
+    {
+        if (_isLock)
+        {
+            LockCursor();
+        }
+        else
+        {
+            UnlockCursor();
+        }
     }
 
     public void LockCursor()

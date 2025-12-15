@@ -1,13 +1,17 @@
 using System;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class HPAndDashUpdate : MonoBehaviour
 {
     [SerializeField] private Player _player;
     private PlayerMove _move;
 
-    [SerializeField] private Slider _hpSlider;
+    [SerializeField] private Image _hpBackFill;
+    [SerializeField] private Image _hpFrontFill;
+
+
     [SerializeField] private Slider _staminaSlider;
     private void Start()
     {
@@ -17,9 +21,11 @@ public class HPAndDashUpdate : MonoBehaviour
         _move.StaminaUpdate += StaminaUpdate;
     }
 
-    private void HPUpdate(float value)
+    private void HPUpdate(PlayerStats stats)
     {
-        _hpSlider.value = Mathf.Clamp(value, 0f, 100f);
+        float finalValue = stats.Health.Ratio;
+        _hpBackFill.DOFillAmount(finalValue, 0.5f);
+        _hpFrontFill.DOFillAmount(finalValue, 0.2f);
     }
 
     void StaminaUpdate(float value)

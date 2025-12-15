@@ -8,7 +8,7 @@ public class MonsterHealthBar : MonoBehaviour
     [SerializeField] private Image _gaugeImage;
     [SerializeField] private Canvas _canvas;
 
-    private float _lastHealth = 0;
+    private float _lastHealth = -1;
 
     private Camera _mainCamera;
 

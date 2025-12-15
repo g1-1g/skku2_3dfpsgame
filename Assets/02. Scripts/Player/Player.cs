@@ -4,7 +4,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private PlayerStats _stats;
-    public event Action<float> HealthChanged;
+    public event Action<PlayerStats> HealthChanged;
     public event Action OnDied;
     private void Start()
     {
@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     public void GetDamage(float damage)
     {
         _stats.Health.Decrease(damage);
-        HealthChanged?.Invoke(_stats.Health.Value);
+        HealthChanged?.Invoke(_stats);
         if (_stats.Health.Value <= 0)
         {
             OnDied?.Invoke();
