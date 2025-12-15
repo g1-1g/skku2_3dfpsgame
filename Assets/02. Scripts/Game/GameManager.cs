@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         _player.OnDied += GameOver;
 
         SetState(EGameState.Ready);
+        StartCoroutine(StartToPlay_Coroutine());
     }
 
     private IEnumerator StartToPlay_Coroutine()
@@ -53,7 +54,6 @@ public class GameManager : MonoBehaviour
             case EGameState.Ready:
                 OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
-                StartCoroutine(StartToPlay_Coroutine());
                 break;
             case EGameState.GameOver:
                 OnGameStateChanged?.Invoke(_state);

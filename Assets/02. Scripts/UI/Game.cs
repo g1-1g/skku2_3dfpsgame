@@ -7,7 +7,7 @@ public class Game : MonoBehaviour
 {
     private TextMeshProUGUI _stateText;
 
-    void Start()
+    void Awake()
     {
         GameManager.Instance.OnGameStateChanged += UIUpdate;
         _stateText = GetComponent<TextMeshProUGUI>();
