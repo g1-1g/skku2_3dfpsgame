@@ -12,10 +12,6 @@ public class CameraRotate : MonoBehaviour
     private float recoilPitch = 0f;
     void Start() 
     {
-        //커서 lock
-        Cursor.lockState = CursorLockMode.Locked;   // 커서를 화면 중앙에 고정
-        Cursor.visible = false;
-
         Vector3 e = transform.localEulerAngles; 
         yaw = e.y; 
         pitch = e.x > 180 ? e.x - 360 : e.x; 
