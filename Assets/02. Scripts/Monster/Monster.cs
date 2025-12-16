@@ -21,6 +21,9 @@ public class Monster : MonoBehaviour
     private float _distanceFromPlayer; //플레이와 몬스터 거리
     private float _yVelocity; // 중력 y 방향 속도
 
+    private Vector3 _jumpStartPosition;
+    private Vector3 _jumpEndPosition;
+
     public event Action<MonsterStats> StatsChanged;
 
     [Serializable]
@@ -76,6 +79,9 @@ public class Monster : MonoBehaviour
             case EMonsterState.Hit:
                 break;
             case EMonsterState.Death: 
+                break;
+            case EMonsterState.Jump:
+                Jump();
                 break;
         }
     }
@@ -169,7 +175,6 @@ public class Monster : MonoBehaviour
         
         _agent.SetDestination(_PatrolPoint);
 
-        Debug.Log($"Stat Patrolling to {_PatrolPoint}");
         _isPatrolling = true;
     }
 
@@ -186,11 +191,35 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Attack;
             return;
         }
+
+        if (_agent.isOnOffMeshLink)
+        {
+            Debug.Log("링크를 만남");
+            OffMeshLinkData linkData = _agent.currentOffMeshLinkData;
+            _jumpStartPosition = linkData.startPos;
+            _jumpEndPosition = linkData.endPos;
+
+            if (_jumpEndPosition.y > _jumpStartPosition.y)
+            {
+                Debug.Log("점프");
+                _stats.State = EMonsterState.Jump;
+                return;
+            }
+        }
         /*Vector3 direction = (_player.transform.position - transform.position).normalized;
         
         transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));*/
         
         _agent.SetDestination(_player.transform.position);
+    }
+
+    private void Jump()
+    {
+        _agent.isStopped = true;
+        transform.position = _jumpEndPosition;
+        _agent.CompleteOffMeshLink();
+        _stats.State = EMonsterState.Trace;
+        _agent.isStopped = false;
     }
 
     private void ComeBack()
@@ -225,7 +254,7 @@ public class Monster : MonoBehaviour
         {
             _animator.SetTrigger("Attack");
             _animator.SetBool("Walk", false);
-            Debug.Log("attack");
+
             if(_player == null) return;
             _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
             _lastAttackTime = Time.time;
