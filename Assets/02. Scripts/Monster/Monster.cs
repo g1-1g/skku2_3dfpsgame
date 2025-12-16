@@ -99,6 +99,7 @@ public class Monster : MonoBehaviour
 
         if (_stats.Health.Value > 0)
         {
+            Debug.Log("데미지");
             _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
         }
@@ -281,6 +282,7 @@ public class Monster : MonoBehaviour
 
     private IEnumerator Hit()
     {
+       
         _animator.SetTrigger("Damage");
         yield return new WaitForSeconds(2);
         if (_stats.State == EMonsterState.Hit)
@@ -288,6 +290,7 @@ public class Monster : MonoBehaviour
     }
     private IEnumerator Death()
     {
+        _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Death");
         yield return new WaitForSeconds(2);
         Destroy(gameObject);
