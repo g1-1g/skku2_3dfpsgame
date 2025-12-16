@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
 
         Vector3 direction = new Vector3(x, 0, z).normalized;
       
-        direction = Camera.main.transform.TransformDirection(direction) * _speed;
+        direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
         _characterController.Move(direction * Time.deltaTime);
