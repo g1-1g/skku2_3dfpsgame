@@ -81,26 +81,8 @@ public class Monster : MonoBehaviour
             case EMonsterState.Death: 
                 break;
             case EMonsterState.Jump:
-                Jump();
                 break;
         }
-    }
-
-    private void ApplyGravity()
-    {
-        if (_characterController.isGrounded)
-        {
-            // 땅에 닿아있으면 y 속도를 작은 음수값으로 유지 (지면에 붙어있도록)
-            _yVelocity = -2f;
-        }
-        else
-        {
-            // 공중에 있으면 중력 가속
-            _yVelocity += _config.Gravity * Time.deltaTime;
-        }
-
-        // 중력 적용
-        _characterController.Move(new Vector3(0, _yVelocity, 0) * Time.deltaTime);
     }
 
     public bool TryTakeDamage(float damage, Vector3 knockBack)
@@ -199,9 +181,10 @@ public class Monster : MonoBehaviour
             _jumpStartPosition = linkData.startPos;
             _jumpEndPosition = linkData.endPos;
 
-            if (_jumpEndPosition.y > _jumpStartPosition.y)
+            if (_jumpEndPosition.y != _jumpStartPosition.y)
             {
                 Debug.Log("점프");
+                StartCoroutine(JumpRoutine());
                 _stats.State = EMonsterState.Jump;
                 return;
             }
@@ -211,6 +194,38 @@ public class Monster : MonoBehaviour
         transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));*/
         
         _agent.SetDestination(_player.transform.position);
+    }
+    private IEnumerator JumpRoutine()
+    {
+        _agent.isStopped = true;
+
+        OffMeshLinkData data = _agent.currentOffMeshLinkData;
+        Vector3 start = data.startPos;
+        Vector3 end = data.endPos;
+
+        float duration = 0.5f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float normalized = t / duration;
+
+            // 포물선
+            float height = 2f;
+            Vector3 pos = Vector3.Lerp(start, end, normalized);
+            pos.y += Mathf.Sin(normalized * Mathf.PI) * height;
+
+            transform.position = pos;
+            yield return null;
+        }
+
+        transform.position = end;
+
+        _agent.CompleteOffMeshLink();
+        _agent.isStopped = false;
+
+        _stats.State = EMonsterState.Trace;
     }
 
     private void Jump()
