@@ -25,12 +25,9 @@ public class PlayerBombFire : MonoBehaviour
 
             GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
             if (bomb == null) return;
-            bomb.GetComponent<Rigidbody>().angularVelocity = Vector3.zero;
-            bomb.GetComponent<Rigidbody>().AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
-            Debug.DrawRay(_camera.transform.position,
-
-              _camera.transform.forward * 3f,
-              Color.red, 2f);
+            Rigidbody rb = bomb.GetComponent<Rigidbody>();
+            rb.angularVelocity = Vector3.zero;
+            rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
             _chance--;
             OnBombCreated?.Invoke(_chance);
         }
