@@ -2,14 +2,16 @@ using System;
 using System.Collections;
 using Unity.Android.Gradle.Manifest;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(MonsterStats))]
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public class Monster : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     private MonsterStats _stats;
     private CharacterController _characterController;
+    private NavMeshAgent _agent;
     private Animator _animator;
 
     private bool _isPatrolling = false; //순찰 이동중 여부
@@ -37,16 +39,19 @@ public class Monster : MonoBehaviour
     {
         _player = FindFirstObjectByType<Player>().gameObject;
         _characterController = GetComponent<CharacterController>();
+        
         _animator = GetComponent<Animator>();
         _stats = GetComponent<MonsterStats>();
         _startPosition = transform.position;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = _stats.Speed.Value;
     }
 
     private void Update()
     {
         if(GameManager.Instance.State != EGameState.Playing) return;
 
-        ApplyGravity();
+        //ApplyGravity();
 
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
@@ -101,6 +106,8 @@ public class Monster : MonoBehaviour
         _stats.Health.Decrease(damage);
         StatsChanged?.Invoke(_stats);
 
+        _agent.ResetPath();
+
         if (_stats.Health.Value > 0)
         {
             _stats.State = EMonsterState.Hit;
@@ -111,7 +118,6 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Death;
             StartCoroutine(Death());
         }
-        _characterController.Move(knockBack*0.5f);
         return true;
     }
 
@@ -143,16 +149,25 @@ public class Monster : MonoBehaviour
         }
         if (_isPatrolling)
         {
-            Vector3 direction = (_PatrolPoint - transform.position).normalized;
+            /*Vector3 direction = (_PatrolPoint - transform.position).normalized;
             _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));
-
+            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));*/
+            
             float distance = Vector3.Distance(transform.position, _PatrolPoint);
-            if (distance < 0.2f) _isPatrolling = false;
+            if (distance < 0.2f)
+            {
+                _isPatrolling = false;
+
+                _agent.ResetPath();
+
+            }
+                
             return;
         }
         Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
         _PatrolPoint = _startPosition + new Vector3( circle.x, 0, + circle.y);
+        
+        _agent.SetDestination(_PatrolPoint);
 
         Debug.Log($"Stat Patrolling to {_PatrolPoint}");
         _isPatrolling = true;
@@ -162,16 +177,20 @@ public class Monster : MonoBehaviour
     {
         if (_distanceFromPlayer > _config.ComebackDistance)
         {
+            _agent.ResetPath();
             _stats.State = EMonsterState.Comeback;
             return;
         }else if(_distanceFromPlayer < _config.AttackedDistance)
         {
+            _agent.ResetPath();
             _stats.State = EMonsterState.Attack;
             return;
         }
-        Vector3 direction = (_player.transform.position - transform.position).normalized;
-        _characterController.Move(direction * Time.deltaTime * _stats.Speed.Value);
-        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
+        /*Vector3 direction = (_player.transform.position - transform.position).normalized;
+        
+        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));*/
+        
+        _agent.SetDestination(_player.transform.position);
     }
 
     private void ComeBack()
@@ -187,9 +206,10 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Idle;
             return;
         }
-        Vector3 direction = (_startPosition - transform.position).normalized;
+        /*Vector3 direction = (_startPosition - transform.position).normalized;
         _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));
+        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));*/
+        _agent.SetDestination(_startPosition);
     }
 
     private void Attack()
