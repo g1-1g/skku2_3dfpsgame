@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using Unity.Android.Gradle.Manifest;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -199,9 +200,10 @@ public class Monster : MonoBehaviour
     {
         _agent.isStopped = true;
 
-        OffMeshLinkData data = _agent.currentOffMeshLinkData;
-        Vector3 start = data.startPos;
-        Vector3 end = data.endPos;
+        _agent.ResetPath();
+
+        Quaternion targetRotation = Quaternion.LookRotation(_jumpEndPosition - transform.position);
+        transform.rotation = targetRotation;
 
         float duration = 0.5f;
         float t = 0f;
@@ -213,14 +215,14 @@ public class Monster : MonoBehaviour
 
             // 포물선
             float height = 2f;
-            Vector3 pos = Vector3.Lerp(start, end, normalized);
+            Vector3 pos = Vector3.Lerp(_jumpStartPosition, _jumpEndPosition, normalized);
             pos.y += Mathf.Sin(normalized * Mathf.PI) * height;
 
             transform.position = pos;
             yield return null;
         }
 
-        transform.position = end;
+        transform.position = _jumpEndPosition;
 
         _agent.CompleteOffMeshLink();
         _agent.isStopped = false;
