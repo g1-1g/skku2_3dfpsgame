@@ -13,13 +13,22 @@ public class PlayerBombFire : MonoBehaviour
     private Camera _camera;
 
     private ECameraMode _cameraMode;
+    private EGameState _gameState;
+
     private void Start()
     {
         _camera = Camera.main;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
         _cameraMode = CameraManager.Instance.CameraMode;
+
+        GameManager.Instance.OnGameStateChanged += GameStateChanged;
+        _gameState = GameManager.Instance.State;
     }
 
+    private void GameStateChanged(EGameState state)
+    {
+        _gameState = state;
+    }
     private void CameraModeChanged(ECameraMode cameraMode)
     {
         _cameraMode = cameraMode;
@@ -27,7 +36,7 @@ public class PlayerBombFire : MonoBehaviour
 
     private void Update()
     {
-        if (GameManager.Instance.State != EGameState.Playing) return;
+        if (_gameState != EGameState.Playing) return;
         if (_cameraMode == ECameraMode.TopView) return;
         if (Input.GetMouseButtonDown(1))
         {
@@ -44,9 +53,7 @@ public class PlayerBombFire : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (CameraManager.Instance != null)
-        {
-            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
-        }
+        if (CameraManager.Instance != null) CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        if (GameManager.Instance != null) GameManager.Instance.OnGameStateChanged -= GameStateChanged;
     }
 }

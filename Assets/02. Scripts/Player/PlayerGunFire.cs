@@ -19,7 +19,9 @@ public class PlayerGunFire : MonoBehaviour
     //장전
     private bool _isReloading = false;
     
+    //게임의 상태
     private ECameraMode _cameraMode;
+    private EGameState _gameState;
     [Serializable]
     public class Gun
     {
@@ -44,6 +46,14 @@ public class PlayerGunFire : MonoBehaviour
         _camera = Camera.main;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
         _cameraMode = CameraManager.Instance.CameraMode;
+
+        GameManager.Instance.OnGameStateChanged += GameStateChanged;
+        _gameState = GameManager.Instance.State;
+    }
+
+    private void GameStateChanged(EGameState state)
+    {
+        _gameState = state;
     }
 
     private void CameraModeChanged(ECameraMode cameraMode)
@@ -53,6 +63,7 @@ public class PlayerGunFire : MonoBehaviour
 
     private void Update()
     {
+        if (_gameState != EGameState.Playing) return;
         if (_cameraMode == ECameraMode.TopView) return;
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
@@ -148,9 +159,7 @@ public class PlayerGunFire : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (CameraManager.Instance != null)
-        {
-            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
-        }
+        if (CameraManager.Instance != null) CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        if (GameManager.Instance != null) GameManager.Instance.OnGameStateChanged -= GameStateChanged;
     }
 }
