@@ -123,16 +123,20 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value > 0)
         {
             _speed = _stats.RunSpeed.Value;
-            _animator.SetBool("Run", true);
+            _animator.SetFloat("Blend", 1);
             _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
             return;
+        }else if (Input.GetKey(KeyCode.LeftShift) && _stats.Stamina.Value <= 0)
+        {
+            _animator.SetFloat("Blend", 0);
+            _speed = _stats.MoveSpeed.Value;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _speed = _stats.MoveSpeed.Value;
-            _animator.SetBool("Run", false);
+            _animator.SetFloat("Blend", 0);
             _isDashing = false;
         }
     }
@@ -145,8 +149,6 @@ public class PlayerMove : MonoBehaviour
             StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaDecreaseRate);
         }
-        _animator.SetBool("Run", false);
-        _speed = _stats.MoveSpeed.Value;
     }
 
     IEnumerator StaminaIncrease()

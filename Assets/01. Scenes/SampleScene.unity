@@ -904,7 +904,7 @@ MonoBehaviour:
   ThirdPersonPosition: {fileID: 503697554}
   FirstPersonOffset: {x: 0, y: 0, z: 0}
   ThirdPersonOffset: {x: 0, y: 0, z: 0}
-  TopViewOffset: {x: 0, y: 10, z: 0}
+  TopViewOffset: {x: 0, y: 5, z: 0}
   TopOffset: {x: 0, y: 1, z: 0}
   _isChanging: 0
 --- !u!114 &330585550

@@ -191,7 +191,7 @@ public class Monster : MonoBehaviour
     private IEnumerator JumpRoutine()
     {
         _agent.isStopped = true;
-
+        _animator.SetTrigger("Jump");
         _agent.ResetPath();
 
         Quaternion targetRotation = Quaternion.LookRotation(_jumpEndPosition - transform.position);
@@ -219,7 +219,7 @@ public class Monster : MonoBehaviour
         _agent.CompleteOffMeshLink();
         _agent.isStopped = false;
 
-        _stats.State = EMonsterState.Trace;
+        _stats.State = EMonsterState.Idle;
     }
 
     private void ComeBack()
