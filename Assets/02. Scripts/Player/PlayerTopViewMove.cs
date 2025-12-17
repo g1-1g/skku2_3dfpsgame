@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static UnityEditor.SceneView;
 
 public class PlayerTopViewMove : MonoBehaviour
 {
@@ -24,11 +25,13 @@ public class PlayerTopViewMove : MonoBehaviour
         _agent.speed = _stats.MoveSpeed.Value;
 
         _mask = (1 << LayerMask.NameToLayer("Ground"));
+        _agent.enabled = _cameraMode == ECameraMode.TopView ? true : false;
 
     }
     private void CameraModeChanged(ECameraMode cameraMode)
     {
         _cameraMode = cameraMode;
+        _agent.enabled = _cameraMode == ECameraMode.TopView ? true : false;
     }
 
 
