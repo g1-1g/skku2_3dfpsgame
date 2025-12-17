@@ -59,7 +59,6 @@ public class Monster : MonoBehaviour
 
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
-
         switch (_stats.State)
         {
             case EMonsterState.Idle:
@@ -125,6 +124,7 @@ public class Monster : MonoBehaviour
         else
         {
             _animator.SetBool("Walk", true);
+            _isPatrolling = false;
             _stats.State = EMonsterState.Patrol;
         }      
     }
@@ -147,14 +147,21 @@ public class Monster : MonoBehaviour
                 _agent.ResetPath();
 
             }
-                
+            Jump();
             return;
         }
-        Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
-        _PatrolPoint = _startPosition + new Vector3( circle.x, 0, + circle.y);
+        
+        bool CanGo = false;
+        while (!CanGo) 
+        {
+            Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
+            _PatrolPoint = _startPosition + new Vector3(circle.x, 0, +circle.y);
+            NavMeshPath path = new NavMeshPath();
+            _agent.CalculatePath(_PatrolPoint, path);
+            if (path.status == NavMeshPathStatus.PathComplete) CanGo = true;
+        }
         
         _agent.SetDestination(_PatrolPoint);
-
         _isPatrolling = true;
     }
 
@@ -172,6 +179,12 @@ public class Monster : MonoBehaviour
             return;
         }
 
+        Jump();
+        _agent.SetDestination(_player.transform.position);
+    }
+
+    private void Jump()
+    {
         if (_agent.isOnOffMeshLink)
         {
             OffMeshLinkData linkData = _agent.currentOffMeshLinkData;
@@ -184,10 +197,9 @@ public class Monster : MonoBehaviour
                 _stats.State = EMonsterState.Jump;
                 return;
             }
-        }
-
-        _agent.SetDestination(_player.transform.position);
+        } 
     }
+
     private IEnumerator JumpRoutine()
     {
         _agent.isStopped = true;
@@ -219,6 +231,7 @@ public class Monster : MonoBehaviour
         _agent.CompleteOffMeshLink();
         _agent.isStopped = false;
 
+        _animator.SetBool("Walk", false);
         _stats.State = EMonsterState.Idle;
     }
 
@@ -237,6 +250,7 @@ public class Monster : MonoBehaviour
         }
 
         _agent.SetDestination(_startPosition);
+        Jump();
     }
 
     private void Attack()
