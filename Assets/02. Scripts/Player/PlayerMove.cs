@@ -34,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     public event Action<float> StaminaUpdate;
 
     private ECameraMode _cameraMode;
+    private EGameState _gameState;
 
     void Start()
     {
@@ -43,8 +44,15 @@ public class PlayerMove : MonoBehaviour
         _speed = _stats.MoveSpeed.Value;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
         _cameraMode = CameraManager.Instance.CameraMode;
+
+        GameManager.Instance.OnGameStateChanged += GameStateChanged;
+        _gameState = GameManager.Instance.State;
     }
 
+    private void GameStateChanged(EGameState state)
+    {
+        _gameState = state;
+    }
     private void CameraModeChanged(ECameraMode cameraMode)
     {
         _cameraMode = cameraMode;
@@ -53,6 +61,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (_gameState != EGameState.Playing) return;
         _yVelocity += _moveConfig.Gravity * Time.deltaTime;
 
         Jump();
@@ -140,9 +149,7 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (CameraManager.Instance != null)
-        {
-            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
-        }
+        if (CameraManager.Instance != null) CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        if (GameManager.Instance != null) GameManager.Instance.OnGameStateChanged -= GameStateChanged;
     }
 }
