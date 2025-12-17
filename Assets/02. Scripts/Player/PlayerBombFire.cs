@@ -53,7 +53,13 @@ public class PlayerBombFire : MonoBehaviour
     }
     private void OnDestroy()
     {
-        if (CameraManager.Instance != null) CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
-        if (GameManager.Instance != null) GameManager.Instance.OnGameStateChanged -= GameStateChanged;
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        }
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnGameStateChanged -= GameStateChanged;
+        }
     }
 }
