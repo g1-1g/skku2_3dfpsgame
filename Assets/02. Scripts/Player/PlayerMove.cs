@@ -31,9 +31,9 @@ public class PlayerMove : MonoBehaviour
 
     private float _speed;
 
-    private ECameraMode _cameraMode;
-
     public event Action<float> StaminaUpdate;
+
+    private ECameraMode _cameraMode;
 
     void Start()
     {
