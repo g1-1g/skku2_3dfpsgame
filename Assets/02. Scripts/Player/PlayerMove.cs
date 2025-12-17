@@ -77,7 +77,7 @@ public class PlayerMove : MonoBehaviour
         direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
-        if (x > 0 || z > 0)
+        if (x != 0 || z != 0)
         {
             _animator.SetBool("Walk", true);
         }else
@@ -120,7 +120,7 @@ public class PlayerMove : MonoBehaviour
     //데쉬
     void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value >= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value > 0)
         {
             _speed = _stats.RunSpeed.Value;
             _animator.SetBool("Run", true);
@@ -145,6 +145,8 @@ public class PlayerMove : MonoBehaviour
             StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaDecreaseRate);
         }
+        _animator.SetBool("Run", false);
+        _speed = _stats.MoveSpeed.Value;
     }
 
     IEnumerator StaminaIncrease()
