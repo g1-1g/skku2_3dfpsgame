@@ -99,7 +99,6 @@ public class Monster : MonoBehaviour
 
         if (_stats.Health.Value > 0)
         {
-            Debug.Log("데미지");
             _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
         }
@@ -139,9 +138,6 @@ public class Monster : MonoBehaviour
         }
         if (_isPatrolling)
         {
-            /*Vector3 direction = (_PatrolPoint - transform.position).normalized;
-            _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));*/
             
             float distance = Vector3.Distance(transform.position, _PatrolPoint);
             if (distance < 0.2f)
@@ -178,23 +174,18 @@ public class Monster : MonoBehaviour
 
         if (_agent.isOnOffMeshLink)
         {
-            Debug.Log("링크를 만남");
             OffMeshLinkData linkData = _agent.currentOffMeshLinkData;
             _jumpStartPosition = linkData.startPos;
             _jumpEndPosition = linkData.endPos;
 
             if (_jumpEndPosition.y != _jumpStartPosition.y)
             {
-                Debug.Log("점프");
                 StartCoroutine(JumpRoutine());
                 _stats.State = EMonsterState.Jump;
                 return;
             }
         }
-        /*Vector3 direction = (_player.transform.position - transform.position).normalized;
-        
-        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));*/
-        
+
         _agent.SetDestination(_player.transform.position);
     }
     private IEnumerator JumpRoutine()
@@ -231,15 +222,6 @@ public class Monster : MonoBehaviour
         _stats.State = EMonsterState.Trace;
     }
 
-    private void Jump()
-    {
-        _agent.isStopped = true;
-        transform.position = _jumpEndPosition;
-        _agent.CompleteOffMeshLink();
-        _stats.State = EMonsterState.Trace;
-        _agent.isStopped = false;
-    }
-
     private void ComeBack()
     {
         if (_distanceFromPlayer < _config.TraceDistance)
@@ -253,9 +235,7 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Idle;
             return;
         }
-        /*Vector3 direction = (_startPosition - transform.position).normalized;
-        _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));*/
+
         _agent.SetDestination(_startPosition);
     }
 

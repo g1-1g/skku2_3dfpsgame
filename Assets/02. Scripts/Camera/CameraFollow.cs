@@ -1,7 +1,5 @@
 using DG.Tweening;
 using UnityEngine;
-using static UnityEditor.SceneView;
-
 
 public class CameraFollow : MonoBehaviour
 {
