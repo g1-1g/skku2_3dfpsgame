@@ -1,15 +1,18 @@
 using System;
 using System.Collections;
 using Unity.Android.Gradle.Manifest;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.AI;
 
 [RequireComponent(typeof(MonsterStats))]
-[RequireComponent(typeof(CharacterController))]
+//[RequireComponent(typeof(CharacterController))]
 public class Monster : MonoBehaviour
 {
     [SerializeField] private GameObject _player;
     private MonsterStats _stats;
     private CharacterController _characterController;
+    private NavMeshAgent _agent;
     private Animator _animator;
 
     private bool _isPatrolling = false; //순찰 이동중 여부
@@ -18,6 +21,9 @@ public class Monster : MonoBehaviour
     private Vector3 _startPosition; //시작 위치
     private float _distanceFromPlayer; //플레이와 몬스터 거리
     private float _yVelocity; // 중력 y 방향 속도
+
+    private Vector3 _jumpStartPosition;
+    private Vector3 _jumpEndPosition;
 
     public event Action<MonsterStats> StatsChanged;
 
@@ -37,16 +43,19 @@ public class Monster : MonoBehaviour
     {
         _player = FindFirstObjectByType<Player>().gameObject;
         _characterController = GetComponent<CharacterController>();
+        
         _animator = GetComponent<Animator>();
         _stats = GetComponent<MonsterStats>();
         _startPosition = transform.position;
+        _agent = GetComponent<NavMeshAgent>();
+        _agent.speed = _stats.Speed.Value;
     }
 
     private void Update()
     {
         if(GameManager.Instance.State != EGameState.Playing) return;
 
-        ApplyGravity();
+        //ApplyGravity();
 
         _distanceFromPlayer = Vector3.Distance(transform.position, _player.transform.position);
 
@@ -72,24 +81,9 @@ public class Monster : MonoBehaviour
                 break;
             case EMonsterState.Death: 
                 break;
+            case EMonsterState.Jump:
+                break;
         }
-    }
-
-    private void ApplyGravity()
-    {
-        if (_characterController.isGrounded)
-        {
-            // 땅에 닿아있으면 y 속도를 작은 음수값으로 유지 (지면에 붙어있도록)
-            _yVelocity = -2f;
-        }
-        else
-        {
-            // 공중에 있으면 중력 가속
-            _yVelocity += _config.Gravity * Time.deltaTime;
-        }
-
-        // 중력 적용
-        _characterController.Move(new Vector3(0, _yVelocity, 0) * Time.deltaTime);
     }
 
     public bool TryTakeDamage(float damage, Vector3 knockBack)
@@ -101,8 +95,11 @@ public class Monster : MonoBehaviour
         _stats.Health.Decrease(damage);
         StatsChanged?.Invoke(_stats);
 
+        _agent.ResetPath();
+
         if (_stats.Health.Value > 0)
         {
+            Debug.Log("데미지");
             _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
         }
@@ -111,7 +108,6 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Death;
             StartCoroutine(Death());
         }
-        _characterController.Move(knockBack*0.5f);
         return true;
     }
 
@@ -143,18 +139,26 @@ public class Monster : MonoBehaviour
         }
         if (_isPatrolling)
         {
-            Vector3 direction = (_PatrolPoint - transform.position).normalized;
+            /*Vector3 direction = (_PatrolPoint - transform.position).normalized;
             _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));
-
+            transform.LookAt(new Vector3(_PatrolPoint.x, transform.position.y, _PatrolPoint.z));*/
+            
             float distance = Vector3.Distance(transform.position, _PatrolPoint);
-            if (distance < 0.2f) _isPatrolling = false;
+            if (distance < 0.2f)
+            {
+                _isPatrolling = false;
+
+                _agent.ResetPath();
+
+            }
+                
             return;
         }
         Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
         _PatrolPoint = _startPosition + new Vector3( circle.x, 0, + circle.y);
+        
+        _agent.SetDestination(_PatrolPoint);
 
-        Debug.Log($"Stat Patrolling to {_PatrolPoint}");
         _isPatrolling = true;
     }
 
@@ -162,16 +166,78 @@ public class Monster : MonoBehaviour
     {
         if (_distanceFromPlayer > _config.ComebackDistance)
         {
+            _agent.ResetPath();
             _stats.State = EMonsterState.Comeback;
             return;
         }else if(_distanceFromPlayer < _config.AttackedDistance)
         {
+            _agent.ResetPath();
             _stats.State = EMonsterState.Attack;
             return;
         }
-        Vector3 direction = (_player.transform.position - transform.position).normalized;
-        _characterController.Move(direction * Time.deltaTime * _stats.Speed.Value);
-        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
+
+        if (_agent.isOnOffMeshLink)
+        {
+            Debug.Log("링크를 만남");
+            OffMeshLinkData linkData = _agent.currentOffMeshLinkData;
+            _jumpStartPosition = linkData.startPos;
+            _jumpEndPosition = linkData.endPos;
+
+            if (_jumpEndPosition.y != _jumpStartPosition.y)
+            {
+                Debug.Log("점프");
+                StartCoroutine(JumpRoutine());
+                _stats.State = EMonsterState.Jump;
+                return;
+            }
+        }
+        /*Vector3 direction = (_player.transform.position - transform.position).normalized;
+        
+        transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));*/
+        
+        _agent.SetDestination(_player.transform.position);
+    }
+    private IEnumerator JumpRoutine()
+    {
+        _agent.isStopped = true;
+
+        _agent.ResetPath();
+
+        Quaternion targetRotation = Quaternion.LookRotation(_jumpEndPosition - transform.position);
+        transform.rotation = targetRotation;
+
+        float duration = 0.5f;
+        float t = 0f;
+
+        while (t < duration)
+        {
+            t += Time.deltaTime;
+            float normalized = t / duration;
+
+            // 포물선
+            float height = 2f;
+            Vector3 pos = Vector3.Lerp(_jumpStartPosition, _jumpEndPosition, normalized);
+            pos.y += Mathf.Sin(normalized * Mathf.PI) * height;
+
+            transform.position = pos;
+            yield return null;
+        }
+
+        transform.position = _jumpEndPosition;
+
+        _agent.CompleteOffMeshLink();
+        _agent.isStopped = false;
+
+        _stats.State = EMonsterState.Trace;
+    }
+
+    private void Jump()
+    {
+        _agent.isStopped = true;
+        transform.position = _jumpEndPosition;
+        _agent.CompleteOffMeshLink();
+        _stats.State = EMonsterState.Trace;
+        _agent.isStopped = false;
     }
 
     private void ComeBack()
@@ -187,9 +253,10 @@ public class Monster : MonoBehaviour
             _stats.State = EMonsterState.Idle;
             return;
         }
-        Vector3 direction = (_startPosition - transform.position).normalized;
+        /*Vector3 direction = (_startPosition - transform.position).normalized;
         _characterController.Move(direction * _stats.Speed.Value * Time.deltaTime);
-        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));
+        transform.LookAt(new Vector3(_startPosition.x, transform.position.y, _startPosition.z));*/
+        _agent.SetDestination(_startPosition);
     }
 
     private void Attack()
@@ -205,7 +272,7 @@ public class Monster : MonoBehaviour
         {
             _animator.SetTrigger("Attack");
             _animator.SetBool("Walk", false);
-            Debug.Log("attack");
+
             if(_player == null) return;
             _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
             _lastAttackTime = Time.time;
@@ -215,6 +282,7 @@ public class Monster : MonoBehaviour
 
     private IEnumerator Hit()
     {
+       
         _animator.SetTrigger("Damage");
         yield return new WaitForSeconds(2);
         if (_stats.State == EMonsterState.Hit)
@@ -222,6 +290,7 @@ public class Monster : MonoBehaviour
     }
     private IEnumerator Death()
     {
+        _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Death");
         yield return new WaitForSeconds(2);
         Destroy(gameObject);

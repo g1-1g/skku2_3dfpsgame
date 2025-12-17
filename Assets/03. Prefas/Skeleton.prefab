@@ -10,10 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 5762977036791224678}
   - component: {fileID: 6489162446841842907}
-  - component: {fileID: 6601366524572272220}
   - component: {fileID: 4790362576523997986}
   - component: {fileID: 4195089721785678108}
   - component: {fileID: 1238628293105273170}
+  - component: {fileID: 206026244233762955}
+  - component: {fileID: 7372181844369885973}
   m_Layer: 7
   m_Name: Skeleton
   m_TagString: Untagged
@@ -62,31 +63,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!143 &6601366524572272220
-CharacterController:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4934475983420579}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Height: 1.46
-  m_Radius: 0.35
-  m_SlopeLimit: 0
-  m_StepOffset: 0.3
-  m_SkinWidth: 0.08
-  m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!114 &4790362576523997986
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,8 +100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
   _config:
-    TraceDistance: 3
-    ComebackDistance: 5
+    TraceDistance: 10
+    ComebackDistance: 15
     AttackedDistance: 1.5
     PatrolDistance: 10
     Gravity: -20
@@ -143,6 +119,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gaugeImage: {fileID: 433953310921270193}
   _canvas: {fileID: 153947785036393872}
+--- !u!195 &206026244233762955
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934475983420579}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 0
+  m_AutoBraking: 0
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 0
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
+--- !u!136 &7372181844369885973
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934475983420579}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 1.6234896
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.77099335, z: 0}
 --- !u!1 &328806811038799257
 GameObject:
   m_ObjectHideFlags: 0

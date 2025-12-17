@@ -23,17 +23,34 @@ public class CameraRotate : MonoBehaviour
         float mouseX = Input.GetAxis("Mouse X");
         float mouseY = Input.GetAxis("Mouse Y");
         //2. 마우스 입력을 누적한다.
-        yaw += mouseX * RotationSpeed * Time.deltaTime; 
+        yaw += mouseX * RotationSpeed * Time.deltaTime;
+
+        if (CameraManager.Instance.CameraMode == ECameraMode.TopView)
+        {
+            TopViewRotation();
+            return;
+        }
+
         pitch -= mouseY * RotationSpeed * Time.deltaTime;;
+        BasicRotation();
+    }
 
-
+    public void BasicRotation()
+    {
         // 최종 회전 = 마우스 회전 + 반동
         transform.localRotation = Quaternion.Euler(
             Mathf.Clamp(pitch + recoilPitch, -90f, 90),
             yaw + recoilYaw,
             0f
         );
-
+    }
+    public void TopViewRotation()
+    {
+        transform.localRotation = Quaternion.Euler(
+            90,
+            yaw,
+            0f
+        );
     }
     // DOTween이 이 값을 Punch로 흔들어 준다
     public void SetRecoil(float rp, float ry)

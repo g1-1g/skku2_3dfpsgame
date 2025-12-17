@@ -1,11 +1,7 @@
 using DG.Tweening;
 using UnityEngine;
+using static UnityEditor.SceneView;
 
-enum ECameraMode
-{
-    FirstPerson,
-    ThirdPerson
-}
 
 public class CameraFollow : MonoBehaviour
 {
@@ -15,12 +11,13 @@ public class CameraFollow : MonoBehaviour
 
     public Vector3 FirstPersonOffset;
     public Vector3 ThirdPersonOffset;
+    public Vector3 TopViewOffset = new Vector3 (0, 10, 0);
 
     private Vector3 currentOffset;
 
     public bool _isChanging = false;
 
-    [SerializeField] ECameraMode cameraMode = ECameraMode.FirstPerson;
+    
 
     public Vector3 BasePosition { get; private set; }
 
@@ -35,7 +32,7 @@ public class CameraFollow : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (cameraMode == ECameraMode.FirstPerson)
+            if (CameraManager.Instance.CameraMode == ECameraMode.FirstPerson)
             {
                 DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
@@ -48,8 +45,28 @@ public class CameraFollow : MonoBehaviour
                     FirstPersonOffset, 1f);
             }
 
-            cameraMode = cameraMode == ECameraMode.FirstPerson ? ECameraMode.ThirdPerson : ECameraMode.FirstPerson;
+            CameraManager.Instance.CameraMode = CameraManager.Instance.CameraMode == ECameraMode.FirstPerson ? ECameraMode.ThirdPerson : ECameraMode.FirstPerson;
 
+        }
+
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            if (CameraManager.Instance.CameraMode == ECameraMode.FirstPerson || CameraManager.Instance.CameraMode == ECameraMode.ThirdPerson)
+            {
+                DOTween.Kill(transform);
+                DOTween.To(() => currentOffset, x => currentOffset = x,
+                    TopViewOffset, 1f);
+                transform.localRotation = Quaternion.Euler(new Vector3(90, 0, 0));
+            }
+            else
+            {
+                DOTween.Kill(transform);
+                DOTween.To(() => currentOffset, x => currentOffset = x,
+                    FirstPersonOffset, 1f);
+                transform.localRotation = Quaternion.Euler(Vector3.zero);
+            }
+
+            CameraManager.Instance.CameraMode = CameraManager.Instance.CameraMode == ECameraMode.TopView ? ECameraMode.FirstPerson : ECameraMode.TopView;
         }
     }
 
@@ -60,13 +77,11 @@ public class CameraFollow : MonoBehaviour
             Vector3 rotatedOffset = Target.rotation * currentOffset;
             BasePosition = Target.position + rotatedOffset;
 
-            if (cameraMode == ECameraMode.ThirdPerson)
+            if (CameraManager.Instance.CameraMode == ECameraMode.ThirdPerson)
             {
                 //transform.LookAt(Target);
             }
             
         }
     }
-
-    
 }
