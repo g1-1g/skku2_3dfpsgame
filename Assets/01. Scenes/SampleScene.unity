@@ -6096,7 +6096,7 @@ GameObject:
   - component: {fileID: 2104733031}
   - component: {fileID: 2104733032}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: Link
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6136,7 +6136,7 @@ MonoBehaviour:
   m_StartTransform: {fileID: 0}
   m_EndTransform: {fileID: 0}
   m_Activated: 1
-  m_Width: 0
+  m_Width: 4.57
   m_CostModifier: 1
   m_IsOverridingCost: 0
   m_Bidirectional: 1
@@ -6213,7 +6213,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.6
+      value: 7.45
       objectReference: {fileID: 0}
     - target: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6221,7 +6221,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.19
+      value: -8.77
       objectReference: {fileID: 0}
     - target: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
       propertyPath: m_LocalRotation.w
