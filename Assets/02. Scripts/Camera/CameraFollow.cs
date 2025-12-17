@@ -17,8 +17,6 @@ public class CameraFollow : MonoBehaviour
 
     public bool _isChanging = false;
 
-    
-
     public Vector3 BasePosition { get; private set; }
 
     private void Start()
@@ -45,7 +43,7 @@ public class CameraFollow : MonoBehaviour
                     FirstPersonOffset, 1f);
             }
 
-            CameraManager.Instance.CameraMode = CameraManager.Instance.CameraMode == ECameraMode.FirstPerson ? ECameraMode.ThirdPerson : ECameraMode.FirstPerson;
+            CameraManager.Instance.SetCameraMode(CameraManager.Instance.CameraMode == ECameraMode.FirstPerson ? ECameraMode.ThirdPerson : ECameraMode.FirstPerson);
 
         }
 
@@ -66,7 +64,7 @@ public class CameraFollow : MonoBehaviour
                 transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
 
-            CameraManager.Instance.CameraMode = CameraManager.Instance.CameraMode == ECameraMode.TopView ? ECameraMode.FirstPerson : ECameraMode.TopView;
+            CameraManager.Instance.SetCameraMode(CameraManager.Instance.CameraMode == ECameraMode.TopView ? ECameraMode.FirstPerson : ECameraMode.TopView);
         }
     }
 
@@ -75,13 +73,7 @@ public class CameraFollow : MonoBehaviour
         if (Target != null)
         {
             Vector3 rotatedOffset = Target.rotation * currentOffset;
-            BasePosition = Target.position + rotatedOffset;
-
-            if (CameraManager.Instance.CameraMode == ECameraMode.ThirdPerson)
-            {
-                //transform.LookAt(Target);
-            }
-            
+            BasePosition = Target.position + rotatedOffset;   
         }
     }
 }

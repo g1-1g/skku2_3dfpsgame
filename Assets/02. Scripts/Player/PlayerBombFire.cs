@@ -19,7 +19,7 @@ public class PlayerBombFire : MonoBehaviour
     private void Update()
     {
         if (GameManager.Instance.State != EGameState.Playing) return;
-        if (Input.GetMouseButtonDown(2))
+        if (Input.GetMouseButtonDown(1))
         {
             if (_chance <= 0) return;
 

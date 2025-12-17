@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using static UnityEditor.SceneView;
 
 public enum ECameraMode
 {
@@ -10,9 +12,9 @@ public class CameraManager : MonoBehaviour
 {
     public static CameraManager Instance { get; private set; }
 
-    public ECameraMode CameraMode = ECameraMode.FirstPerson;
+    public ECameraMode CameraMode { get; private set; } = ECameraMode.FirstPerson;
 
-  
+    public event Action<ECameraMode> OnCameraModeChanged;
 
     void Awake()
     {
@@ -24,9 +26,9 @@ public class CameraManager : MonoBehaviour
         Instance = this;
     }
 
-
-    void Update()
+    public void SetCameraMode(ECameraMode cameraMode)
     {
-        
+        CameraMode = cameraMode;
+        OnCameraModeChanged?.Invoke(CameraMode);
     }
 }

@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
 
     private float _speed;
 
+    private ECameraMode _cameraMode;
+
     public event Action<float> StaminaUpdate;
 
     void Start()
@@ -39,6 +41,13 @@ public class PlayerMove : MonoBehaviour
         _characterController = GetComponent<CharacterController>();
         _stats = GetComponent<PlayerStats>();
         _speed = _stats.MoveSpeed.Value;
+        CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
+        _cameraMode = CameraManager.Instance.CameraMode;
+    }
+
+    private void CameraModeChanged(ECameraMode cameraMode)
+    {
+        _cameraMode = cameraMode;
     }
 
     // Update is called once per frame
@@ -56,13 +65,16 @@ public class PlayerMove : MonoBehaviour
         direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
-        _characterController.Move(direction * Time.deltaTime);
+        
 
         Dash();
         if (!_isIncreasingStamina) 
         {
             StartCoroutine(StaminaIncrease());
         }
+
+        if (_cameraMode == ECameraMode.TopView) return;
+        _characterController.Move(direction * Time.deltaTime);
     }
 
     //점프
@@ -124,5 +136,13 @@ public class PlayerMove : MonoBehaviour
             yield return new WaitForSeconds(_moveConfig._staminaIncreaseRate);
         }
         _isIncreasingStamina = false;
+    }
+
+    private void OnDestroy()
+    {
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        }
     }
 }
