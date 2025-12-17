@@ -18,7 +18,8 @@ public class PlayerGunFire : MonoBehaviour
 
     //장전
     private bool _isReloading = false;
-
+    
+    private ECameraMode _cameraMode;
     [Serializable]
     public class Gun
     {
@@ -41,11 +42,18 @@ public class PlayerGunFire : MonoBehaviour
     {
         GunUpdate?.Invoke(_basicGun);
         _camera = Camera.main;
+        CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
+        _cameraMode = CameraManager.Instance.CameraMode;
+    }
+
+    private void CameraModeChanged(ECameraMode cameraMode)
+    {
+        _cameraMode = cameraMode;
     }
 
     private void Update()
     {
-        
+        if (_cameraMode == ECameraMode.TopView) return;
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
@@ -110,7 +118,6 @@ public class PlayerGunFire : MonoBehaviour
         }
     }
 
-
     private void Reload(Gun gun)
     {
         if (gun.CurrentBullet == gun.MagazineSize) return;
@@ -137,5 +144,13 @@ public class PlayerGunFire : MonoBehaviour
         Debug.Log("총알 장전완료");
         _isReloading = false;
         GunUpdate?.Invoke(gun);
+    }
+
+    private void OnDestroy()
+    {
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        }
     }
 }

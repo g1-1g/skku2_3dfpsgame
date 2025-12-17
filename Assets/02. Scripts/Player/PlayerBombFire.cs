@@ -12,14 +12,24 @@ public class PlayerBombFire : MonoBehaviour
 
     private Camera _camera;
 
+    private ECameraMode _cameraMode;
     private void Start()
     {
         _camera = Camera.main;
+        CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
+        _cameraMode = CameraManager.Instance.CameraMode;
     }
+
+    private void CameraModeChanged(ECameraMode cameraMode)
+    {
+        _cameraMode = cameraMode;
+    }
+
     private void Update()
     {
         if (GameManager.Instance.State != EGameState.Playing) return;
-        if (Input.GetMouseButtonDown(2))
+        if (_cameraMode == ECameraMode.TopView) return;
+        if (Input.GetMouseButtonDown(1))
         {
             if (_chance <= 0) return;
 
@@ -30,6 +40,13 @@ public class PlayerBombFire : MonoBehaviour
             rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
             _chance--;
             OnBombCreated?.Invoke(_chance);
+        }
+    }
+    private void OnDestroy()
+    {
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
         }
     }
 }
