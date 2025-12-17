@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     private bool _canDoubleJump = true;
 
     private CharacterController _characterController;
+    private Animator _animator;
     private float _yVelocity = 0f;
 
     private bool _isDashing = false;
@@ -41,6 +42,7 @@ public class PlayerMove : MonoBehaviour
     {
         
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         _stats = GetComponent<PlayerStats>();
         _speed = _stats.MoveSpeed.Value;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
@@ -75,9 +77,16 @@ public class PlayerMove : MonoBehaviour
         direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
-        
+        if (x > 0 || z > 0)
+        {
+            _animator.SetBool("Walk", true);
+        }else
+        {
+            _animator.SetBool("Walk", false);
+        }
 
-        Dash();
+
+            Dash();
         if (!_isIncreasingStamina) 
         {
             StartCoroutine(StaminaIncrease());
@@ -114,6 +123,7 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value >= 0)
         {
             _speed = _stats.RunSpeed.Value;
+            _animator.SetBool("Run", true);
             _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
@@ -122,6 +132,7 @@ public class PlayerMove : MonoBehaviour
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _speed = _stats.MoveSpeed.Value;
+            _animator.SetBool("Run", false);
             _isDashing = false;
         }
     }
