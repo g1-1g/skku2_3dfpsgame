@@ -39,13 +39,13 @@ public class PlayerGunFire : MonoBehaviour
 
     public Gun _basicGun;
 
-    public event Action<Gun> GunUpdate;
-    public event Action<Gun> GunReload;
+    public event Action<Gun> OnGunUpdate;
+    public event Action<Gun> OnGunReload;
     public event Action<Gun> OnShoot;
 
     private void Start()
     {
-        GunUpdate?.Invoke(_basicGun);
+        OnGunUpdate?.Invoke(_basicGun);
         _camera = Camera.main;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
         _cameraMode = CameraManager.Instance.CameraMode;
@@ -128,7 +128,7 @@ public class PlayerGunFire : MonoBehaviour
             }
 
             gun.CurrentBullet--;
-            GunUpdate?.Invoke(gun);
+            OnGunUpdate?.Invoke(gun);
             _lastShootTime = Time.time;
             
         }
@@ -148,7 +148,7 @@ public class PlayerGunFire : MonoBehaviour
 
     IEnumerator Reloading(Gun gun)
     {
-        GunReload?.Invoke(gun);
+        OnGunReload?.Invoke(gun);
         Debug.Log("총알 장전중");
         _isReloading = true;
         yield return new WaitForSeconds(gun.ReloadInterval);
@@ -159,7 +159,7 @@ public class PlayerGunFire : MonoBehaviour
         gun.ReserveBullet -= load;
         Debug.Log("총알 장전완료");
         _isReloading = false;
-        GunUpdate?.Invoke(gun);
+        OnGunUpdate?.Invoke(gun);
     }
 
     private void OnDestroy()

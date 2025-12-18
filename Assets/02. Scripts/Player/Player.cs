@@ -16,8 +16,12 @@ public class Player : MonoBehaviour
         _playerGunFire = GetComponent<PlayerGunFire>();
 
         _playerGunFire.OnShoot += Shoot;
+        _playerGunFire.OnGunReload += Reload;
 
     }
+
+    
+
     public void GetDamage(float damage)
     {
         _stats.Health.Decrease(damage);
@@ -63,8 +67,21 @@ public class Player : MonoBehaviour
         _stats.State = EPlayerState.Idle;
     }
 
+    private void Reload(PlayerGunFire.Gun gun)
+    {
+        _stats.State = EPlayerState.Reload;
+        _animator.SetTrigger("Reload");
+        _stats.State = EPlayerState.Idle;
+    }
     private void Idle()
     {
         
+    }
+
+    private void OnDestroy()
+    {
+        if (_playerGunFire != null) return;
+        _playerGunFire.OnShoot += Shoot;
+        _playerGunFire.OnGunReload += Reload;
     }
 }
