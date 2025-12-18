@@ -25,6 +25,7 @@ public class PlayerMove : MonoBehaviour
     private bool _canDoubleJump = true;
 
     private CharacterController _characterController;
+    private Animator _animator;
     private float _yVelocity = 0f;
 
     private bool _isDashing = false;
@@ -41,6 +42,7 @@ public class PlayerMove : MonoBehaviour
     {
         
         _characterController = GetComponent<CharacterController>();
+        _animator = GetComponent<Animator>();
         _stats = GetComponent<PlayerStats>();
         _speed = _stats.MoveSpeed.Value;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
@@ -75,9 +77,16 @@ public class PlayerMove : MonoBehaviour
         direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
-        
+        if (x != 0 || z != 0)
+        {
+            _animator.SetBool("Walk", true);
+        }else
+        {
+            _animator.SetBool("Walk", false);
+        }
 
-        Dash();
+
+            Dash();
         if (!_isIncreasingStamina) 
         {
             StartCoroutine(StaminaIncrease());
@@ -111,17 +120,23 @@ public class PlayerMove : MonoBehaviour
     //데쉬
     void Dash()
     {
-        if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value >= 0)
+        if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value > 0)
         {
             _speed = _stats.RunSpeed.Value;
+            _animator.SetFloat("Blend", 1);
             _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
             return;
+        }else if (Input.GetKey(KeyCode.LeftShift) && _stats.Stamina.Value <= 0)
+        {
+            _animator.SetFloat("Blend", 0);
+            _speed = _stats.MoveSpeed.Value;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _speed = _stats.MoveSpeed.Value;
+            _animator.SetFloat("Blend", 0);
             _isDashing = false;
         }
     }
@@ -150,7 +165,13 @@ public class PlayerMove : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (CameraManager.Instance != null) CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
-        if (GameManager.Instance != null) GameManager.Instance.OnGameStateChanged -= GameStateChanged;
+        if (CameraManager.Instance != null)
+        {
+            CameraManager.Instance.OnCameraModeChanged -= CameraModeChanged;
+        }
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnGameStateChanged -= GameStateChanged;
+        }
     }
 }
