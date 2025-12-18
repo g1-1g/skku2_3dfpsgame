@@ -23,6 +23,8 @@ public class PlayerGunFire : MonoBehaviour
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
+    private Animator _animator;
+
     [Serializable]
     public class Gun
     {
@@ -52,6 +54,7 @@ public class PlayerGunFire : MonoBehaviour
 
         GameManager.Instance.OnGameStateChanged += GameStateChanged;
         _gameState = GameManager.Instance.State;
+        _animator = GetComponent<Animator>();
     }
 
     private void GameStateChanged(EGameState state)
@@ -106,6 +109,8 @@ public class PlayerGunFire : MonoBehaviour
             int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
             Instantiate(gun.muzzelFlash[randomNumberForMuzzelFlash], gun.muzzelSpawn.transform.position /*- muzzelPosition*/, gun.muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzelSpawn.transform);
             OnShoot?.Invoke(gun);
+
+            _animator.SetTrigger("Shoot");
             if (isHit)
             {
                 //5. 충돌했다면... 피격 이펙트 표시
@@ -149,6 +154,7 @@ public class PlayerGunFire : MonoBehaviour
     IEnumerator Reloading(Gun gun)
     {
         OnGunReload?.Invoke(gun);
+        _animator.SetTrigger("Reload");
         Debug.Log("총알 장전중");
         _isReloading = true;
         yield return new WaitForSeconds(gun.ReloadInterval);

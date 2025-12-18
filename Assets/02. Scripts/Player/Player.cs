@@ -75,7 +75,7 @@ public class Player : MonoBehaviour
     {
         _stats.State = EPlayerState.Shoot;
         AttachGunToHand();
-        _animator.SetTrigger("Shoot");
+        
         _stats.State = EPlayerState.Idle;
     }
 
@@ -83,7 +83,7 @@ public class Player : MonoBehaviour
     {
         _stats.State = EPlayerState.Reload;
         AttachGunToHand();
-        _animator.SetTrigger("Reload");
+        
         _stats.State = EPlayerState.Idle;
     }
     private void Idle()

@@ -15,6 +15,7 @@ public class PlayerBombFire : MonoBehaviour
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
+    private Animator _animator;
     private void Start()
     {
         _camera = Camera.main;
@@ -23,6 +24,8 @@ public class PlayerBombFire : MonoBehaviour
 
         GameManager.Instance.OnGameStateChanged += GameStateChanged;
         _gameState = GameManager.Instance.State;
+
+        _animator = GetComponent<Animator>();
     }
 
     private void GameStateChanged(EGameState state)
@@ -42,6 +45,7 @@ public class PlayerBombFire : MonoBehaviour
         {
             if (_chance <= 0) return;
 
+            _animator.SetTrigger("Throw");
             GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
             if (bomb == null) return;
             Rigidbody rb = bomb.GetComponent<Rigidbody>();

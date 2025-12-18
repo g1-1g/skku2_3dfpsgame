@@ -35,6 +35,7 @@ public class PlayerMove : MonoBehaviour
 
     public event Action<float> StaminaUpdate;
 
+
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
@@ -77,16 +78,21 @@ public class PlayerMove : MonoBehaviour
         direction = transform.TransformDirection(direction) * _speed;
         direction.y = _yVelocity;
 
-        if (x != 0 || z != 0)
+        if (x == 0 && z == 0)
         {
-            _animator.SetBool("Walk", true);
-        }else
+            _animator.SetFloat("Blend", 0f);
+        }
+        else if (_speed == _stats.MoveSpeed.Value)
         {
-            _animator.SetBool("Walk", false);
+            _animator.SetFloat("Blend", 0.5f);
+        }
+        else
+        {
+            _animator.SetFloat("Blend", 1f);
         }
 
 
-        Dash();
+            Dash();
         if (!_isIncreasingStamina) 
         {
             StartCoroutine(StaminaIncrease());
@@ -105,6 +111,7 @@ public class PlayerMove : MonoBehaviour
             {
                 _canDoubleJump = true;
                 _yVelocity = _stats.JumpPower.Value;
+                _animator.SetTrigger("Jump");
             }  
             else if (_canDoubleJump && _stats.Stamina.Value >= _moveConfig._doubleJumpStaminaCost)
             {
@@ -112,6 +119,7 @@ public class PlayerMove : MonoBehaviour
                 _stats.Stamina.Decrease(_moveConfig._doubleJumpStaminaCost);
                 StaminaUpdate?.Invoke(_stats.Stamina.Value);
                 _yVelocity = _stats.JumpPower.Value;
+                _animator.SetTrigger("Jump");
             }
         }
 
@@ -123,7 +131,6 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.LeftShift) && _stats.Stamina.Value > 0)
         {
             _speed = _stats.RunSpeed.Value;
-            _animator.SetFloat("Blend", 1);
             _isDashing = true;
 
             StartCoroutine(StaminaDecrease());
@@ -131,13 +138,11 @@ public class PlayerMove : MonoBehaviour
         }
         else if (Input.GetKey(KeyCode.LeftShift) && _stats.Stamina.Value <= 0)
         {
-            _animator.SetFloat("Blend", 0);
             _speed = _stats.MoveSpeed.Value;
         }
         else if (Input.GetKeyUp(KeyCode.LeftShift))
         {
             _speed = _stats.MoveSpeed.Value;
-            _animator.SetFloat("Blend", 0);
             _isDashing = false;
         }
     }
