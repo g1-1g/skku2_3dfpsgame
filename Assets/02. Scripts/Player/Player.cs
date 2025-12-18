@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using static PlayerGunFire;
 
 public class Player : MonoBehaviour
 {
@@ -7,6 +8,11 @@ public class Player : MonoBehaviour
     public event Action<PlayerStats> HealthChanged;
     public event Action OnDied;
     public PlayerGunFire _playerGunFire;
+
+    public GameObject _gun;
+    private bool _isGunInLeftHand = false;
+    public Transform RightHandSocket;
+    public Transform LeftHandSocket;
 
     private Animator _animator;
     private void Start()
@@ -49,7 +55,7 @@ public class Player : MonoBehaviour
             case EPlayerState.Shoot:
                 break;
             case EPlayerState.Throw:
-                //Throw();
+                Throw();
                 break;
             case EPlayerState.Hit:
                 break;
@@ -60,9 +66,15 @@ public class Player : MonoBehaviour
         }
     }
 
+    private void Throw()
+    {
+ 
+    }
+
     private void Shoot(PlayerGunFire.Gun gun)
     {
         _stats.State = EPlayerState.Shoot;
+        AttachGunToHand();
         _animator.SetTrigger("Shoot");
         _stats.State = EPlayerState.Idle;
     }
@@ -70,11 +82,36 @@ public class Player : MonoBehaviour
     private void Reload(PlayerGunFire.Gun gun)
     {
         _stats.State = EPlayerState.Reload;
+        AttachGunToHand();
         _animator.SetTrigger("Reload");
         _stats.State = EPlayerState.Idle;
     }
     private void Idle()
     {
+        
+    }
+
+    
+    public void ThrowAnimationEvent()
+    {
+        _stats.State = EPlayerState.Throw;
+        AttachGunToHand();
+    }
+    public void AttachGunToHand()
+    {
+        if (_isGunInLeftHand)
+        {
+            _gun.transform.SetParent(RightHandSocket);
+            _isGunInLeftHand = false;
+        }
+        else
+        {
+            if (_stats.State != EPlayerState.Throw) return;
+            _gun.transform.SetParent(LeftHandSocket);
+            _isGunInLeftHand = true;
+        }
+        _gun.transform.localPosition = Vector3.zero;
+        _gun.transform.localRotation = Quaternion.identity;
         
     }
 
