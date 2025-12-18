@@ -33,6 +33,8 @@ public class PlayerGunFire : MonoBehaviour
         public float ReloadInterval = 1.5f;
         public float Recoil = 2f;
         public int Damage = 20;
+        public GameObject[] muzzelFlash;
+        public GameObject muzzelSpawn;
     }
 
     public Gun _basicGun;
@@ -101,7 +103,8 @@ public class PlayerGunFire : MonoBehaviour
             // 4. 발사하고
             int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
             bool isHit = Physics.Raycast(ray, out hitInfo,100f, layerMask);
-
+            int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
+            Instantiate(gun.muzzelFlash[randomNumberForMuzzelFlash], gun.muzzelSpawn.transform.position /*- muzzelPosition*/, gun.muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzelSpawn.transform);
             OnShoot?.Invoke(gun);
             if (isHit)
             {

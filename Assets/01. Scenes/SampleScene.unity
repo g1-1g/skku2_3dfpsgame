@@ -712,7 +712,7 @@ Transform:
   m_GameObject: {fileID: 276694434}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.063, z: 0.274}
+  m_LocalPosition: {x: 0, y: 0.063, z: 0.371}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1637,12 +1637,20 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 2792222510173730891, guid: 3a7b697044c9e2a459b92fec45c18fe2, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1494138947}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3a7b697044c9e2a459b92fec45c18fe2, type: 3}
 --- !u!4 &487019818 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3000456564962776423, guid: 3a7b697044c9e2a459b92fec45c18fe2, type: 3}
+  m_PrefabInstance: {fileID: 487019817}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &487019819 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2792222510173730891, guid: 3a7b697044c9e2a459b92fec45c18fe2, type: 3}
   m_PrefabInstance: {fileID: 487019817}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &503697553
@@ -4117,6 +4125,13 @@ MonoBehaviour:
     ReloadInterval: 1.5
     Recoil: 0
     Damage: 20
+    muzzelFlash:
+    - {fileID: 199458, guid: 51b76f616384d4946bed4ecc9a6c2c3e, type: 3}
+    - {fileID: 199458, guid: 487eef9aff9d0f543836d5af5ab26430, type: 3}
+    - {fileID: 199458, guid: 7b6a7e40bd9ccc0489274923930761c7, type: 3}
+    - {fileID: 199458, guid: 29d86feb88bf925428f9d7de6d4b401f, type: 3}
+    - {fileID: 199458, guid: 4aa4c63f0f9d6a84dbaeed6b9caeca80, type: 3}
+    muzzelSpawn: {fileID: 1494138946}
 --- !u!114 &1423029342
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4661,6 +4676,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
   m_PrefabInstance: {fileID: 1784870722}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1494138946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1494138947}
+  m_Layer: 0
+  m_Name: MuzzlePos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1494138947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1494138946}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.000000021855694, y: 1.221282e-16, z: 0.0000000055879354, w: 1}
+  m_LocalPosition: {x: 0, y: -0, z: 0.243}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 487019819}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1531475521 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5762977036791224678, guid: 728d92b16ac3f784ea988022ad930986, type: 3}
@@ -5635,9 +5681,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1422577539}
     m_Modifications:
+    - target: {fileID: 100000, guid: 54dd9cb5740188a488b8baebbf19207c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 100002, guid: 54dd9cb5740188a488b8baebbf19207c, type: 3}
       propertyPath: m_Name
       value: Stone_BulletImpact
+      objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: 54dd9cb5740188a488b8baebbf19207c, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100004, guid: 54dd9cb5740188a488b8baebbf19207c, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400002, guid: 54dd9cb5740188a488b8baebbf19207c, type: 3}
       propertyPath: m_LocalPosition.x
