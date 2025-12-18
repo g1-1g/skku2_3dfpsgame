@@ -21,7 +21,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        FirstPersonOffset = FirstPersonPosition.localPosition;
+        FirstPersonOffset = FirstPersonPosition.position - Target.position;
         ThirdPersonOffset = ThirdPersonPosition.localPosition;
         currentOffset = FirstPersonOffset;
     }
