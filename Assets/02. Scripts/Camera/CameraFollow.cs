@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour
 
     public Vector3 FirstPersonOffset;
     public Vector3 ThirdPersonOffset;
-    public Vector3 TopViewOffset = new Vector3(0, 5, 0);
+    public Vector3 TopViewOffset = new Vector3 (0, 5, 0);
     public Vector3 TopOffset = new Vector3 (0, 1, 0);
 
     private Vector3 currentOffset;

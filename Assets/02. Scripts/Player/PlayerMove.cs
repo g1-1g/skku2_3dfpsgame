@@ -86,7 +86,7 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-            Dash();
+        Dash();
         if (!_isIncreasingStamina) 
         {
             StartCoroutine(StaminaIncrease());
@@ -128,7 +128,8 @@ public class PlayerMove : MonoBehaviour
 
             StartCoroutine(StaminaDecrease());
             return;
-        }else if (Input.GetKey(KeyCode.LeftShift) && _stats.Stamina.Value <= 0)
+        }
+        else if (Input.GetKey(KeyCode.LeftShift) && _stats.Stamina.Value <= 0)
         {
             _animator.SetFloat("Blend", 0);
             _speed = _stats.MoveSpeed.Value;

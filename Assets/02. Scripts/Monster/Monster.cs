@@ -155,7 +155,7 @@ public class Monster : MonoBehaviour
         while (!CanGo) 
         {
             Vector2 circle = UnityEngine.Random.insideUnitCircle * _config.PatrolDistance;
-            _PatrolPoint = _startPosition + new Vector3(circle.x, 0, +circle.y);
+            _PatrolPoint = _startPosition + new Vector3(circle.x, 0, circle.y);
             NavMeshPath path = new NavMeshPath();
             _agent.CalculatePath(_PatrolPoint, path);
             if (path.status == NavMeshPathStatus.PathComplete) CanGo = true;
