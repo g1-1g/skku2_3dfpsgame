@@ -1,4 +1,5 @@
 using DG.Tweening;
+using TMPro;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -6,11 +7,11 @@ public class CameraFollow : MonoBehaviour
     public Transform Target;
 
     public Transform ThirdPersonPosition;
+    public Transform FirstPersonPosition;
 
     public Vector3 FirstPersonOffset;
     public Vector3 ThirdPersonOffset;
     public Vector3 TopViewOffset = new Vector3 (0, 5, 0);
-    public Vector3 TopOffset = new Vector3 (0, 1, 0);
 
     private Vector3 currentOffset;
 
@@ -20,7 +21,7 @@ public class CameraFollow : MonoBehaviour
 
     private void Start()
     {
-        FirstPersonOffset = Vector3.zero;
+        FirstPersonOffset = FirstPersonPosition.localPosition;
         ThirdPersonOffset = ThirdPersonPosition.localPosition;
         currentOffset = FirstPersonOffset;
     }
@@ -72,7 +73,7 @@ public class CameraFollow : MonoBehaviour
         if (Target != null)
         {
             Vector3 rotatedOffset = Target.rotation * currentOffset;
-            BasePosition = Target.position + TopOffset + rotatedOffset;   
+            BasePosition = Target.position + rotatedOffset;   
         }
     }
 }

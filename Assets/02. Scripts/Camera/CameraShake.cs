@@ -14,7 +14,7 @@ public class CameraShake : MonoBehaviour
 
     public void Start()
     {
-        _gunFire.Shoot += Shake;
+        _gunFire.OnShoot += Shake;
     }
     public void Shake(PlayerGunFire.Gun Gun)
     {
@@ -49,6 +49,6 @@ public class CameraShake : MonoBehaviour
 
     private void OnDestroy()
     {
-        if (_gunFire != null) _gunFire.Shoot -= Shake;
+        if (_gunFire != null) _gunFire.OnShoot -= Shake;
     }
 }

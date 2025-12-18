@@ -22,6 +22,7 @@ public class PlayerGunFire : MonoBehaviour
     //게임의 상태
     private ECameraMode _cameraMode;
     private EGameState _gameState;
+
     [Serializable]
     public class Gun
     {
@@ -38,7 +39,7 @@ public class PlayerGunFire : MonoBehaviour
 
     public event Action<Gun> GunUpdate;
     public event Action<Gun> GunReload;
-    public event Action<Gun> Shoot;
+    public event Action<Gun> OnShoot;
 
     private void Start()
     {
@@ -100,7 +101,8 @@ public class PlayerGunFire : MonoBehaviour
             // 4. 발사하고
             int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
             bool isHit = Physics.Raycast(ray, out hitInfo,100f, layerMask);
-            Shoot?.Invoke(gun);
+
+            OnShoot?.Invoke(gun);
             if (isHit)
             {
                 //5. 충돌했다면... 피격 이펙트 표시
