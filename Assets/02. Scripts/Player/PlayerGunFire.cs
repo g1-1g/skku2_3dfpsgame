@@ -23,6 +23,7 @@ public class PlayerGunFire : MonoBehaviour
     //줌
     private EZoomMode _zoomMode = EZoomMode.Normal;
     [SerializeField] GameObject _zoomImage;
+    [SerializeField] GameObject _aimPointImage;
 
     //게임의 상태
     private ECameraMode _cameraMode;
@@ -40,8 +41,9 @@ public class PlayerGunFire : MonoBehaviour
         public float ReloadInterval = 1.5f;
         public float Recoil = 2f;
         public int Damage = 20;
-        public GameObject[] muzzelFlash;
-        public GameObject muzzelSpawn;
+        public int Zoom = 10;
+        public GameObject[] muzzleFlash; 
+        public GameObject muzzleSpawn;
     }
 
     public Gun _basicGun;
@@ -99,13 +101,15 @@ public class PlayerGunFire : MonoBehaviour
         {
             _zoomMode = EZoomMode.ZoomIn;
             _zoomImage.SetActive(true);
-            CameraManager.Instance.CameraZoomIn(10);
+            _aimPointImage.SetActive(false);
+            CameraManager.Instance.CameraZoomIn(_basicGun.Zoom);
         }
         else if (Input.GetMouseButtonUp(1))
         {
             _zoomMode = EZoomMode.Normal;
             _zoomImage.SetActive(false);
-            CameraManager.Instance.CameraZoomOut(10);
+            _aimPointImage.SetActive(true);
+            CameraManager.Instance.CameraZoomOut(_basicGun.Zoom);
         }
     }
 
@@ -129,7 +133,7 @@ public class PlayerGunFire : MonoBehaviour
             int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
             bool isHit = Physics.Raycast(ray, out hitInfo,100f, layerMask);
             int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
-            Instantiate(gun.muzzelFlash[randomNumberForMuzzelFlash], gun.muzzelSpawn.transform.position /*- muzzelPosition*/, gun.muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzelSpawn.transform);
+            Instantiate(gun.muzzleFlash[randomNumberForMuzzelFlash], gun.muzzleSpawn.transform.position /*- muzzelPosition*/, gun.muzzleSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzleSpawn.transform);
             OnShoot?.Invoke(gun);
 
             _animator.SetTrigger("Shoot");

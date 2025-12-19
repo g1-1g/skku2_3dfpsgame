@@ -111,7 +111,7 @@ public class Monster : MonoBehaviour, IDamageable
             _vfx.transform.position = damage.HitPoint;
             _vfx.transform.forward = damage.HitNormal;
 
-            _vfx.Emit(1);
+            _vfx.Emit(4);
         }
         else
         {
