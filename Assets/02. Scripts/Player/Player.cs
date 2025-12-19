@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using static PlayerGunFire;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour, IDamageable
 {
     private PlayerStats _stats;
     public event Action<PlayerStats> HealthChanged;
@@ -28,14 +28,15 @@ public class Player : MonoBehaviour
 
     
 
-    public void GetDamage(float damage)
+    public bool TryTakeDamage(Damage damage)
     {
-        _stats.Health.Decrease(damage);
+        _stats.Health.Decrease(damage.Value);
         HealthChanged?.Invoke(_stats);
         if (_stats.Health.Value <= 0)
         {
             OnDied?.Invoke();
         }
+        return true;
     }
 
     private void Update()

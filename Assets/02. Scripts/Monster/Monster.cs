@@ -5,15 +5,16 @@ using Unity.VisualScripting;
 using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
+using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
 
 [RequireComponent(typeof(MonsterStats))]
 //[RequireComponent(typeof(CharacterController))]
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject _player;
     private MonsterStats _stats;
-    private CharacterController _characterController;
+
     private NavMeshAgent _agent;
     private Animator _animator;
 
@@ -46,7 +47,6 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         _player = FindFirstObjectByType<Player>().gameObject;
-        _characterController = GetComponent<CharacterController>();
         
         _animator = GetComponent<Animator>();
         _stats = GetComponent<MonsterStats>();
@@ -280,7 +280,15 @@ public class Monster : MonoBehaviour
             _animator.SetBool("Walk", false);
 
             if(_player == null) return;
-            _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
+
+            Damage damage = new Damage()
+            {
+                Value = _stats.Damage.Value,
+                HitPoint = _player.transform.position,
+                HitNormal = _player.transform.forward
+            };
+
+            _player.GetComponent<Player>().TryTakeDamage(damage);
             _lastAttackTime = Time.time;
         }
         transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
