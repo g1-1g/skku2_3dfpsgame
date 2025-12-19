@@ -486,7 +486,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 382.18}
+  m_AnchoredPosition: {x: 0, y: 578.2}
   m_SizeDelta: {x: 100, y: 15}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &114661225
@@ -7846,10 +7846,10 @@ Animator:
   m_GameObject: {fileID: 6034182896170175011}
   m_Enabled: 1
   m_Avatar: {fileID: 9000000, guid: cfbfb95b5f2b90949be0b5faab2775fb, type: 3}
-  m_Controller: {fileID: 9100000, guid: af9595c272345444bb1a350c993e6b79, type: 2}
+  m_Controller: {fileID: 9100000, guid: 97dc9ed4f2cf3044990d910b89e8c5a3, type: 2}
   m_CullingMode: 1
   m_UpdateMode: 0
-  m_ApplyRootMotion: 1
+  m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_StabilizeFeet: 0
   m_AnimatePhysics: 0
@@ -13273,7 +13273,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 2778139220650134540}
@@ -15529,13 +15529,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health:
-    _maxValue: 200
-    _value: 200
+    _maxValue: 500
+    _value: 500
     _regenValue: 0
   Damage:
     _value: 20
   Speed:
-    _value: 5
+    _value: 3
   AttackSpeed:
     _value: 3
   State: 0
@@ -15559,9 +15559,9 @@ CapsuleCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
-  m_Height: 3.57171
+  m_Height: 3.427256
   m_Direction: 1
-  m_Center: {x: 0, y: 1.6652544, z: 0}
+  m_Center: {x: 0, y: 1.7374814, z: 0}
 --- !u!195 &6410427612967358622
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17443,7 +17443,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0, y: 0, z: 0}
-  m_LocalScale: {x: 1.2, y: 1.2, z: 1.2}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6305195755841320788}

@@ -306,7 +306,7 @@ public class Monster : MonoBehaviour, IDamageable
     {
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Death");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
 }
