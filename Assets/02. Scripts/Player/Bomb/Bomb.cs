@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Threading;
+using UnityEditor.PackageManager;
 using UnityEngine;
+using static PlayerGunFire;
 
 public class Bomb : MonoBehaviour
 {
@@ -38,13 +40,22 @@ public class Bomb : MonoBehaviour
         int HitCount = Physics.OverlapSphereNonAlloc(transform.position, ExplosionRadius, _colliders, _layerMask);
         for (int i = 0; i < HitCount; i++)
         {
+            
+
             if (_colliders[i].TryGetComponent<Monster>(out Monster monster))
             {
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
                 float finalDamage = _damage / distance;
 
-                monster.TryTakeDamage(finalDamage, Vector3.up);
+                Damage damage = new Damage()
+                {
+                    Value = finalDamage,
+                    HitPoint = transform.position,
+                    HitNormal = Vector3.up
+                };
+
+                monster.TryTakeDamage(damage);
             }
             if (_colliders[i].TryGetComponent<Drum>(out Drum drum))
             {

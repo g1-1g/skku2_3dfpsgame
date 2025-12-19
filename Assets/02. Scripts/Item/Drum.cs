@@ -56,8 +56,14 @@ public class Drum : MonoBehaviour
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
                 //float finalDamage = Mathf.Max(_drumStats.Damage.Value / distance, 20f);
+                Damage damage = new Damage()
+                {
+                    Value = _drumStats.Damage.Value,
+                    HitPoint = transform.position,
+                    HitNormal = Vector3.up
+                };
 
-                monster.TryTakeDamage(_drumStats.Damage.Value, Vector3.up);
+                monster.TryTakeDamage(damage);
             }
             if (_colliders[i].TryGetComponent<Drum>(out Drum drum))
             {

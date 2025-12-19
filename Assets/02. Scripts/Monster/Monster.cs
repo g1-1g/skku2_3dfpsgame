@@ -2,8 +2,10 @@ using System;
 using System.Collections;
 using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
+using static UnityEngine.ParticleSystem;
 
 [RequireComponent(typeof(MonsterStats))]
 //[RequireComponent(typeof(CharacterController))]
@@ -27,6 +29,8 @@ public class Monster : MonoBehaviour
 
     public event Action<MonsterStats> StatsChanged;
 
+    [SerializeField] private ParticleSystem _vfx; 
+
     [Serializable]
     public struct MoveConfig
     {
@@ -49,6 +53,9 @@ public class Monster : MonoBehaviour
         _startPosition = transform.position;
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _stats.Speed.Value;
+
+        _vfx = GameObject.Find("Particle System_A").GetComponent<ParticleSystem>();
+        
     }
 
     private void Update()
@@ -85,13 +92,14 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public bool TryTakeDamage(float damage, Vector3 knockBack)
+    public bool TryTakeDamage(Damage damage)
     {
         if (_stats.State == EMonsterState.Death)
         {
             return false;
         }
-        _stats.Health.Decrease(damage);
+        _stats.Health.Decrease(damage.Value);
+
         StatsChanged?.Invoke(_stats);
 
         _agent.ResetPath();
@@ -100,6 +108,10 @@ public class Monster : MonoBehaviour
         {
             _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
+            _vfx.transform.position = damage.HitPoint;
+            _vfx.transform.forward = damage.HitNormal;
+
+            _vfx.Emit(1);
         }
         else
         {
