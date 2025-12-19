@@ -934,7 +934,6 @@ MonoBehaviour:
   Target: {fileID: 1423029334}
   ThirdPersonPosition: {fileID: 503697554}
   FirstPersonPosition: {fileID: 276694435}
-  HeadPosition: {fileID: 6464287337722199073}
   FirstPersonOffset: {x: 0, y: 0, z: 0}
   ThirdPersonOffset: {x: 0, y: 0, z: 0}
   TopViewOffset: {x: 0, y: 5, z: 0}
@@ -5517,7 +5516,7 @@ Transform:
   m_GameObject: {fileID: 1875939709}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.51, z: 3.37}
+  m_LocalPosition: {x: 0, y: 1.14, z: 0.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6576,7 +6575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8656999242128159281}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6916,7 +6915,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9092158662209819310}
   - component: {fileID: 7233676831609336263}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_back
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6981,7 +6980,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4360283576596892209}
   - component: {fileID: 2807352492415770670}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: goggle_belt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8356,7 +8355,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5220311570578318457}
   - component: {fileID: 3367979418961213288}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: goggle_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8686,7 +8685,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3296784746113842884}
   - component: {fileID: 3437606388661146597}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_tail_01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8770,7 +8769,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4184285113654555873}
   - component: {fileID: 7810614103007366353}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_tail_04
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11314,6 +11313,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 542273162}
     m_Modifications:
+    - target: {fileID: 442820746682610631, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 935177930680530755, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1154251883930389271, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 2728375140410536457, guid: d0071b3426aee15458f068f1555b3144, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -11354,9 +11365,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -133.19
       objectReference: {fileID: 0}
+    - target: {fileID: 2838119169242499744, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3065569666302517850, guid: d0071b3426aee15458f068f1555b3144, type: 3}
       propertyPath: m_Name
       value: SMG_K
+      objectReference: {fileID: 0}
+    - target: {fileID: 3065569666302517850, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4373845831346752875, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4659730216090749097, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5543357627331394531, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6948745217564976848, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7012928179155082393, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7196806558346694515, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7536423603103797019, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8008931863197318594, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8049455012453418962, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8215802721796047182, guid: d0071b3426aee15458f068f1555b3144, type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11799,7 +11858,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2241467602004372498}
   - component: {fileID: 7981726982649987353}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: face_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12676,7 +12735,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1494463755266708677}
   - component: {fileID: 6414669350464817607}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_tail_03
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14149,7 +14208,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4861929136922676030}
   - component: {fileID: 1675809718251421686}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: face_ear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15063,7 +15122,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7352554484302984873}
   - component: {fileID: 1138202303320063873}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: goggle_lens
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15526,7 +15585,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8434738506026358526}
   - component: {fileID: 5397739111645518350}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_tail_02
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16187,7 +16246,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6659038335089074649}
   - component: {fileID: 1468081266417321498}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_front_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16375,7 +16434,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3521872336664910161}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16674,7 +16733,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7396593390721282351}
   - component: {fileID: 8535388616588478846}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: hair_front_a
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16755,7 +16814,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6089642051290532666}
-  m_Layer: 3
+  m_Layer: 12
   m_Name: goggle
   m_TagString: Untagged
   m_Icon: {fileID: 0}

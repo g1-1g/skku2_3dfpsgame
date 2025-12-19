@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBombFire : MonoBehaviour
 {
     [SerializeField] private Transform _FireTransform;
-    [SerializeField] private float ThrowPower = 15f;
+    [SerializeField] private float ThrowPower = 5f;
     [SerializeField] private int _chance = 5;
 
     public event Action<int> OnBombCreated;
@@ -54,7 +54,9 @@ public class PlayerBombFire : MonoBehaviour
         GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
         if (bomb == null) return;
         Rigidbody rb = bomb.GetComponent<Rigidbody>();
-        rb.angularVelocity = Vector3.zero;
+ 
+        rb.Sleep();
+        rb.WakeUp();
         rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
         _chance--;
         OnBombCreated?.Invoke(_chance);
