@@ -22,7 +22,7 @@ public class PlayerStats : MonoBehaviour
     public ValueStat MoveSpeed;
     public ValueStat RunSpeed;
     public ValueStat JumpPower;
-    public ValueStat Gravity;
+    public ValueStat Gravity; 
 
     public EPlayerState State = EPlayerState.Idle;
 

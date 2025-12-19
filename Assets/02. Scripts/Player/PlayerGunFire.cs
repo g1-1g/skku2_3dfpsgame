@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
 
@@ -18,7 +19,11 @@ public class PlayerGunFire : MonoBehaviour
 
     //장전
     private bool _isReloading = false;
-    
+
+    //줌
+    private EZoomMode _zoomMode = EZoomMode.Normal;
+    [SerializeField] GameObject _zoomImage;
+
     //게임의 상태
     private ECameraMode _cameraMode;
     private EGameState _gameState;
@@ -71,6 +76,7 @@ public class PlayerGunFire : MonoBehaviour
     {
         if (_gameState != EGameState.Playing) return;
         if (_cameraMode == ECameraMode.TopView) return;
+        ZoomModeCheck();
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
@@ -85,6 +91,22 @@ public class PlayerGunFire : MonoBehaviour
             Reload(_basicGun);
         }
 
+    }
+
+    private void ZoomModeCheck()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            _zoomMode = EZoomMode.ZoomIn;
+            _zoomImage.SetActive(true);
+            CameraManager.Instance.CameraZoomIn(10);
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            _zoomMode = EZoomMode.Normal;
+            _zoomImage.SetActive(false);
+            CameraManager.Instance.CameraZoomOut(10);
+        }
     }
 
     private void GunShooting(Gun gun, ParticleSystem vfx)

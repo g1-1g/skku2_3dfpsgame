@@ -41,7 +41,7 @@ public class PlayerBombFire : MonoBehaviour
     {
         if (_gameState != EGameState.Playing) return;
         if (_cameraMode == ECameraMode.TopView) return;
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(2))
         {
             if (_chance <= 0) return;
 
