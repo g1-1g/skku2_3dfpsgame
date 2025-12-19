@@ -46,15 +46,20 @@ public class PlayerBombFire : MonoBehaviour
             if (_chance <= 0) return;
 
             _animator.SetTrigger("Throw");
-            GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
-            if (bomb == null) return;
-            Rigidbody rb = bomb.GetComponent<Rigidbody>();
-            rb.angularVelocity = Vector3.zero;
-            rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
-            _chance--;
-            OnBombCreated?.Invoke(_chance);
         }
     }
+
+    private void BombThrow()
+    {
+        GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
+        if (bomb == null) return;
+        Rigidbody rb = bomb.GetComponent<Rigidbody>();
+        rb.angularVelocity = Vector3.zero;
+        rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
+        _chance--;
+        OnBombCreated?.Invoke(_chance);
+    }
+
     private void OnDestroy()
     {
         if (CameraManager.Instance != null)

@@ -5,6 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     public Transform Target;
+    private Camera _camera;
 
     public Transform ThirdPersonPosition;
     public Transform FirstPersonPosition;
@@ -19,9 +20,14 @@ public class CameraFollow : MonoBehaviour
 
     public Vector3 BasePosition { get; private set; }
 
+    private int _layer;
+
     private void Start()
     {
-        FirstPersonOffset = FirstPersonPosition.position - Target.position;
+        _camera = GetComponent<Camera>();
+        _layer = LayerMask.NameToLayer("PlayerHead");
+
+        FirstPersonOffset = FirstPersonPosition.localPosition;
         ThirdPersonOffset = ThirdPersonPosition.localPosition;
         currentOffset = FirstPersonOffset;
     }
@@ -32,6 +38,7 @@ public class CameraFollow : MonoBehaviour
         {
             if (CameraManager.Instance.CameraMode == ECameraMode.FirstPerson)
             {
+                _camera.cullingMask |= (1 << _layer);
                 DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
                     ThirdPersonOffset, 1f);
@@ -40,17 +47,17 @@ public class CameraFollow : MonoBehaviour
             {
                 DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
-                    FirstPersonOffset, 1f);
+                    FirstPersonOffset, 1f).OnComplete(() =>
+                    _camera.cullingMask &= ~(1 << _layer));
             }
-
             CameraManager.Instance.SetCameraMode(CameraManager.Instance.CameraMode == ECameraMode.FirstPerson ? ECameraMode.ThirdPerson : ECameraMode.FirstPerson);
-
         }
 
         if (Input.GetKeyDown(KeyCode.T))
         {
             if (CameraManager.Instance.CameraMode == ECameraMode.FirstPerson || CameraManager.Instance.CameraMode == ECameraMode.ThirdPerson)
             {
+                _camera.cullingMask |= (1 << _layer);
                 DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
                     TopViewOffset, 1f);
@@ -60,10 +67,10 @@ public class CameraFollow : MonoBehaviour
             {
                 DOTween.Kill(transform);
                 DOTween.To(() => currentOffset, x => currentOffset = x,
-                    FirstPersonOffset, 1f);
+                    FirstPersonOffset, 1f).OnComplete(() =>
+                    _camera.cullingMask &= ~(1 << _layer));
                 transform.localRotation = Quaternion.Euler(Vector3.zero);
             }
-
             CameraManager.Instance.SetCameraMode(CameraManager.Instance.CameraMode == ECameraMode.TopView ? ECameraMode.FirstPerson : ECameraMode.TopView);
         }
     }

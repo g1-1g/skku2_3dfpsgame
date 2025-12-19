@@ -77745,15 +77745,15 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
-    functionName: ThrowAnimationEvent
+  - time: 1.9
+    functionName: BombThrow
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 2.7666667
-    functionName: ThrowAnimationEvent
+  - time: 1.9
+    functionName: BombThrow
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
