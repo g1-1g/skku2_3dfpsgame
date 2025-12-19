@@ -40,20 +40,19 @@ public class Bomb : MonoBehaviour
         int HitCount = Physics.OverlapSphereNonAlloc(transform.position, ExplosionRadius, _colliders, _layerMask);
         for (int i = 0; i < HitCount; i++)
         {
-            
+
+            Damage damage = new Damage()
+            {
+                Value = _damage,
+                HitPoint = transform.position,
+                HitNormal = Vector3.up
+            };
 
             if (_colliders[i].TryGetComponent<Monster>(out Monster monster))
             {
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
-                float finalDamage = _damage / distance;
-
-                Damage damage = new Damage()
-                {
-                    Value = finalDamage,
-                    HitPoint = transform.position,
-                    HitNormal = Vector3.up
-                };
+                damage.Value = _damage / distance;
 
                 monster.TryTakeDamage(damage);
             }
@@ -61,9 +60,9 @@ public class Bomb : MonoBehaviour
             {
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, drum.transform.position));
 
-                float finalDamage = _damage / distance;
+                damage.Value = _damage / distance;
 
-                drum.TryTakeDamage(finalDamage, Vector3.up);
+                drum.TryTakeDamage(damage);
             }
         }
     }

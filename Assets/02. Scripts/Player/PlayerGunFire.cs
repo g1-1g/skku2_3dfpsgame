@@ -145,15 +145,10 @@ public class PlayerGunFire : MonoBehaviour
                     HitNormal = hitInfo.normal
                 };
 
-
-                if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Monster"))
+                IDamageable damageable = hitInfo.collider.GetComponent<IDamageable>();
+                if (damageable != null)
                 {
-                    Monster monster = hitInfo.transform.GetComponent<Monster>();
-                    if (monster != null) monster.TryTakeDamage(damage);
-                }if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Drum"))
-                {
-                    Drum drum = hitInfo.transform.GetComponent<Drum>();
-                    if (drum != null) drum.TryTakeDamage(gun.Damage, -hitInfo.normal);
+                    damageable.TryTakeDamage(damage);
                 }
                 
                 vfx.transform.position = hitInfo.point;
