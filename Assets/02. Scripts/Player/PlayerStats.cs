@@ -8,6 +8,7 @@ public enum EPlayerState
     Run,
     Jump,
     Shoot,
+    Reload,
     Throw,
     Hit,
     Death,

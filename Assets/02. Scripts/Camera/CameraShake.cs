@@ -8,7 +8,7 @@ public class CameraShake : MonoBehaviour
 
     [SerializeField] private PlayerGunFire _gunFire;
 
-    [SerializeField] private float _power = 0.3f;
+    [SerializeField] private float _power = 0.05f;
     [SerializeField] private float _rotationPower = 2f;
     [SerializeField] private float _duration = 1.0f;
 

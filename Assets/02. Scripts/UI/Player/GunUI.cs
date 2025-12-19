@@ -11,8 +11,8 @@ public class GunUI : MonoBehaviour
     [SerializeField] private Slider _slider;
     void Start()
     {
-        _gunFire.GunUpdate += GunUIUpdate;
-        _gunFire.GunReload += GunReloading;
+        _gunFire.OnGunUpdate += GunUIUpdate;
+        _gunFire.OnGunReload += GunReloading;
     }
 
     private void GunReloading(PlayerGunFire.Gun gun)
@@ -31,8 +31,8 @@ public class GunUI : MonoBehaviour
     private void OnDestroy()
     {
         if (_gunFire == null) return;
-        _gunFire.GunUpdate -= GunUIUpdate;
-        _gunFire.GunReload -= GunReloading;
+        _gunFire.OnGunUpdate -= GunUIUpdate;
+        _gunFire.OnGunReload -= GunReloading;
     }
 
 

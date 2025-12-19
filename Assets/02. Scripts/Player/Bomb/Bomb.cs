@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Threading;
 using UnityEngine;
 
@@ -9,15 +10,26 @@ public class Bomb : MonoBehaviour
 
     private Collider[] _colliders = new Collider[10];
 
+    private float _destroyDelay = 1f; 
+    private bool _isExploded = false;
+
     [SerializeField] private LayerMask _layerMask;
     [SerializeField] private float _damage = 100;
     private void OnCollisionEnter(Collision collision)
     {
+        if (_isExploded) return;
         Instantiate(_explosionEffectPrefab,transform.position, Quaternion.identity);
-
+        _isExploded = true;
         Attack();
 
+        StartCoroutine(BombDestroy());
+    }
+
+    private IEnumerator BombDestroy()
+    {
+        yield return new WaitForSeconds(_destroyDelay);
         gameObject.SetActive(false);
+        _isExploded = false;
     }
 
  

@@ -5,7 +5,7 @@ using UnityEngine;
 public class PlayerBombFire : MonoBehaviour
 {
     [SerializeField] private Transform _FireTransform;
-    [SerializeField] private float ThrowPower = 15f;
+    [SerializeField] private float ThrowPower = 5f;
     [SerializeField] private int _chance = 5;
 
     public event Action<int> OnBombCreated;
@@ -15,6 +15,7 @@ public class PlayerBombFire : MonoBehaviour
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
+    private Animator _animator;
     private void Start()
     {
         _camera = Camera.main;
@@ -23,6 +24,8 @@ public class PlayerBombFire : MonoBehaviour
 
         GameManager.Instance.OnGameStateChanged += GameStateChanged;
         _gameState = GameManager.Instance.State;
+
+        _animator = GetComponent<Animator>();
     }
 
     private void GameStateChanged(EGameState state)
@@ -42,15 +45,24 @@ public class PlayerBombFire : MonoBehaviour
         {
             if (_chance <= 0) return;
 
-            GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
-            if (bomb == null) return;
-            Rigidbody rb = bomb.GetComponent<Rigidbody>();
-            rb.angularVelocity = Vector3.zero;
-            rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
-            _chance--;
-            OnBombCreated?.Invoke(_chance);
+            _animator.SetTrigger("Throw");
         }
     }
+
+    private void BombThrow()
+    {
+        GameObject bomb = BombFactory.Instance.MakeBomb(_FireTransform.transform.position);
+        if (bomb == null) return;
+        Rigidbody rb = bomb.GetComponent<Rigidbody>();
+ 
+        rb.Sleep();
+        rb.WakeUp();
+        rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
+        rb.AddTorque(UnityEngine.Random.insideUnitSphere * ThrowPower);
+        _chance--;
+        OnBombCreated?.Invoke(_chance);
+    }
+
     private void OnDestroy()
     {
         if (CameraManager.Instance != null)

@@ -23,6 +23,8 @@ public class PlayerGunFire : MonoBehaviour
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
+    private Animator _animator;
+
     [Serializable]
     public class Gun
     {
@@ -39,19 +41,20 @@ public class PlayerGunFire : MonoBehaviour
 
     public Gun _basicGun;
 
-    public event Action<Gun> GunUpdate;
-    public event Action<Gun> GunReload;
+    public event Action<Gun> OnGunUpdate;
+    public event Action<Gun> OnGunReload;
     public event Action<Gun> OnShoot;
 
     private void Start()
     {
-        GunUpdate?.Invoke(_basicGun);
+        OnGunUpdate?.Invoke(_basicGun);
         _camera = Camera.main;
         CameraManager.Instance.OnCameraModeChanged += CameraModeChanged;
         _cameraMode = CameraManager.Instance.CameraMode;
 
         GameManager.Instance.OnGameStateChanged += GameStateChanged;
         _gameState = GameManager.Instance.State;
+        _animator = GetComponent<Animator>();
     }
 
     private void GameStateChanged(EGameState state)
@@ -106,6 +109,8 @@ public class PlayerGunFire : MonoBehaviour
             int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
             Instantiate(gun.muzzelFlash[randomNumberForMuzzelFlash], gun.muzzelSpawn.transform.position /*- muzzelPosition*/, gun.muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzelSpawn.transform);
             OnShoot?.Invoke(gun);
+
+            _animator.SetTrigger("Shoot");
             if (isHit)
             {
                 //5. 충돌했다면... 피격 이펙트 표시
@@ -128,7 +133,7 @@ public class PlayerGunFire : MonoBehaviour
             }
 
             gun.CurrentBullet--;
-            GunUpdate?.Invoke(gun);
+            OnGunUpdate?.Invoke(gun);
             _lastShootTime = Time.time;
             
         }
@@ -148,7 +153,8 @@ public class PlayerGunFire : MonoBehaviour
 
     IEnumerator Reloading(Gun gun)
     {
-        GunReload?.Invoke(gun);
+        OnGunReload?.Invoke(gun);
+        _animator.SetTrigger("Reload");
         Debug.Log("총알 장전중");
         _isReloading = true;
         yield return new WaitForSeconds(gun.ReloadInterval);
@@ -159,7 +165,7 @@ public class PlayerGunFire : MonoBehaviour
         gun.ReserveBullet -= load;
         Debug.Log("총알 장전완료");
         _isReloading = false;
-        GunUpdate?.Invoke(gun);
+        OnGunUpdate?.Invoke(gun);
     }
 
     private void OnDestroy()
