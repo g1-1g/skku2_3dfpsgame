@@ -58,6 +58,7 @@ public class PlayerBombFire : MonoBehaviour
         rb.Sleep();
         rb.WakeUp();
         rb.AddForce(_camera.transform.forward * ThrowPower, ForceMode.Impulse);
+        rb.AddTorque(UnityEngine.Random.insideUnitSphere * ThrowPower);
         _chance--;
         OnBombCreated?.Invoke(_chance);
     }
