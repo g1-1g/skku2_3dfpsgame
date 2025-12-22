@@ -3,7 +3,7 @@ using UnityEngine;
 
 [RequireComponent(typeof(DrumStats))]
 [RequireComponent(typeof(Rigidbody))]
-public class Drum : MonoBehaviour
+public class Drum : MonoBehaviour, IDamageable
 {
 
     private DrumStats _drumStats;
@@ -21,18 +21,20 @@ public class Drum : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
     }
 
-    public void TryTakeDamage(float Damage, Vector3 direction)
+    public bool TryTakeDamage(Damage damage)
     {
-        if (_drumStats.IsExploded) return;
-        _rigidbody.AddForce(direction * _knockBackPower);
-        _drumStats.Health.Decrease(Damage);
+        if (_drumStats.IsExploded) return false;
+        _rigidbody.AddForce(-damage.HitNormal * _knockBackPower);
+        _drumStats.Health.Decrease(damage.Value);
 
         if (_drumStats.Health.Value <= 0)
         {
             _drumStats.IsExploded = true;
             Explosion();
-            return;
+            return true;
         }
+
+        return false;
     }
 
     void Explosion()
@@ -51,19 +53,26 @@ public class Drum : MonoBehaviour
         int HitCount = Physics.OverlapSphereNonAlloc(transform.position, _radius, _colliders, _layerMask);
         for (int i = 0; i < HitCount; i++)
         {
+            Damage damage = new Damage()
+            {
+                Value = _drumStats.Damage.Value,
+                HitPoint = transform.position,
+                HitNormal = Vector3.up
+            };
+
             if (_colliders[i].TryGetComponent<Monster>(out Monster monster))
             {
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, monster.transform.position));
 
                 //float finalDamage = Mathf.Max(_drumStats.Damage.Value / distance, 20f);
 
-                monster.TryTakeDamage(_drumStats.Damage.Value, Vector3.up);
+                monster.TryTakeDamage(damage);
             }
             if (_colliders[i].TryGetComponent<Drum>(out Drum drum))
             {
                 float distance = Mathf.Max(1f, Vector3.Distance(transform.position, drum.transform.position));
 
-                drum.TryTakeDamage(_drumStats.Damage.Value, Vector3.up);
+                drum.TryTakeDamage(damage);
             }
         }
     }

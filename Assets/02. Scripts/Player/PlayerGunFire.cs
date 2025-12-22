@@ -4,6 +4,7 @@ using System.Runtime.CompilerServices;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 using static PlayerGunFire;
 using static UnityEngine.ParticleSystem;
 
@@ -18,7 +19,12 @@ public class PlayerGunFire : MonoBehaviour
 
     //장전
     private bool _isReloading = false;
-    
+
+    //줌
+    private EZoomMode _zoomMode = EZoomMode.Normal;
+    [SerializeField] GameObject _zoomImage;
+    [SerializeField] GameObject _aimPointImage;
+
     //게임의 상태
     private ECameraMode _cameraMode;
     private EGameState _gameState;
@@ -35,8 +41,9 @@ public class PlayerGunFire : MonoBehaviour
         public float ReloadInterval = 1.5f;
         public float Recoil = 2f;
         public int Damage = 20;
-        public GameObject[] muzzelFlash;
-        public GameObject muzzelSpawn;
+        public int Zoom = 10;
+        public GameObject[] muzzleFlash; 
+        public GameObject muzzleSpawn;
     }
 
     public Gun _basicGun;
@@ -71,6 +78,7 @@ public class PlayerGunFire : MonoBehaviour
     {
         if (_gameState != EGameState.Playing) return;
         if (_cameraMode == ECameraMode.TopView) return;
+        ZoomModeCheck();
         // 1. 마우스 왼쪽 버튼이 눌린다면
         if (Input.GetMouseButton(0))
         {
@@ -85,6 +93,24 @@ public class PlayerGunFire : MonoBehaviour
             Reload(_basicGun);
         }
 
+    }
+
+    private void ZoomModeCheck()
+    {
+        if (Input.GetMouseButtonDown(1))
+        {
+            _zoomMode = EZoomMode.ZoomIn;
+            _zoomImage.SetActive(true);
+            _aimPointImage.SetActive(false);
+            CameraManager.Instance.CameraZoomIn(_basicGun.Zoom);
+        }
+        else if (Input.GetMouseButtonUp(1))
+        {
+            _zoomMode = EZoomMode.Normal;
+            _zoomImage.SetActive(false);
+            _aimPointImage.SetActive(true);
+            CameraManager.Instance.CameraZoomOut(_basicGun.Zoom);
+        }
     }
 
     private void GunShooting(Gun gun, ParticleSystem vfx)
@@ -107,7 +133,7 @@ public class PlayerGunFire : MonoBehaviour
             int layerMask = ~(1 << LayerMask.NameToLayer("Player"));
             bool isHit = Physics.Raycast(ray, out hitInfo,100f, layerMask);
             int randomNumberForMuzzelFlash = UnityEngine.Random.Range(0, 5);
-            Instantiate(gun.muzzelFlash[randomNumberForMuzzelFlash], gun.muzzelSpawn.transform.position /*- muzzelPosition*/, gun.muzzelSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzelSpawn.transform);
+            Instantiate(gun.muzzleFlash[randomNumberForMuzzelFlash], gun.muzzleSpawn.transform.position /*- muzzelPosition*/, gun.muzzleSpawn.transform.rotation * Quaternion.Euler(0, 0, 90), gun.muzzleSpawn.transform);
             OnShoot?.Invoke(gun);
 
             _animator.SetTrigger("Shoot");
@@ -116,14 +142,17 @@ public class PlayerGunFire : MonoBehaviour
                 //5. 충돌했다면... 피격 이펙트 표시
                 Debug.Log($"Hit : {hitInfo.transform.name} ");
 
-                if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Monster"))
+                Damage damage = new Damage()
                 {
-                    Monster monster = hitInfo.transform.GetComponent<Monster>();
-                    if (monster != null) monster.TryTakeDamage(gun.Damage, -hitInfo.normal);
-                }if (hitInfo.transform.gameObject.layer == LayerMask.NameToLayer("Drum"))
+                    Value = gun.Damage,
+                    HitPoint = hitInfo.point,
+                    HitNormal = hitInfo.normal
+                };
+
+                IDamageable damageable = hitInfo.collider.GetComponent<IDamageable>();
+                if (damageable != null)
                 {
-                    Drum drum = hitInfo.transform.GetComponent<Drum>();
-                    if (drum != null) drum.TryTakeDamage(gun.Damage, -hitInfo.normal);
+                    damageable.TryTakeDamage(damage);
                 }
                 
                 vfx.transform.position = hitInfo.point;

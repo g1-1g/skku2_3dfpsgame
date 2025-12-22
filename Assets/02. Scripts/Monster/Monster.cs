@@ -2,16 +2,19 @@ using System;
 using System.Collections;
 using Unity.Android.Gradle.Manifest;
 using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
+using static PlayerGunFire;
+using static UnityEngine.ParticleSystem;
 
 [RequireComponent(typeof(MonsterStats))]
 //[RequireComponent(typeof(CharacterController))]
-public class Monster : MonoBehaviour
+public class Monster : MonoBehaviour, IDamageable
 {
     [SerializeField] private GameObject _player;
     private MonsterStats _stats;
-    private CharacterController _characterController;
+
     private NavMeshAgent _agent;
     private Animator _animator;
 
@@ -26,6 +29,8 @@ public class Monster : MonoBehaviour
     private Vector3 _jumpEndPosition;
 
     public event Action<MonsterStats> StatsChanged;
+
+    [SerializeField] private ParticleSystem _vfx; 
 
     [Serializable]
     public struct MoveConfig
@@ -42,13 +47,15 @@ public class Monster : MonoBehaviour
     private void Start()
     {
         _player = FindFirstObjectByType<Player>().gameObject;
-        _characterController = GetComponent<CharacterController>();
         
         _animator = GetComponent<Animator>();
         _stats = GetComponent<MonsterStats>();
         _startPosition = transform.position;
         _agent = GetComponent<NavMeshAgent>();
         _agent.speed = _stats.Speed.Value;
+
+        _vfx = GameObject.Find("Particle System_A").GetComponent<ParticleSystem>();
+        
     }
 
     private void Update()
@@ -85,13 +92,14 @@ public class Monster : MonoBehaviour
         }
     }
 
-    public bool TryTakeDamage(float damage, Vector3 knockBack)
+    public bool TryTakeDamage(Damage damage)
     {
         if (_stats.State == EMonsterState.Death)
         {
             return false;
         }
-        _stats.Health.Decrease(damage);
+        _stats.Health.Decrease(damage.Value);
+
         StatsChanged?.Invoke(_stats);
 
         _agent.ResetPath();
@@ -100,6 +108,10 @@ public class Monster : MonoBehaviour
         {
             _stats.State = EMonsterState.Hit;
             StartCoroutine(Hit());
+            _vfx.transform.position = damage.HitPoint;
+            _vfx.transform.forward = damage.HitNormal;
+
+            _vfx.Emit(4);
         }
         else
         {
@@ -268,7 +280,15 @@ public class Monster : MonoBehaviour
             _animator.SetBool("Walk", false);
 
             if(_player == null) return;
-            _player.GetComponent<Player>().GetDamage(_stats.Damage.Value);
+
+            Damage damage = new Damage()
+            {
+                Value = _stats.Damage.Value,
+                HitPoint = _player.transform.position,
+                HitNormal = _player.transform.forward
+            };
+
+            _player.GetComponent<Player>().TryTakeDamage(damage);
             _lastAttackTime = Time.time;
         }
         transform.LookAt(new Vector3(_player.transform.position.x, transform.position.y, _player.transform.position.z));
@@ -286,7 +306,7 @@ public class Monster : MonoBehaviour
     {
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Death");
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(5);
         Destroy(gameObject);
     }
 }
