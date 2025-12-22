@@ -1,14 +1,29 @@
 using System.Collections.Generic;
+using System.Security.Authentication.ExtendedProtection;
 using UnityEngine;
 using UnityEngine.Pool;
 
 public class CoinFactory : MonoBehaviour
 {
+    public static CoinFactory Instance { get; private set; }
+
     [SerializeField] private GameObject[] _coinPrefabs;
     [SerializeField] private int _defaultCapacity = 10;
     [SerializeField] private int _maxSize = 50;
 
+    [SerializeField] private float _burstForce = 20;
+
     private ObjectPool<GameObject> _coinPool;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        Instance = this;
+    }
 
     void Start()
     {
@@ -81,6 +96,21 @@ public class CoinFactory : MonoBehaviour
     {
         GameObject coin = _coinPool.Get();
         coin.transform.position = position;
+    }
+
+    public void SpawnCoinBundle(Vector3 position, int count)
+    {
+        for (int i = 0; i < count; i++)
+        {
+            Coin coin = _coinPool.Get().GetComponent<Coin>();
+            coin.transform.position = position;
+
+            // 원형으로 랜덤 방향
+            Vector3 randomDir = Random.insideUnitSphere.normalized;
+            randomDir.y = Mathf.Abs(randomDir.y) * _burstForce; // 위쪽으로만
+
+            coin.Launch(randomDir);
+        }
     }
 
 }

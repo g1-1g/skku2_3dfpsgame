@@ -1,12 +1,7 @@
 using System;
 using System.Collections;
-using Unity.Android.Gradle.Manifest;
-using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.AI;
-using static PlayerGunFire;
-using static UnityEngine.ParticleSystem;
 
 [RequireComponent(typeof(MonsterStats))]
 //[RequireComponent(typeof(CharacterController))]
@@ -306,7 +301,13 @@ public class Monster : MonoBehaviour, IDamageable
     {
         _animator.ResetTrigger("Damage");
         _animator.SetTrigger("Death");
+        Coin();
         yield return new WaitForSeconds(5);
         Destroy(gameObject);
+    }
+
+    private void Coin()
+    {
+        CoinFactory.Instance.SpawnCoinBundle(transform.position, _stats.Reward);
     }
 }

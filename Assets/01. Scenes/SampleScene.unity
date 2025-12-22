@@ -872,7 +872,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 3583
+    m_Bits: 11775
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -2204,6 +2204,7 @@ MonoBehaviour:
   - {fileID: 6102941870146798283, guid: e6d29814272299446ae21ff919b09885, type: 3}
   _defaultCapacity: 10
   _maxSize: 50
+  _burstForce: 10
 --- !u!4 &684985243
 Transform:
   m_ObjectHideFlags: 0
@@ -15596,6 +15597,7 @@ MonoBehaviour:
     _value: 3
   AttackSpeed:
     _value: 3
+  Reward: 0
   State: 0
 --- !u!136 &6410427612967358621
 CapsuleCollider:
