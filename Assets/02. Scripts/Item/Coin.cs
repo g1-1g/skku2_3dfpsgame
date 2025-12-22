@@ -1,4 +1,3 @@
-using DG.Tweening;
 using UnityEngine;
 
 public class Coin : MonoBehaviour
@@ -8,7 +7,11 @@ public class Coin : MonoBehaviour
     private float _timer = 0;
 
     private float _dropBound = 5;
-    [SerializeField] private Rigidbody _rb;
+    private Rigidbody _rb;
+
+    private GameObject _player;
+    private bool _isFollowing = false;
+    private float _followingSpeed = 10;
 
 
     private void Awake()
@@ -18,6 +21,7 @@ public class Coin : MonoBehaviour
     void OnEnable()
     {
         _timer = 0f;
+        _isFollowing = false;
     }
 
     public void SetPool(CoinFactory factory)
@@ -27,8 +31,6 @@ public class Coin : MonoBehaviour
 
     public void Launch(Vector3 direction)
     {
-        _rb.Sleep();
-        _rb.WakeUp();
         _rb.AddForce(direction * _dropBound);
         _rb.AddTorque(Random.insideUnitSphere * 20f);
     }
@@ -37,6 +39,12 @@ public class Coin : MonoBehaviour
     {
         transform.Rotate(Vector3.up, 180f * Time.deltaTime);
 
+        if (_isFollowing)
+        {
+            Vector3 direction = (_player.transform.position - transform.position).normalized;
+            transform.Translate(direction * Time.deltaTime * _followingSpeed, Space.World);
+        }
+
         _timer += Time.deltaTime;
         if (_timer > _lifeTime)
         {
@@ -44,10 +52,21 @@ public class Coin : MonoBehaviour
         }
     }
 
-    void ReturnPool()
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Player")) return;
+        _player = other.gameObject;
+        _isFollowing = true;
+        _rb.Sleep();    
+    }
+
+    public void ReturnPool()
     {
         if (_factory != null)
         {
+            _rb.linearVelocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
+            _rb.WakeUp();
             _factory.ReturnCoin(gameObject);
         }
     } 

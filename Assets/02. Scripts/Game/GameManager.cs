@@ -1,7 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
 
@@ -17,6 +15,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _overTime = 1f;
 
     public event Action<EGameState> OnGameStateChanged;
+    public event Action<int> OnCoinChanged;
+
+    private int _coin;
 
     private void Awake()
     {
@@ -57,6 +58,7 @@ public class GameManager : MonoBehaviour
                 Time.timeScale = 1f;
                 break;
             case EGameState.Ready:
+                ResetCoin();
                 OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
                 StartCoroutine(StartToPlay_Coroutine());
@@ -68,6 +70,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GetCoin(int count)
+    {
+        _coin += count;
+        OnCoinChanged?.Invoke(_coin);
+    }
+
+    public void ResetCoin()
+    {
+        _coin = 0;
+        OnCoinChanged?.Invoke(_coin);
+    }
     public void GameOver()
     {
         StartCoroutine(GameOverDelay_Coroutine());
