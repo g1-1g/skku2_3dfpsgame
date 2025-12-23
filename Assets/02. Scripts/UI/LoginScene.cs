@@ -38,6 +38,17 @@ public class LoginScene : MonoBehaviour
     {
         AddButtonEvents();
         Refresh();
+
+        LastEmailSetting();
+    }
+
+    private void LastEmailSetting()
+    {
+        string id = PlayerPrefs.GetString("LastEmail");
+        if (id != null)
+        {
+            _idInputField.text = id;
+        }
     }
 
     private void AddButtonEvents()
@@ -86,7 +97,7 @@ public class LoginScene : MonoBehaviour
             _messageText.text = "비밀번호를 확인해주세요.";
             return;
         }
-
+        PlayerPrefs.SetString("LastEmail", id);
         SceneManager.LoadScene("Roading");
     }
 
