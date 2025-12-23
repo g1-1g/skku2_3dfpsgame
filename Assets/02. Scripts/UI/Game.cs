@@ -18,6 +18,7 @@ public class Game : MonoBehaviour
         switch (state)
         {
             case EGameState.Playing:
+                if (!gameObject.activeSelf) break;
                 StartCoroutine(Play());
                 break;
             case EGameState.Ready:
@@ -32,9 +33,11 @@ public class Game : MonoBehaviour
 
     private IEnumerator Play()
     {
+        
         _stateText.text = "게임 시작";
         yield return new WaitForSeconds(0.2f);
         gameObject.SetActive(false);
+        
     }
 
     private void Ready()

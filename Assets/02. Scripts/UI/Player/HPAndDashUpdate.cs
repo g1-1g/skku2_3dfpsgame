@@ -6,7 +6,6 @@ using DG.Tweening;
 public class HPAndDashUpdate : MonoBehaviour
 {
     [SerializeField] private Player _player;
-    private PlayerMove _move;
 
     [SerializeField] private Image _hpBackFill;
     [SerializeField] private Image _hpFrontFill;
@@ -15,20 +14,18 @@ public class HPAndDashUpdate : MonoBehaviour
     [SerializeField] private Slider _staminaSlider;
     private void Start()
     {
-        _move = _player.transform.GetComponent<PlayerMove>();
-
-        _player.HealthChanged += HPUpdate;
-        _move.StaminaUpdate += StaminaUpdate;
+        _player.Stats.Health.OnValueChanged += HPUpdate;
+        _player.Stats.Stamina.OnValueChanged += StaminaUpdate;
     }
 
-    private void HPUpdate(PlayerStats stats)
+    private void HPUpdate(float value, float maxValue)
     {
-        float finalValue = stats.Health.Ratio;
+        float finalValue = value/ maxValue;
         _hpBackFill.DOFillAmount(finalValue, 0.5f);
         _hpFrontFill.DOFillAmount(finalValue, 0.2f);
     }
 
-    void StaminaUpdate(float value)
+    void StaminaUpdate(float value, float maxValue)
     {
         _staminaSlider.value = Mathf.Clamp(value, 0f, 100f);
     }
@@ -36,8 +33,8 @@ public class HPAndDashUpdate : MonoBehaviour
     {
         if (_player != null)
         {
-            _player.HealthChanged -= HPUpdate;
-            _move.StaminaUpdate += StaminaUpdate;
+            _player.Stats.Health.OnValueChanged -= HPUpdate;
+            _player.Stats.Stamina.OnValueChanged -= StaminaUpdate;
         }
     }
 }

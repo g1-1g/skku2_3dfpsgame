@@ -5,8 +5,11 @@ using static PlayerGunFire;
 public class Player : MonoBehaviour, IDamageable
 {
     private PlayerStats _stats;
-    public event Action<PlayerStats> HealthChanged;
+    
+    public PlayerStats Stats => _stats;
+
     public event Action OnDied;
+
     public PlayerGunFire _playerGunFire;
 
     public GameObject _gun;
@@ -15,7 +18,7 @@ public class Player : MonoBehaviour, IDamageable
     public Transform LeftHandSocket;
 
     private Animator _animator;
-    private void Start()
+    private void Awake()
     {
         _stats = GetComponent<PlayerStats>();
         _animator = GetComponent<Animator>();
@@ -26,12 +29,10 @@ public class Player : MonoBehaviour, IDamageable
 
     }
 
-    
-
     public bool TryTakeDamage(Damage damage)
     {
         _stats.Health.Decrease(damage.Value);
-        HealthChanged?.Invoke(_stats);
+;
         if (_stats.Health.Value <= 0)
         {
             OnDied?.Invoke();
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour, IDamageable
     private void OnDestroy()
     {
         if (_playerGunFire != null) return;
-        _playerGunFire.OnShoot += Shoot;
-        _playerGunFire.OnGunReload += Reload;
+        _playerGunFire.OnShoot -= Shoot;
+        _playerGunFire.OnGunReload -= Reload;
     }
 }

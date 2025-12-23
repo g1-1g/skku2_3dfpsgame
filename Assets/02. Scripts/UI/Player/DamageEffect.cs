@@ -14,11 +14,10 @@ public class DamageEffect : MonoBehaviour
     {
         _image = GetComponent<Image>();
          _player = FindFirstObjectByType<Player>();
-        _player.HealthChanged += DamageEffectPlay;
+        _player.Stats.Health.OnValueChanged += DamageEffectPlay;
     }
 
-
-    public void DamageEffectPlay(PlayerStats stats)
+    public void DamageEffectPlay(float value, float maxValue)
     {
         _image.DOKill();
         _image.color = _originColor;

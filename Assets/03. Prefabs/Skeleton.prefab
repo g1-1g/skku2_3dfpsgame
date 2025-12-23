@@ -85,6 +85,7 @@ MonoBehaviour:
     _value: 3
   AttackSpeed:
     _value: 2
+  Reward: 5
   State: 0
 --- !u!114 &4195089721785678108
 MonoBehaviour:
@@ -99,6 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _vfx: {fileID: 0}
   _config:
     TraceDistance: 10
     ComebackDistance: 15

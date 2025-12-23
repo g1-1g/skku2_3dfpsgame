@@ -26,8 +26,4 @@ public class PlayerStats : MonoBehaviour
 
     public EPlayerState State = EPlayerState.Idle;
 
-    private void Start()
-    {
-      
-    }
 }

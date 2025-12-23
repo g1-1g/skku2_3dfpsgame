@@ -8,6 +8,7 @@ public class MonsterStats : MonoBehaviour
     public ValueStat Speed;
     public ValueStat AttackSpeed;
 
+    public int Reward;
 
     public EMonsterState State = EMonsterState.Idle;
 }
