@@ -91,7 +91,7 @@ public class LoginScene : MonoBehaviour
             return;
         }
 
-        string myPassword = PlayerPrefs.GetString(id);
+        string myPassword = CryptoUtil.Decrypt(PlayerPrefs.GetString(id));
         if (myPassword != password)
         {
             _messageText.text = "비밀번호를 확인해주세요.";
@@ -142,7 +142,8 @@ public class LoginScene : MonoBehaviour
             return;
         }
 
-        PlayerPrefs.SetString(id, password);
+        PlayerPrefs.SetString(id, CryptoUtil.Encrypt(password));
+
         GotoLogin();
     }
 
