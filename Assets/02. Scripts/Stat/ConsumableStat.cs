@@ -11,6 +11,8 @@ public class ConsumableStat
     public float Value => _value;
     public float Ratio => _maxValue > 0 ? _value / _maxValue : 0f;
 
+    public event Action<float, float> OnValueChanged;
+
     public void Initialize()
     {
         SetValue(_maxValue);
@@ -22,6 +24,7 @@ public class ConsumableStat
         {
             _value = _maxValue;
         }
+        OnValueChanged?.Invoke(_value, _maxValue);
     }
 
     public bool TryConsume(float amount)
@@ -29,18 +32,19 @@ public class ConsumableStat
         if (_value < amount) return false;
 
         Consume(amount);
-
         return true;
     }
 
     public void Consume(float amount)
     {
         _value -= amount;
+        OnValueChanged?.Invoke(_value, _maxValue);
     }
 
     public void IncreaseMax(float amount)
     {
         _maxValue += amount;
+        OnValueChanged?.Invoke(_value, _maxValue);
     }
 
     public void Increase(float amount)
@@ -51,6 +55,7 @@ public class ConsumableStat
     public void DecreaseMax(float amount)
     {
         _maxValue -= amount;
+        OnValueChanged?.Invoke(_value, _maxValue);
     }
 
     public void Decrease(float amount)
@@ -69,7 +74,6 @@ public class ConsumableStat
         {
             _value = 0;
         }
+        OnValueChanged?.Invoke(_value, _maxValue);
     }
-    
-
 }

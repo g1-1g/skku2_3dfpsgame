@@ -33,9 +33,6 @@ public class PlayerMove : MonoBehaviour
 
     private float _speed;
 
-    public event Action<float> StaminaUpdate;
-
-
     private ECameraMode _cameraMode;
     private EGameState _gameState;
 
@@ -117,7 +114,6 @@ public class PlayerMove : MonoBehaviour
             {
                 _canDoubleJump = false;
                 _stats.Stamina.Decrease(_moveConfig._doubleJumpStaminaCost);
-                StaminaUpdate?.Invoke(_stats.Stamina.Value);
                 _yVelocity = _stats.JumpPower.Value;
                 _animator.SetTrigger("Jump");
             }
@@ -152,7 +148,6 @@ public class PlayerMove : MonoBehaviour
         while (_isDashing && _stats.Stamina.Value > 0)
         {
             _stats.Stamina.Decrease(1);
-            StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaDecreaseRate);
         }
     }
@@ -163,7 +158,6 @@ public class PlayerMove : MonoBehaviour
         while (!_isDashing && _stats.Stamina.Value < 100)
         {
             _stats.Stamina.Increase(1);
-            StaminaUpdate?.Invoke(_stats.Stamina.Value);
             yield return new WaitForSeconds(_moveConfig._staminaIncreaseRate);
         }
         _isIncreasingStamina = false;
