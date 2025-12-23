@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     private EGameState _state = EGameState.Ready;
     public EGameState State => _state;
     private Player _player;
-    
+
     [SerializeField] private float _readyTime = 2f;
     [SerializeField] private float _overTime = 1f;
-
+    
     public event Action<EGameState> OnGameStateChanged;
     public event Action<int> OnCoinChanged;
 
@@ -35,6 +35,10 @@ public class GameManager : MonoBehaviour
         SetState(EGameState.Ready);
     }
 
+    private void Update()
+    {
+        
+    }
     private IEnumerator StartToPlay_Coroutine()
     {
         yield return new WaitForSecondsRealtime(_readyTime);
@@ -47,7 +51,7 @@ public class GameManager : MonoBehaviour
         SetState(EGameState.GameOver);
     }
 
-    private void SetState(EGameState newState)
+    public void SetState(EGameState newState)
     {
         _state = newState;
 
@@ -66,6 +70,10 @@ public class GameManager : MonoBehaviour
             case EGameState.GameOver:
                 OnGameStateChanged?.Invoke(_state);
                 Time.timeScale = 0f;
+                break;
+            case EGameState.Pause:
+                OnGameStateChanged?.Invoke(_state);
+                Time.timeScale = 0;
                 break;
         }
     }
@@ -89,6 +97,15 @@ public class GameManager : MonoBehaviour
     private void OnDestroy()
     {
         if (_player != null) _player.OnDied -= GameOver;
+    }
+
+    public void Quit()
+    {
+        #if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+        #else
+                Application.Quit(); // 어플리케이션 종료
+        #endif
     }
 
 }
