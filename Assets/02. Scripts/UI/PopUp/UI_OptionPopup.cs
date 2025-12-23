@@ -50,7 +50,7 @@ public class UI_OptionPopup : MonoBehaviour
 
     private void GameRestart()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene("Roading");
     }
 
     private void GameContinue()
