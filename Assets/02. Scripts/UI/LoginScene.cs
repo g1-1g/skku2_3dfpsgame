@@ -1,3 +1,4 @@
+using System.Text.RegularExpressions;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -25,6 +26,13 @@ public class LoginScene : MonoBehaviour
     [SerializeField] private TMP_InputField _passwordInputField;
     [SerializeField] private TMP_InputField _passwordConfirmInputField;
     [SerializeField] private TextMeshProUGUI _messageText;
+
+    private string _idPattern = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
+    private string _passwordPattern = 
+        @"^(?=.*[a-z])" +        // 소문자 1개 이상
+        @"(?=.*[A-Z])" +         // 대문자 1개 이상
+        @"(?=.*[\W_])" +         // 특수문자 1개 이상
+        @"[A-Za-z\d\W_]{7,20}$"; // 허용 문자 + 길이
 
     private void Start()
     {
@@ -91,6 +99,12 @@ public class LoginScene : MonoBehaviour
             return;
         }
 
+        if (!Regex.IsMatch(id, _idPattern))
+        {
+            _messageText.text = "아이디 형식이 올바르지 않습니다.";
+            return;
+        }
+
         string password = _passwordInputField.text;
         if (string.IsNullOrEmpty(password))
         {
@@ -102,6 +116,12 @@ public class LoginScene : MonoBehaviour
         if (string.IsNullOrEmpty(password2) || password != password2)
         {
             _messageText.text = "패스워드가 일치하지 않습니다..";
+            return;
+        }
+
+        if (!Regex.IsMatch(password, _passwordPattern))
+        {
+            _messageText.text = "패스워드 형식이 올바르지 않습니다.";
             return;
         }
 
