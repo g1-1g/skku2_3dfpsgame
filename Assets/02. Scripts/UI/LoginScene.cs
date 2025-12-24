@@ -85,14 +85,15 @@ public class LoginScene : MonoBehaviour
             return;
         }
 
-        if (!PlayerPrefs.HasKey(id))
+        if (!PlayerPrefs.HasKey($"{id}Hash"))
         {
             _messageText.text = "아이디를 확인해주세요.";
             return;
         }
 
-        string myPassword = CryptoUtil.Decrypt(PlayerPrefs.GetString(id));
-        if (myPassword != password)
+        
+        
+        if (!PasswordHasher.VerifyPassword(password, PlayerPrefs.GetString($"{id}Hash"),PlayerPrefs.GetString($"{id}Salt")))
         {
             _messageText.text = "비밀번호를 확인해주세요.";
             return;
@@ -136,14 +137,16 @@ public class LoginScene : MonoBehaviour
             return;
         }
 
-        if (PlayerPrefs.HasKey(id))
+        if (PlayerPrefs.HasKey($"{id}Hash"))
         {
             _messageText.text = "중복된 아이디입니다.";
             return;
         }
 
-        PlayerPrefs.SetString(id, CryptoUtil.Encrypt(password));
-
+        string salt = PasswordHasher.GenerateSalt();
+        PlayerPrefs.SetString($"{id}Salt", salt);
+        PlayerPrefs.SetString($"{id}Hash", PasswordHasher.HashPassword(password, salt));
+        _messageText.text = "";
         GotoLogin();
     }
 
