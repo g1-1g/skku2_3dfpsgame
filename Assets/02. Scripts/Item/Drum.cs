@@ -15,10 +15,25 @@ public class Drum : MonoBehaviour, IDamageable
     [SerializeField] private float _knockBackPower = 10;
     [SerializeField] private GameObject _ExplosionPrefabs;
 
+    [SerializeField] private GameObject[] _VisualObjects;
+
     void Start()
     {
         _drumStats = GetComponent<DrumStats>();
         _rigidbody = GetComponent<Rigidbody>();
+        Init();
+    }
+
+    void Init()
+    {
+        _VisualObjects[0].SetActive(true);
+        _VisualObjects[1].SetActive(false);
+    }
+
+    void ChangeExplodedVisual()
+    {
+        _VisualObjects[0].SetActive(false);
+        _VisualObjects[1].SetActive(true);
     }
 
     public bool TryTakeDamage(Damage damage)
@@ -41,6 +56,7 @@ public class Drum : MonoBehaviour, IDamageable
     {
         Instantiate(_ExplosionPrefabs, transform.position, Quaternion.identity);
         Attack();
+        ChangeExplodedVisual();
         _rigidbody.AddForce(Vector3.up *_drumStats.Power.Value);
         _rigidbody.AddTorque(Random.insideUnitSphere * _knockBackPower);
 
