@@ -146,8 +146,8 @@ public class Monster : MonoBehaviour, IDamageable
         if (_isPatrolling)
         {
             
-            float distance = Vector3.Distance(transform.position, _PatrolPoint);
-            if (distance < 0.2f)
+            //float distance = Vector3.Distance(transform.position, _PatrolPoint);
+            if (!_agent.pathPending && _agent.remainingDistance <= _agent.stoppingDistance)
             {
                 _isPatrolling = false;
 
