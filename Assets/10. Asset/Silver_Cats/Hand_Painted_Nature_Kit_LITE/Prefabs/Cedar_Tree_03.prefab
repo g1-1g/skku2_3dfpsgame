@@ -94,17 +94,33 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b63283d8f4cce77479a6c40777067a05, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7785340742896165474}
+      addedObject: {fileID: 6112891531015860716}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: b63283d8f4cce77479a6c40777067a05, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 6112891531015860716}
+      addedObject: {fileID: 6531059284430305881}
   m_SourcePrefab: {fileID: 100100000, guid: b63283d8f4cce77479a6c40777067a05, type: 3}
 --- !u!1 &7944522665443213417 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: b63283d8f4cce77479a6c40777067a05, type: 3}
   m_PrefabInstance: {fileID: 7098223405610401080}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &7785340742896165474
+--- !u!208 &6112891531015860716
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7944522665443213417}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 0
+  m_Extents: {x: 0.8, y: 3.025, z: 0.8}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 1.5, z: 0.09}
+  m_TimeToStationary: 0.5
+--- !u!136 &6531059284430305881
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -123,23 +139,7 @@ CapsuleCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.8
-  m_Height: 6.05
+  m_Radius: 0.57
+  m_Height: 5.34
   m_Direction: 1
-  m_Center: {x: 0, y: 1.5, z: 0.09}
---- !u!208 &6112891531015860716
-NavMeshObstacle:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7944522665443213417}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Shape: 0
-  m_Extents: {x: 0.8, y: 3.025, z: 0.8}
-  m_MoveThreshold: 0.1
-  m_Carve: 0
-  m_CarveOnlyStationary: 1
-  m_Center: {x: 0, y: 1.5, z: 0.09}
-  m_TimeToStationary: 0.5
+  m_Center: {x: 0, y: 1.73, z: 0}
