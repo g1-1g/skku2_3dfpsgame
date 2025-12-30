@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 99c9720ab356a0642a771bea13969a05
+  m_OcclusionCullingData: {fileID: 36300000, guid: 90765b9b310f0c04caa64f442c9b7f8c, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -93,7 +93,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 4081b658bfba9444f8e32044927696a0, type: 2}
+  m_LightingDataAsset: {fileID: 0}
   m_LightingSettings: {fileID: 4890085278179872738, guid: d686754d66069734d98b1704d59f51ff, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -127,6 +127,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.377532e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_13
@@ -310,6 +326,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.742887e+30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.5242402e+21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 15.27476
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.4165845e+21
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_2
@@ -504,6 +540,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 234278910
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.7753217e+28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.0421182e+34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.6676704e+35
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_58
@@ -566,6 +622,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.0824417e+19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -4.0325072e+15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 633249150
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.9328829e+11
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_50
@@ -628,6 +704,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 6.42954e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.13e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.7105096e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_24
@@ -859,6 +955,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.2269273e-28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1926411e+16
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.0415537e+9
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: -0.00016331393
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_30
@@ -921,6 +1037,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -1.14e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.59179e-40
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_39
@@ -983,6 +1119,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.7086692e+19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.206462e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0.0009286766
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.3555853e-19
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_67
@@ -1045,6 +1201,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_37
@@ -1285,7 +1453,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &274489345
 Transform:
   m_ObjectHideFlags: 0
@@ -1335,13 +1503,13 @@ Terrain:
   m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 100
+  m_DetailObjectDistance: 50
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -1400,6 +1568,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0.90108836
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -0.07283719
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -0.25315213
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: -0.25314778
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_18
@@ -1780,6 +1968,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.469367e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.015625
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_19
@@ -1842,6 +2046,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.9102077e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.8826565e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.9102073e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.901024e-38
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_6
@@ -1991,6 +2215,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 14619.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1092534e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3.0734745e+32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.4650054e+32
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_3
@@ -2053,6 +2297,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -0.01073718
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.86e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6e-45
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_52
@@ -2124,7 +2388,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &364352450
 Transform:
   m_ObjectHideFlags: 0
@@ -2174,13 +2438,13 @@ Terrain:
   m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 100
+  m_DetailObjectDistance: 50
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -2208,6 +2472,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_20
@@ -2438,7 +2722,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 1
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
@@ -2504,6 +2788,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.6736174e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.5046328e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.8607613e-32
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_74
@@ -2566,6 +2870,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8.1696875e-37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_68
@@ -2628,6 +2952,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.67342e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.756605e-37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.1351753e-38
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_14
@@ -2896,6 +3240,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 9.1837e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.5918e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_4
@@ -2989,6 +3349,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.515971e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0.00092842296
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.1705309e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.0972774e+27
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_53
@@ -3306,6 +3686,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.836772e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_51
@@ -3505,6 +3901,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.1837556e+33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.6813502e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6.3270894e+28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.4809368e+20
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_60
@@ -3810,6 +4226,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.7105054e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.26581e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.775e-42
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_26
@@ -3872,6 +4308,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.928607e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.538e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_69
@@ -3934,6 +4386,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.2519016e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_61
@@ -3996,6 +4468,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.8617363e+30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.5332314e+28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.9642113e+29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.268597e+22
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_8
@@ -4058,6 +4550,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.2e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.4318e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_54
@@ -4230,6 +4738,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.83672e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1754945e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_62
@@ -4292,6 +4820,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.5e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_9
@@ -4443,6 +4987,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.7753217e+28
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_25
@@ -5153,6 +5717,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8.1696875e-37
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Larch_Tree_45
@@ -5215,6 +5799,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.5e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_79
@@ -5454,6 +6054,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8.1e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.7443038e-28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 8.81e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_36
@@ -5637,6 +6257,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.85372e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.5046787e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.9639e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_71
@@ -5756,6 +6396,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.653144e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.5915e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -3.746966e+29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.7107087e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_1
@@ -5818,6 +6478,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.4541208e-21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -4.4421556e-29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.921049e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: -187.38574
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_33
@@ -5973,6 +6653,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 65111476
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.5914745e+32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.7487011e+20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.311054e-39
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_38
@@ -6355,6 +7055,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.1326e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.0387484e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5697343e-37
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_10
@@ -6417,6 +7137,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.87e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.87e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: -3.59e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_29
@@ -6479,6 +7219,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 6.4096906e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.4096906e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6.4097205e-10
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.4096906e-10
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_75
@@ -6541,6 +7301,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.6736174e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.5046328e-36
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.8607613e-32
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_21
@@ -6603,6 +7383,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 5.596281e-14
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_49
@@ -6665,6 +7461,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.3509887e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1191301e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.5145631e+25
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.1767e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_72
@@ -6808,6 +7624,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -0.00000046877295
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -0.00008365314
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0.026217975
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0.026217975
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_63
@@ -7199,6 +8035,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_73
@@ -7341,6 +8193,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.484603e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.0706433e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.0598167e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.360415e+22
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_48
@@ -7524,6 +8396,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 234278910
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.7753217e+28
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.0421182e+34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.6676704e+35
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_7
@@ -7694,6 +8586,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: -1.49e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_32
@@ -8024,6 +8936,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 8.8e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_84
@@ -8195,6 +9123,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 7.675e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.3927064e+34
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5915e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_27
@@ -8332,6 +9280,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -5.4970552e+29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.3915e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_59
@@ -8394,6 +9358,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.1659e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.407486e-35
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.9639e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_56
@@ -8601,7 +9585,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!154 &1304190711
 TerrainCollider:
   m_ObjectHideFlags: 0
@@ -8636,13 +9620,13 @@ Terrain:
   m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 100
+  m_DetailObjectDistance: 50
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -8721,6 +9705,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 9.1837e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1754945e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_34
@@ -8783,6 +9783,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.1720798e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 40992.125
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 229.42726
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 9.854674e+11
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_78
@@ -8850,6 +9870,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.74498e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.11e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.7105103e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_81
@@ -8912,6 +9952,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_83
@@ -9095,6 +10151,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.682e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_70
@@ -9992,6 +11064,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1.0141871e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 234278910
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.7554102e+23
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.142841e+31
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_16
@@ -10054,6 +11146,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_85
@@ -10253,6 +11361,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.614e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3.59e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.59e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_11
@@ -10315,6 +11443,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.8554487e+33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.730171e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.2524945e+20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.9942697e+24
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Larch_Tree_42
@@ -10377,6 +11525,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.83672e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.11e-43
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_35
@@ -10694,6 +11862,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.3509887e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.4757395e+20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.9721532e-31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 6.018531e-36
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_77
@@ -10813,6 +12001,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 6e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.83672e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -3.11e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.1e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_76
@@ -10875,6 +12083,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_41
@@ -11326,6 +12554,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 7.1439585e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.0396538e+21
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 7.3974853e+31
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.0597461e-38
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_23
@@ -11388,6 +12636,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.295886e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.500301e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.545857e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_65
@@ -11450,6 +12718,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.87e-42
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.404242e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.92008e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.704e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_57
@@ -11512,6 +12800,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: NaN
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_64
@@ -11984,6 +13280,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 1e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.295949e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.675e-42
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_28
@@ -12046,6 +13358,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -3.11e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.75508e-40
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_47
@@ -12108,6 +13440,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.3510604e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 5.877472e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_22
@@ -12289,6 +13637,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.7105054e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 4.500044e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 7.484e-42
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_82
@@ -12360,7 +13728,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1766161745
 Transform:
   m_ObjectHideFlags: 0
@@ -12410,13 +13778,13 @@ Terrain:
   m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 100
+  m_DetailObjectDistance: 50
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -12453,7 +13821,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1771427384
 Transform:
   m_ObjectHideFlags: 0
@@ -12503,13 +13871,13 @@ Terrain:
   m_TreeBillboardDistance: 100
   m_TreeCrossFadeLength: 5
   m_TreeMaximumFullLODCount: 50
-  m_DetailObjectDistance: 100
+  m_DetailObjectDistance: 50
   m_DetailObjectDensity: 1
   m_HeightmapPixelError: 5
   m_SplatMapDistance: 1000
   m_HeightmapMinimumLODSimplification: 0
   m_HeightmapMaximumLOD: 0
-  m_ShadowCastingMode: 2
+  m_ShadowCastingMode: 0
   m_DrawHeightmap: 1
   m_DrawInstanced: 0
   m_DrawTreesAndFoliage: 1
@@ -12687,6 +14055,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4e-45
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 4.4124648e-20
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.377594e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.2285e-41
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_86
@@ -12749,6 +14137,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.1326e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.0387484e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5697343e-37
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_17
@@ -12811,6 +14219,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: -2.26e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.83672e-40
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_40
@@ -12904,6 +14332,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: NaN
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 2.7105054e-20
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_80
@@ -13134,6 +14574,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_55
@@ -13329,6 +14789,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1e-45
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Larch_Tree_43
@@ -13649,6 +15125,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 9.404242e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.0842022e-19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Cedar_Tree_03_66
@@ -13711,6 +15203,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.469367e-39
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: -2.015625
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_31
@@ -13809,6 +15317,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.3e-44
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 8.81e-43
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9e-44
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_0
@@ -14044,6 +15568,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 3.0990291e+32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 6.7981424e-33
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 1.7086692e+19
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 3.907633e+12
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_5
@@ -14106,6 +15650,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 2.2729285e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 1.4785518e-38
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_46
@@ -14286,6 +15850,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_12
@@ -14348,6 +15924,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 14619.103
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 1.1092534e+27
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 3.0734745e+32
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 2.4650054e+32
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Larch_Tree_44
@@ -14467,6 +16063,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2068777215}
     m_Modifications:
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.w
+      value: 4.1326e-40
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.x
+      value: 9.1835e-41
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.y
+      value: 2.0387484e-38
+      objectReference: {fileID: 0}
+    - target: {fileID: 2512240226304749317, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
+      propertyPath: m_BoundingSphereOverride.z
+      value: 4.5697343e-37
+      objectReference: {fileID: 0}
     - target: {fileID: 4465274119640082800, guid: 7f10982de6df7e643a70c5bdc6693dcf, type: 3}
       propertyPath: m_Name
       value: Lamp_Pine_Tree_15
