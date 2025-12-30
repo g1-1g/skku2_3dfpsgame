@@ -1,7 +1,5 @@
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using static UnityEditor.SceneView;
 
 public class PlayerTopViewMove : MonoBehaviour
 {

@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using static UnityEditor.SceneView;
 using DG.Tweening;
 
 public enum ECameraMode
